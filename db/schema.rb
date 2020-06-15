@@ -61,10 +61,16 @@ ActiveRecord::Schema.define(version: 2020_06_15_141019) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "matricule"
+    t.boolean "manager", default: false, null: false
+    t.bigint "unit_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["unit_id"], name: "index_users_on_unit_id"
   end
 
   add_foreign_key "exchanges", "shifts", column: "shift_answer_id"
@@ -72,4 +78,5 @@ ActiveRecord::Schema.define(version: 2020_06_15_141019) do
   add_foreign_key "lines", "units"
   add_foreign_key "shifts", "lines"
   add_foreign_key "shifts", "users"
+  add_foreign_key "users", "units"
 end
