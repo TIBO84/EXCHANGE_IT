@@ -35,7 +35,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string :first_name
       t.string :last_name
       t.integer :matricule
-      t.boolean :manager
+      t.boolean :manager, null: false, default: false
       t.references :unit, null: false, foreign_key: true
 
       t.timestamps null: false
