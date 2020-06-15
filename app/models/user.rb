@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :shifts
-  has_many :exchanges through: :shifts
+  has_many :exchanges, through: :shifts
   belongs_to :unit
   validates :first_name, :last_name, :unit_id, :email, :matricule, presence: :true
   validates :matricule, uniqueness: :true
