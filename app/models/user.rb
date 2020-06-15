@@ -7,4 +7,7 @@ class User < ApplicationRecord
   has_many :shifts
   has_many :exchanges through: :shifts
   belongs_to :unit
+  validates :first_name, :last_name, :unit_id, :email, :matricule, presence: :true
+  validates :matricule, uniqueness: :true
+  validates :last_name, uniqueness: { scope: :matricule }
 end
