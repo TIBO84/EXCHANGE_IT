@@ -10,10 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_133955) do
+ActiveRecord::Schema.define(version: 2020_06_15_141019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "exchanges", force: :cascade do |t|
+    t.bigint "shift_owner_id", null: false
+    t.bigint "shift_answer_id", null: false
+    t.boolean "accepted_owner", null: false
+    t.boolean "accepted_manager", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["shift_answer_id"], name: "index_exchanges_on_shift_answer_id"
+    t.index ["shift_owner_id"], name: "index_exchanges_on_shift_owner_id"
+  end
+
+  create_table "lines", force: :cascade do |t|
+    t.string "name"
+    t.string "type"
+    t.string "matricule"
+    t.bigint "unit_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["unit_id"], name: "index_lines_on_unit_id"
+  end
+
+  create_table "shifts", force: :cascade do |t|
+    t.date "date"
+    t.bigint "line_id", null: false
+    t.time "hour_start"
+    t.time "hour_end"
+    t.time "working_hours"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["line_id"], name: "index_shifts_on_line_id"
+    t.index ["user_id"], name: "index_shifts_on_user_id"
+  end
+
+  create_table "units", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +67,9 @@ ActiveRecord::Schema.define(version: 2020_06_15_133955) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "exchanges", "shifts", column: "shift_answer_id"
+  add_foreign_key "exchanges", "shifts", column: "shift_owner_id"
+  add_foreign_key "lines", "units"
+  add_foreign_key "shifts", "lines"
+  add_foreign_key "shifts", "users"
 end
