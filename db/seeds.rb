@@ -80,6 +80,23 @@ shift5 = Shift.create!(
   user: employee_2
 )
 
+shift6 = Shift.create!(
+  date: Date.today - 6,
+  line: l2,
+  hour_start: Time.new(2020,9,20,9,35,0).strftime("%H:%M"),
+  hour_end: Time.new(2020,9,20,16,15,0).strftime("%H:%M"),
+  working_hours: Time.new(2020,9,19,16,5,0).strftime("%H:%M"), # 7h = 22000 seconds -- SECONDS ?
+  user: employee_2
+)
+
+shift7 = Shift.create!(
+  date: Date.today - 5,
+  line: l2,
+  hour_start: Time.new(2020,9,20,9,35,0).strftime("%H:%M"),
+  hour_end: Time.new(2020,9,20,16,15,0).strftime("%H:%M"),
+  working_hours: Time.new(2020,9,19,16,5,0).strftime("%H:%M"), # 7h = 22000 seconds -- SECONDS ?
+  user: employee_2
+)
 puts ".... CREATE EXCHANGES"
 
 #1 exchange avec une reponse
@@ -109,5 +126,12 @@ exchange4 = Exchange.create(
   shift_answer_id: shift5,
   accepted_owner: true,
   accepted_manager: true
+)
+
+exchange5 = Exchange.create(
+  shift_owner_id: shift6,
+  shift_answer_id: shift7,
+  accepted_owner: true,
+  accepted_manager: false
 )
 puts ".... SEED OK ...."
