@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_06_15_141019) do
 
   create_table "lines", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "transport_type"
     t.string "matricule"
     t.bigint "unit_id", null: false
     t.datetime "created_at", precision: 6, null: false
