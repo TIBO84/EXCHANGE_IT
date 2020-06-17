@@ -10,11 +10,16 @@ class DashboardsController < ApplicationController
   end
 
   def my_shifts
+
+
+
     @exchanges_pending_manager = Exchange.joins(joins_sql_myshifts).where(where_sql_myshifts_pending, user_id: current_user.id)
     @exchanges_validated = Exchange.joins(joins_sql_myshifts).where(where_sql_myshifts_validated, user_id: current_user.id)
+
   end
 
   def my_answers
+    @shifts = current_user.shifts.where(shift_answer_id: true)
   end
 
   private
