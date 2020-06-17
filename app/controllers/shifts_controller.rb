@@ -1,7 +1,6 @@
 class ShiftsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_shift, only: [:update, :destroy]
-  before_action :shift_new, only: [:answer, :new]
 
   def new
     @shift = Shift.new
@@ -32,7 +31,7 @@ class ShiftsController < ApplicationController
 
   def answer
     @shift = Shift.new
-    @shift_answered = Shift.find(params[:id])
+    @shift_answered = Shift.find(params[:shift_id])
   end
 
   private
