@@ -13,6 +13,7 @@ class ExchangesController < ApplicationController
   end
 
   def accept_user!
+
   end
 
   def accept_manager!

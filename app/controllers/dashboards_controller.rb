@@ -10,9 +10,11 @@ class DashboardsController < ApplicationController
   end
 
   def my_shifts
+    @shifts = current_user.shifts.where(shift_owner_id: true)
   end
 
   def my_answers
+    @shifts = current_user.shifts.where(shift_answer_id: true)
   end
 
   private
