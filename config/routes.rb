@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "dashboard", to: "dashboards#home", as: :dashboard
   get "supervise", to: "supervises#home", as: :supervise
   get "supervise/stat", to: "supervises#stat", as: :stat
-  get "dashboard/my-shifts", to: "dashboards#my_shifts", as: :my_shifts
-  get "dashboard/my-answers", to: "dashboards#my_answers", as: :my_answers
+  get "my-shifts", to: "dashboards#my_shifts", as: :my_shifts
+  get "my-answers", to: "dashboards#my_answers", as: :my_answers
   get "dashboard/:shift_id/shift-answer", to: "shifts#answer", as: :shift_answer
 end
