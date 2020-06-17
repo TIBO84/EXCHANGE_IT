@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_141019) do
+ActiveRecord::Schema.define(version: 2020_06_17_103037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 2020_06_15_141019) do
   create_table "exchanges", force: :cascade do |t|
     t.bigint "shift_owner_id", null: false
     t.bigint "shift_answer_id", null: false
-    t.boolean "accepted_owner", null: false
-    t.boolean "accepted_manager", null: false
+    t.boolean "accepted_owner"
+    t.boolean "accepted_manager"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["shift_answer_id"], name: "index_exchanges_on_shift_answer_id"
