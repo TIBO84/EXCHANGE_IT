@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_17_103037) do
+ActiveRecord::Schema.define(version: 2020_06_17_140703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,10 +41,10 @@ ActiveRecord::Schema.define(version: 2020_06_17_103037) do
     t.bigint "line_id", null: false
     t.time "hour_start"
     t.time "hour_end"
-    t.time "working_hours"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "working_hours"
     t.index ["line_id"], name: "index_shifts_on_line_id"
     t.index ["user_id"], name: "index_shifts_on_user_id"
   end
