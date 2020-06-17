@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :shifts, only: [:create, :update, :destroy]
   get "shift-new", to: "shifts#new"
-  resources :exchanges, only: [:create, :update]
+  resources :exchanges, only: [:create, :update] do
+    get 'accepted_manager', to: 'exchanges#accept_manager!'
+  end
   get "dashboard", to: "dashboards#home", as: :dashboard
   get "supervise", to: "supervises#home", as: :supervise
   get "supervise/stat", to: "supervises#stat", as: :stat

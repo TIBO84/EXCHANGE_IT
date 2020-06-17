@@ -1,2 +1,23 @@
 <h1>Supervises#home</h1>
 <p>Find me in app/views/supervises/home.html.erb</p>
+
+
+
+
+<div>                                                           #navbar
+</div>
+
+<div>                                                           #container
+  <div>                                                         #liste d'instance d'exchange
+    <% @exchanges.each do |exchange| %>
+      <div class="exchange_card">
+        <%= raw(ap exchange) %>
+        <%=link_to 'Accepter', exchange_accepted_manager_path(exchange.id), class: "btn_accept_manager"%>
+      </div>
+      <br><br><br><br>
+    <% end %>
+  </div>
+
+  <div>                                                         #proposer une vacation
+  </div>
+</div>
