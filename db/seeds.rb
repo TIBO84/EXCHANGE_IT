@@ -103,6 +103,8 @@ shift7 = Shift.create!(
 )
 puts ".... CREATE EXCHANGES"
 
+EXCHANGES = []
+
 #1 exchange avec une reponse
 exchange1 = Exchange.create(
   shift_owner_id: shift1.id,
@@ -110,6 +112,7 @@ exchange1 = Exchange.create(
   accepted_owner: nil,
   accepted_manager: nil
 )
+EXCHANGES << exchange1
 
 exchange2 = Exchange.create(
   shift_owner_id: shift1.id,
@@ -117,6 +120,8 @@ exchange2 = Exchange.create(
   accepted_owner: nil,
   accepted_manager: nil
 )
+EXCHANGES << exchange2
+
 #1 exchange avec une reponse acceptee par le owner
 exchange3 = Exchange.create(
   shift_owner_id: shift4,
@@ -124,6 +129,7 @@ exchange3 = Exchange.create(
   accepted_owner: true,
   accepted_manager: nil
 )
+EXCHANGES << exchange3
 
 exchange4 = Exchange.create(
   shift_owner_id: shift4,
@@ -131,6 +137,7 @@ exchange4 = Exchange.create(
   accepted_owner: true,
   accepted_manager: true
 )
+EXCHANGES << exchange4
 
 exchange5 = Exchange.create(
   shift_owner_id: shift6,
@@ -138,6 +145,8 @@ exchange5 = Exchange.create(
   accepted_owner: nil,
   accepted_manager: false
 )
+EXCHANGES << exchange5
+
 puts ".... SEED OK ...."
 
 
@@ -308,6 +317,25 @@ shift_with_exchange8 = Shift.create!(
   user: titi
 )
 
+shift_with_exchange9 = Shift.create!(
+  date: 7.days.from_now,
+  line: l2,
+  hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
+  hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
+  working_hours: Time.new(2020,9,15,16,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
+  user: jacky
+)
+
+
+shift_with_exchange10 = Shift.create!(
+  date: 8.days.from_now,
+  line: l4,
+  hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
+  hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
+  working_hours: Time.new(2020,9,15,16,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
+  user: titi
+)
+
 
 exchange3 = Exchange.create!(
   shift_owner: shift_with_exchange6,
@@ -320,10 +348,16 @@ exchange3 = Exchange.create!(
 exchange3 = Exchange.create!(
   shift_owner: shift_with_exchange6,
   shift_answer: shift_with_exchange8,
-  accepted_owner: nil,
+  accepted_owner: true,
   accepted_manager: nil
 )
 
+exchange4 = Exchange.create!(
+  shift_owner: shift_with_exchange9,
+  shift_answer: shift_with_exchange10,
+  accepted_owner: true,
+  accepted_manager: true
+)
 
 
 puts ".... CUSTOM SEED OK"

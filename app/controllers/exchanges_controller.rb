@@ -13,15 +13,22 @@ class ExchangesController < ApplicationController
   end
 
   def accept_user!
-
+    @exchange = Exchange.find(params[:exchange_id])
+    @exchange.update(accepted_owner:true)
   end
 
   def accept_manager!
+    @exchange = Exchange.find(params[:exchange_id])
+    @exchange.update(accepted_manager:true)
   end
 
   private
 
   def shift_params
     # TODO
+  end
+
+  def exchange_params
+    params.require(:exchange).permit(:exchange_id, :shift_owner_id, :shift_answer_id, :accepted_owner, :accepted_manager)
   end
 end
