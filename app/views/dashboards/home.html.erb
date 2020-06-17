@@ -1,2 +1,6 @@
-<h1>Dashboards#home</h1>
+
 <p>Find me in app/views/dashboards/home.html.erb</p>
+
+<% @shifts.each do |shift| %>
+  <div class="shift"><%= raw(ap shift) %></div>
+<% end %>
