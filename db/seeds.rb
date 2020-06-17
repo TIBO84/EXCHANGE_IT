@@ -24,11 +24,15 @@ puts ".... CREATE LINES"
 #2 lines
 l1 = Line.create!(unit: u1, name: "T1", transport_type: "Tramway")
 l2 = Line.create!(unit: u1, name: "T2", transport_type: "Tramway")
+l3 = Line.create!(unit: u2, name: "T3", transport_type: "Tramway")
+l4 = Line.create!(unit: u1, name: "T4", transport_type: "Tramway")
 
 puts ".... CREATE USERS"
 #2 user employee
 employee_1 = User.create!(first_name: "Joe", last_name: "Rista", unit: u1, email: "employee_1@gmail.com", matricule: 1234, password: 123456 )
 employee_2 = User.create!(first_name: "Jacky", last_name: "Bonvita", unit: u1, email: "employee_2@gmail.com", matricule: 5678, password: 123456 )
+employee_3 = User.create!(first_name: "Toto", last_name: "Dupont", unit: u2, email: "employee_3@gmail.com", matricule: 5679, password: 123456 )
+employee_3 = User.create!(first_name: "Titi", last_name: "TOCTOC", unit: u1, email: "employee_4@gmail.com", matricule: 5673, password: 123456 )
 
 #1 user manager
 manager = User.create!(first_name: "Michelle", last_name: "Obama", unit: u1, email: "manager@gmail.com", matricule: 23445, manager: true, password: 123456 )
@@ -131,7 +135,7 @@ exchange4 = Exchange.create(
 exchange5 = Exchange.create(
   shift_owner_id: shift6,
   shift_answer_id: shift7,
-  accepted_owner: true,
+  accepted_owner: nil,
   accepted_manager: false
 )
 puts ".... SEED OK ...."
