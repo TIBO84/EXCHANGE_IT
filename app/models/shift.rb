@@ -1,4 +1,5 @@
 class Shift < ApplicationRecord
+  attr_accessor :working_minutes
   belongs_to :line
   belongs_to :user
   has_many :exchange_owners, class_name: "Exchange", foreign_key: :shift_owner_id

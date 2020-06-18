@@ -1,5 +1,9 @@
 <h1>Shifts#answer</h1>
 
+<div class="shift_answered">
+  <%= @shift_answered %>
+</div>
+
 <div class="container mx-auto">
   <%= simple_form_for @shift do |f| %>
   <%= f.input :date, input_html:{class: 'bg-white text-gray-600 px-1 rounded'} %>
