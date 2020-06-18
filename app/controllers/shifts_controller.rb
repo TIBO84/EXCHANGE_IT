@@ -1,7 +1,7 @@
 class ShiftsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_shift, only: [:update, :destroy]
-
+  
   def new
     @shift = Shift.new
     @lines = Line.all
@@ -9,7 +9,9 @@ class ShiftsController < ApplicationController
 
   def create
     @shift = Shift.new(shift_params)
-    @shift.working_hours = transform(working_params)
+
+    #@shift.working_hours = transform(working_params)
+
     @shift.user_id = current_user.id
     if @shift.save
       #stocker en secondes ??
@@ -54,7 +56,6 @@ class ShiftsController < ApplicationController
   def shift_params
     params.require(:shift).permit(:date, :hour_start, :hour_end, :line_id, :working_hours, :working_minutes)
   end
-
 
   def set_shift
     @shift = Shift.find(params[:id])

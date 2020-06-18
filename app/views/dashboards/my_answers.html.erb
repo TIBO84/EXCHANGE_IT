@@ -1,0 +1,34 @@
+
+<h1>Mes réponses acceptées par le demandeur</h1>
+
+<% current_user.exchange_answers.each do |exchange| %>
+  <% if exchange.accepted_owner %>
+    
+
+    <p>Demande originelle</p>
+      <% shift = exchange.shift_owner %>
+      <%= raw(ap shift)%>
+      
+      <p>réponse que j'avais faite qui a été choisie par le demandeur</p>
+      <% responses = shift.exchange_answers %>
+      <%= p responses.count %>
+        <% responses.each do |response| %>
+        <%= raw(ap response.shift_owner)%>
+        <% end %>
+  <% end %>
+<% end %>
+
+<h1> Mes réponses en attente de choix par le demandeur </h1> %>
+
+<% current_user.exchange_answers.each do |exchange| %>
+  <% if exchange.accepted_owner = false %>
+    <p>Demande originelle</p>
+      <% shift = exchange.shift_owner %>
+      <%= raw(ap shift)%>
+      <p>réponse que j'avais faite qui a été choisie par le demandeur</p>
+      <% responses = Exchange.where(accepted_owner: true).where(shift_answer_id: shift.id)%>
+        <% responses.each do |response| %>
+        <%= raw(ap response)%>
+        <% end %>
+  <% end %>
+<% end %>
