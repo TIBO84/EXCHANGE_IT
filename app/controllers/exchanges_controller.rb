@@ -5,7 +5,7 @@ class ExchangesController < ApplicationController
     @shift = Shift.new(shift_params)
     @shift.user_id = current_user.id
     if @shift.save
-        @exchange = Exchange.new(shift_owner_id: @shift.id)
+      @exchange = Exchange.new(shift_owner_id: @shift.id)
       redirect_to dashboard_path, notice: 'Shift successfully created.'
     else
       render :new
