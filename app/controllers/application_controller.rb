@@ -3,6 +3,22 @@ class ApplicationController < ActionController::Base
 
   include Pundit
 
+  def after_sign_in_path_for(resource)
+    # return the path based on resource
+    if current_user.manager
+      supervise_path
+    else
+      dashboard_path
+    end
+  end
+
+  def after_sign_out_path_for(resource)
+    root_path
+    # return the path based on resource
+  end
+
+
+
   # Pundit: white-list approach.
   #fter_action :verify_authorized, except: :index, unless: :skip_pundit?
   #after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
