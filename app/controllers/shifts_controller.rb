@@ -9,7 +9,9 @@ class ShiftsController < ApplicationController
 
   def create
     @shift = Shift.new(shift_params)
-    @shift.working_hours = transform(working_params)
+
+    #@shift.working_hours = transform(working_params)
+
     @shift.user_id = current_user.id
     if @shift.save
       #stocker en secondes ??
@@ -52,12 +54,12 @@ class ShiftsController < ApplicationController
   end
 
   def shift_params
-    params.require(:shift).permit(:date, :hour_start, :hour_end, :line_id)
+    params.require(:shift).permit(:date, :hour_start, :hour_end, :line_id, :working_hours, :working_minutes)
   end
 
-  def working_params
-    params.require(:shift).permit(:working_hours, :working_minutes)
-  end
+  #def working_params
+    #params.require(:shift).permit(:working_hours, :working_minutes)
+  #end
 
   def set_shift
     @shift = Shift.find(params[:id])
