@@ -336,6 +336,33 @@ shift_with_exchange10 = Shift.create!(
   user: titi
 )
 
+shift_with_exchange11 = Shift.create!(
+  date: 8.days.from_now,
+  line: l2,
+  hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
+  hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
+  working_hours: Time.new(2020,9,15,16,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
+  user: jacky
+)
+
+
+shift_with_exchange12 = Shift.create!(
+  date: 9.days.from_now,
+  line: l4,
+  hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
+  hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
+  working_hours: Time.new(2020,9,15,16,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
+  user: titi
+)
+
+shift_with_exchange13 = Shift.create!(
+  date: 10.days.from_now,
+  line: l1,
+  hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
+  hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
+  working_hours: Time.new(2020,9,15,12,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
+  user: titi
+)
 
 exchange3 = Exchange.create!(
   shift_owner: shift_with_exchange6,
@@ -357,6 +384,20 @@ exchange4 = Exchange.create!(
   shift_answer: shift_with_exchange10,
   accepted_owner: true,
   accepted_manager: true
+)
+
+exchange10 = Exchange.create!(
+  shift_owner: shift_with_exchange11,
+  shift_answer: shift_with_exchange12,
+  accepted_owner: nil,
+  accepted_manager: nil
+)
+
+exchange10 = Exchange.create!(
+  shift_owner: shift_with_exchange11,
+  shift_answer: shift_with_exchange13,
+  accepted_owner: nil,
+  accepted_manager: nil
 )
 
 
