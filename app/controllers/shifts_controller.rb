@@ -57,10 +57,6 @@ class ShiftsController < ApplicationController
     params.require(:shift).permit(:date, :hour_start, :hour_end, :line_id, :working_hours, :working_minutes)
   end
 
-  #def working_params
-    #params.require(:shift).permit(:working_hours, :working_minutes)
-  #end
-
   def set_shift
     @shift = Shift.find(params[:id])
   end
