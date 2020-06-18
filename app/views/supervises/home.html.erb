@@ -3,14 +3,17 @@
 
 
 
-
-<div>                                                           #navbar
+#navbar
+<div>                                                         
 </div>
 
-<div>                                                           #container
-  <div>                                                         #liste d'instance d'exchange
-    <% @exchanges.each do |exchange| %>
-      <div class="exchange_card">
+#container
+<div>
+
+  <h1>Liste des échanges en attente de validation</h1>                                                          
+  <div>                                                         
+    <% @exchanges_pending_manager.each do |exchange| %>
+      <div class="exchange_manager_card">
         <%= raw(ap exchange) %>
         <%=link_to 'Accepter', exchange_accepted_manager_path(exchange.id), class: "btn_accept_manager"%>
       </div>
@@ -18,6 +21,7 @@
     <% end %>
   </div>
 
-  <div>                                                         #proposer une vacation
+  <h1>Proposer de nouvelles vacations</h1>
+  <div>                                                         
   </div>
 </div>

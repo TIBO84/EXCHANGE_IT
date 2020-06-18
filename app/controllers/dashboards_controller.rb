@@ -10,16 +10,12 @@ class DashboardsController < ApplicationController
   end
 
   def my_shifts
-
-
-
-    @exchanges_pending_manager = Exchange.joins(joins_sql_myshifts).where(where_sql_myshifts_pending, user_id: current_user.id)
+    @exchanges_pending_my_answer = Exchange.joins(joins_sql_myshifts).where(where_sql_myshifts_pending_my_answer, user_id: current_user.id)
+    @exchanges_pending_manager = Exchange.joins(joins_sql_myshifts).where(where_sql_myshifts_pending_manager, user_id: current_user.id)
     @exchanges_validated = Exchange.joins(joins_sql_myshifts).where(where_sql_myshifts_validated, user_id: current_user.id)
-
   end
 
   def my_answers
-    @shifts = current_user.shifts.where(shift_answer_id: true)
   end
 
   private
@@ -53,10 +49,18 @@ class DashboardsController < ApplicationController
   end
 
   # METHODS FOR MY_SHIFTS
-  def where_sql_myshifts_pending
+  def where_sql_myshifts_pending_manager
     <<~SQL
       users.id = :user_id AND
       accepted_owner IS TRUE AND
+      accepted_manager IS NULL
+    SQL
+  end
+
+  def where_sql_myshifts_pending_my_answer
+    <<~SQL
+      users.id = :user_id AND
+      accepted_owner IS NULL AND
       accepted_manager IS NULL
     SQL
   end

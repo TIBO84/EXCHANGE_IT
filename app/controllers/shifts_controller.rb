@@ -1,7 +1,7 @@
 class ShiftsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_shift, only: [:update, :destroy]
-
+  
   def new
     @shift = Shift.new
   end

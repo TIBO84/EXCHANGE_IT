@@ -103,16 +103,13 @@ shift7 = Shift.create!(
 )
 puts ".... CREATE EXCHANGES"
 
-EXCHANGES = []
-
-#1 exchange avec une reponse
+#1 exchange sans reponse
 exchange1 = Exchange.create(
   shift_owner_id: shift1.id,
   shift_answer_id: shift2.id,
   accepted_owner: nil,
   accepted_manager: nil
 )
-EXCHANGES << exchange1
 
 exchange2 = Exchange.create(
   shift_owner_id: shift1.id,
@@ -120,32 +117,29 @@ exchange2 = Exchange.create(
   accepted_owner: nil,
   accepted_manager: nil
 )
-EXCHANGES << exchange2
 
-#1 exchange avec une reponse acceptee par le owner
+#2 exchange avec une reponse acceptee par le owner
 exchange3 = Exchange.create(
   shift_owner_id: shift4,
   shift_answer_id: shift5,
   accepted_owner: true,
   accepted_manager: nil
 )
-EXCHANGES << exchange3
 
 exchange4 = Exchange.create(
-  shift_owner_id: shift4,
-  shift_answer_id: shift5,
+  shift_owner_id: shift6.id,
+  shift_answer_id: shift7.id,
+  accepted_owner: true,
+  accepted_manager: nil
+)
+
+#3 exchange avec une reponse acceptee par le manager
+exchange5 = Exchange.create(
+  shift_owner_id: shift4.id,
+  shift_answer_id: shift5.id,
   accepted_owner: true,
   accepted_manager: true
 )
-EXCHANGES << exchange4
-
-exchange5 = Exchange.create(
-  shift_owner_id: shift6,
-  shift_answer_id: shift7,
-  accepted_owner: nil,
-  accepted_manager: false
-)
-EXCHANGES << exchange5
 
 puts ".... SEED OK ...."
 
@@ -339,7 +333,7 @@ shift_with_exchange10 = Shift.create!(
 
 exchange3 = Exchange.create!(
   shift_owner: shift_with_exchange6,
-  shift_answer: shift_with_exchange7,
+  shift_answer: shift_with_exchange4,
   accepted_owner: nil,
   accepted_manager: nil
 )
@@ -347,7 +341,7 @@ exchange3 = Exchange.create!(
 
 exchange3 = Exchange.create!(
   shift_owner: shift_with_exchange6,
-  shift_answer: shift_with_exchange8,
+  shift_answer: shift_with_exchange7,
   accepted_owner: true,
   accepted_manager: nil
 )

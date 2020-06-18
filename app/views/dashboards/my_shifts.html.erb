@@ -1,15 +1,24 @@
 <h1>My Shifts</h1>
 
-<h2>Demandes en attentes validation manager</h2>
+<h1>Demandes en attentes validation manager</h1>
 
+<div>                                                     
   <% @exchanges_pending_manager.each do |exchange| %>
-    <%= raw(ap exchange) %>
+  <%= raw(ap exchange) %>
   <% end %>
+</div>
 
-<h2>Demande en attentes de réponses</h2>
+<h1>Demande en attentes de réponses de ma part </h1>
 
-<h2>Historiques des demandes acceptées</h2>
+<div>                                                     
+  <% @exchanges_pending_my_answer.each do |exchange| %>
+  <%= raw(ap exchange) %>
+  <%=link_to 'Accepter', exchange_accepted_owner_path(exchange.id), class: "btn_accept_user"%>
+  <% end %>
+</div>
 
-  <% @exchanges_validated.each do |exchange| %>
+<h1>Historiques des demandes acceptées</h1>
+
+  <% @exchanges_validated.each do |exchange| %> 
     <%= raw(ap exchange) %>
   <% end %>
