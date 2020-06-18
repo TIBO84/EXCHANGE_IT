@@ -24,7 +24,7 @@
         <% answers.each do |answer| %>
           <% answer.each do |shift_id, exchange_id| %>
             <ul>
-              <li> => <%= Shift.find(shift_id) %> | <%=link_to 'Accepter', "exchange_accepted_owner_path(exchange_id)", class: "btn_accept_user"%></li>
+              <li> => <%= Shift.find(shift_id) %> | <%=link_to 'Accepter', exchange_accepted_owner_path(exchange_id), class: "btn_accept_user"%></li>
             </ul>
           <% end %>
         <% end %>
