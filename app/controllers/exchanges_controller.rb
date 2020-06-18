@@ -27,6 +27,12 @@ class ExchangesController < ApplicationController
     redirect_to supervise_path, notice: 'Echange validé'
   end
 
+  def refuse_manager!
+    @exchange = Exchange.find(params[:exchange_id])
+    @exchange.update(accepted_manager:false)
+    redirect_to supervise_path, notice: 'Echange refusé'
+  end
+
   private
 
   def shift_params

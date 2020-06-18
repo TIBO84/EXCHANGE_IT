@@ -2,31 +2,37 @@ class SupervisesController < ApplicationController
   before_action :authenticate_user!
 
   def home
-    @exchanges_pending_manager = Exchange.joins(joins_sql_myshifts).where(where_sql_myshifts_pending_manager, user_id: current_user.id)
-    @exchanges_pending_manager = @exchanges_pending_manager.order(id: :asc)
+    @exchanges = Exchange.joins(joins_sql).where(where_sql_home, user_unit_id: current_user.unit_id).order(date: :asc)
   end
 
   def stat
+    @exchanges = Exchange.joins(joins_sql).where(where_sql_stat, user_unit_id: current_user.unit_id).order(date: :desc)
   end
 
 
+  private
 
-
-  private 
-
-  def joins_sql_myshifts
+  def joins_sql
     <<~SQL
       INNER JOIN shifts ON shifts.id = exchanges.shift_owner_id
       INNER JOIN users ON users.id = shifts.user_id
+      INNER JOIN units ON units.id = users.unit_id
     SQL
   end
 
-  def where_sql_myshifts_pending_manager
+  def where_sql_home
     <<~SQL
-      users.id = :user_id AND
+      units.id = :user_unit_id AND
       accepted_owner IS TRUE AND
       accepted_manager IS NULL
     SQL
   end
 
+  def where_sql_stat
+    <<~SQL
+      units.id = :user_unit_id AND
+      accepted_owner IS TRUE AND
+      accepted_manager IS NOT NULL
+    SQL
+  end
 end

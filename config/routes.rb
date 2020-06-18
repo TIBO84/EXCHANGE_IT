@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :exchanges, only: [:create, :update] do
     get 'accepted_manager', to: 'exchanges#accept_manager!'
     get 'accepted_owner', to: 'exchanges#accept_user!'
+    get 'refused_manager', to: 'exchanges#refuse_manager!'
   end
   get "dashboard", to: "dashboards#home", as: :dashboard
   get "supervise", to: "supervises#home", as: :supervise

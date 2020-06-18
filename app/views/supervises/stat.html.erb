@@ -1,7 +1,8 @@
 <h1>Supervises#stat</h1>
 
-<% @stats.each do |stat| %>
-    <%= stat %>
+<% @exchanges.each do |exchange| %>
+    <%= exchange %>
+    <br><br>
 <% end %>
 
-<%= redirect_to :back %>
+<%= link_to "Back to dashboard", supervise_path %>

@@ -1,20 +1,25 @@
-<h2>Log in</h2>
-
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
+<div class="form-inputs container md">
+  <%= f.input :email,
+  placeholder: "user@example.com",
+  required: false,
+  autofocus: true,
+  input_html: { autocomplete: "email" } %>
+  <%= f.input :password,
+      placeholder: "Entrez votre mot de passe",
+      required: false,
+      input_html: {
+        autocomplete: "current-password",
+        class: 'bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal'
+      } %>
+  <%= f.check_box :remember_me, checked: true, id: 'remember-me', class: 'hidden' %>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
+
+<div class="form-actions container p-0">
+  <%= f.button :submit, "Log in", class: 'bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded' %>
+</div>
 <% end %>
-
+<div class="container my-2">
 <%= render "devise/shared/links" %>
+</div>

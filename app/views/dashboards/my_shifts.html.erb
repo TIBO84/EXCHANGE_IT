@@ -1,24 +1,45 @@
 <h1>My Shifts</h1>
 
-<h1>Demandes en attentes validation manager</h1>
 
-<div>                                                     
+<h2>Demandes en attentes validation manager</h2>
+
   <% @exchanges_pending_manager.each do |exchange| %>
-  <%= raw(ap exchange) %>
+    <%= raw(ap exchange) %>
   <% end %>
-</div>
 
-<h1>Demande en attentes de réponses de ma part </h1>
 
-<div>                                                     
-  <% @exchanges_pending_my_answer.each do |exchange| %>
-  <%= raw(ap exchange) %>
-  <%=link_to 'Accepter', exchange_accepted_owner_path(exchange.id), class: "btn_accept_user"%>
-  <% end %>
-</div>
+<br>
+<br>
 
-<h1>Historiques des demandes acceptées</h1>
+<h2>Demande en attentes de réponses / ou avec réponses</h2>
 
-  <% @exchanges_validated.each do |exchange| %> 
+  <h1>ICI</h1>
+
+  <% @shifts_and_answers.each do |owner, answers| %>
+    <div class = "answers-block">
+      <div class = "shift-owner">
+        <h1><%= Shift.find(owner) %></h1>
+      </div>
+      <div class = "shift-answers">
+        <% answers.each do |answer| %>
+          <% answer.each do |shift_id, exchange_id| %>
+            <ul>
+              <li> => <%= Shift.find(shift_id) %> | <%=link_to 'Accepter', "exchange_accepted_owner_path(exchange_id)", class: "btn_accept_user"%></li>
+            </ul>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <br>
+  <% end  %>
+
+<p>Hash de :  "shift_owner" => [ {shifft_answers => exchange associés} ] </p>
+<%= @shifts_and_answers %>
+<br>
+<br>
+
+<h2>Historiques des demandes acceptées</h2>
+
+  <% @exchanges_validated.each do |exchange| %>
     <%= raw(ap exchange) %>
   <% end %>

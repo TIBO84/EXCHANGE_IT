@@ -1,27 +1,38 @@
-<h1>Supervises#home</h1>
+<h1 class="text-center text-2xl font-semibold mt-8">Supervises#home</h1>
 <p>Find me in app/views/supervises/home.html.erb</p>
 
-
-
-#navbar
-<div>                                                         
-</div>
-
-#container
 <div>
+  <div class = "container">
+    <% @exchanges.each do |exchange| %>
+      <div class="exchange_review" style="display: flex">
+        <div>
+          <% shift_owner = Shift.find(exchange.shift_owner_id) %>
+          <ul>
+            <li>Date du shift: <%= shift_owner.date %></li>
+            <li>Heure début: <%= shift_owner.hour_start.strftime("%H:%M") %></li>
+            <li>Heure fin: <%= shift_owner.hour_end.strftime("%H:%M") %></li>
+            <li>Owner ID : <%= shift_owner.user_id %></li>
+            <li>Shift ID : <%= shift_owner.id %></li>
+          </ul>
+        </div>
+        <div class="flex">
+          <%=link_to 'Accepter', exchange_accepted_manager_path(exchange.id), class: "ml-2"%>
+          |
+          <%=link_to 'Refuser', exchange_refused_manager_path(exchange.id), class: "mr-2"%>
+        </div>
+        <div>
+          <% shift_answer = Shift.find(exchange.shift_answer_id) %>
+          <ul>
+            <li>Date du shift: <%= shift_answer.date %></li>
+            <li>Heure début: <%= shift_answer.hour_start.strftime("%H:%M") %></li>
+            <li>Heure fin: <%= shift_answer.hour_end.strftime("%H:%M") %></li>
+            <li>Owner ID : <%= shift_answer.user_id %></li>
+            <li>Shift ID : <%= shift_owner.id %></li>
+          </ul>
+        </div>
 
-  <h1>Liste des échanges en attente de validation</h1>                                                          
-  <div>                                                         
-    <% @exchanges_pending_manager.each do |exchange| %>
-      <div class="exchange_manager_card">
-        <%= raw(ap exchange) %>
-        <%=link_to 'Accepter', exchange_accepted_manager_path(exchange.id), class: "btn_accept_manager"%>
       </div>
       <br><br><br><br>
     <% end %>
-  </div>
-
-  <h1>Proposer de nouvelles vacations</h1>
-  <div>                                                         
   </div>
 </div>
