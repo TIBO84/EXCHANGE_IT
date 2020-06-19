@@ -24,6 +24,7 @@ class ExchangesController < ApplicationController
   def accept_manager!
     @exchange = Exchange.find(params[:exchange_id])
     @exchange.update(accepted_manager:true)
+    @exchange.update(accepted_manager:true)
     redirect_to supervise_path, notice: 'Echange validé'
   end
 

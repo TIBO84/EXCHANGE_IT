@@ -4,7 +4,6 @@ module ApplicationHelper
   end
 
   def working_hours_to_h(shift)
-    shift_hours = @shift.working_hours.to_i.hours
-    shift_minutes = @shift.working_minutes.to_i.minutes
+    Time.at((shift.working_hours.hour.seconds + shift.working_minutes.hour.seconds)).utc.strftime("%H:%M")
   end
 end
