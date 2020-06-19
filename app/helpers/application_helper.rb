@@ -4,7 +4,9 @@ module ApplicationHelper
   end
 
   def working_hours_to_h(shift)
-    shift_hours = @shift.working_hours.to_i.hours
-    shift_minutes = @shift.working_minutes.to_i.minutes
+    hours = @shift.working_hours.to_i.seconds / (60 * 60)
+    minutes = (@shift.working_minutes.to_i.seconds / 60) % 60
+    "#{ hours } h #{ minutes } m"
   end
+
 end

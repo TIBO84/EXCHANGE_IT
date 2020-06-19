@@ -1,11 +1,11 @@
 
-<h1>Dashboard <%= "#{@current_user.first_name} #{@current_user.last_name}" %></h1>
+<h1 class="first_name">Dashboard <%= "#{@current_user.first_name} #{@current_user.last_name}" %></h1>
 
 <h2>Demandes d'échange:</h2>
 
 <% @shifts.each do |shift| %>
 
-<div class="my-8">
+<div class="test">
   <%= raw(ap shift) %>
   <p><%= link_to "Proposer un échange", shift_answer_path(shift.id) %></p>
 </div>
@@ -20,6 +20,10 @@
 
 
   <%= link_to "My Answers", my_answers_path, class: "container mx-auto bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+</div>
+
+<div class="test">
+
 </div>
 
 
