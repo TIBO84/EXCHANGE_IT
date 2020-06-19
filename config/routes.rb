@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   get "supervise/stat", to: "supervises#stat", as: :stat
   get "my-shifts", to: "dashboards#my_shifts", as: :my_shifts
   get "my-answers", to: "dashboards#my_answers", as: :my_answers
-  get "dashboard/:shift_id/shift-answer", to: "shifts#answer", as: :shift_answer
+  get "dashboard/:shift_id/shift-answer", to: "exchanges#new", as: :shift_answer
 end
