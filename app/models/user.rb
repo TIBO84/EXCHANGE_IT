@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :shifts
-  has_many :exchange_answers, through: :shifts, source: :exchange_answers
+  has_many :exchange_answers, through: :shifts, source: :exchange_owners
   has_many :shift_answered, through: :exchange_answers, source: :shift_owner
   belongs_to :unit
   validates :first_name, :last_name, :unit_id, :email, :matricule, presence: :true
