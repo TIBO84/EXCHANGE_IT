@@ -230,6 +230,15 @@ shift_with_exchange2 = Shift.create!(
   user: jacky
 )
 
+shift_with_exchange3 = Shift.create!(
+  date: 3.days.from_now,
+  line: l3,
+  hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
+  hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
+  working_hours: Time.new(2020,9,15,16,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
+  user: jacky
+)
+
 exchange1 = Exchange.create!(
   shift_owner: shift_with_exchange1,
   shift_answer: shift_with_exchange2,

@@ -1,34 +1,59 @@
 
-<h1>Mes réponses acceptées par le demandeur</h1>
+  <h1>Mes réponses acceptées par le demandeur</h1>
 
-<% current_user.exchange_answers.each do |exchange| %>
-  <% if exchange.accepted_owner %>
-    
+<%# je selectionne les exchanges dans lesquelles je figure en tant que répondant et j'itère dessus %>
+  <% current_user.exchange_answers.each do |exchange| %>
 
-    <p>Demande originelle</p>
+<%# je vérifie que cet exhcange a bien un booléen 'accepted_owner' à true %>
+    <% if exchange.accepted_owner %>
+
+<%# si c'est le cas, j'identifie quel est le shift de la personne émettrice et je l'affiche %>
       <% shift = exchange.shift_owner %>
+      <p>Demande originelle</p>
       <%= raw(ap shift)%>
-      
-      <p>réponse que j'avais faite qui a été choisie par le demandeur</p>
+
+<%# ensuite j'identifie tous les exchanges correspondants a ce shift dans lesquelles que j'avais fait une réponse %>
       <% responses = shift.exchange_answers %>
-      <%= p responses.count %>
-        <% responses.each do |response| %>
-        <%= raw(ap response.shift_owner)%>
+      <% binding.pry %>
+<%# une fois que j'ai ce tableau d'excanges, je le parcours et j'affiche toutes les 'shifts_answers' %>
+      <% responses.each do |response| %>
+
+        <% if response.accepted_owner && response.shift_answer.user == current_user %>
+          <p>réponse que j'avais faite qui a été choisie par le demandeur</p>
+          <%= raw(ap response.shift_answer)%>
+          
         <% end %>
+      <% end %>
+    <% end %>
   <% end %>
-<% end %>
 
-<h1> Mes réponses en attente de choix par le demandeur </h1> %>
 
-<% current_user.exchange_answers.each do |exchange| %>
-  <% if exchange.accepted_owner = false %>
-    <p>Demande originelle</p>
+  <h1> Mes réponses en attente de choix par le demandeur </h1>
+
+
+<%# je selectionne les exchanges dans lesquelles je figure en tant que répondant et j'itère dessus %>
+  <% current_user.exchange_answers.each do |exchange| %>
+
+<%# je vérifie que cet exhcange a bien un booléen 'accepted_owner' à true %>
+    <% if exchange.accepted_owner == false %>
+
+<%# si c'est le cas, j'identifie quel est le shift de la personne émettrice et je l'affiche %>
       <% shift = exchange.shift_owner %>
+      <p>Demande originelle</p>
       <%= raw(ap shift)%>
-      <p>réponse que j'avais faite qui a été choisie par le demandeur</p>
-      <% responses = Exchange.where(accepted_owner: true).where(shift_answer_id: shift.id)%>
-        <% responses.each do |response| %>
-        <%= raw(ap response)%>
+
+<%# ensuite j'identifie tous les exchanges correspondants a ce shift dans lesquelles que j'avais fait une réponse %>
+      <% responses = shift.exchange_answers %>
+      <% binding.pry %>
+<%# une fois que j'ai ce tableau d'excanges, je le parcours et j'affiche toutes les 'shifts_answers' %>
+      <% responses.each do |response| %>
+
+        <% if response.accepted_owner && response.shift_answer.user == current_user %>
+          <p>réponse que j'avais faite qui a été choisie par le demandeur</p>
+          <%= raw(ap response.shift_answer)%>
+          
         <% end %>
+      <% end %>
+    <% end %>
   <% end %>
-<% end %>
+
