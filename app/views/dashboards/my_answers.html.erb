@@ -23,21 +23,11 @@
           
         <% end %>
       <% end %>
-    <% end %>
-  <% end %>
 
-
-  <h1> Mes réponses en attente de choix par le demandeur </h1>
-
-
-<%# je selectionne les exchanges dans lesquelles je figure en tant que répondant et j'itère dessus %>
-  <% current_user.exchange_answers.each do |exchange| %>
-
-<%# je vérifie que cet exhcange a bien un booléen 'accepted_owner' à true %>
-    <% if exchange.accepted_owner == nil %>
-
+      <% elsif exchange.accepted_owner == nil %>
 <%# si c'est le cas, j'identifie quel est le shift de la personne émettrice et je l'affiche %>
       <% shift = exchange.shift_owner %>
+      <h1> Mes réponses en attente de choix par le demandeur </h1>
       <p>Demande originelle</p>
       <%= raw(ap shift)%>
 
@@ -53,4 +43,3 @@
       <% end %>
     <% end %>
   <% end %>
-
