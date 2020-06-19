@@ -44,7 +44,8 @@ shift1 = Shift.create!(
   line: l1,
   hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
   hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
-  working_hours: Time.new(2020,9,15,16,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
+  working_hours: 6,
+  working_minutes: 25,
   user: employee_1
 )
 
@@ -53,7 +54,8 @@ shift2 = Shift.create!(
   line: l1,
   hour_start: Time.new(2020,10,11,11,35,0).strftime("%H:%M"),
   hour_end: Time.new(2020,10,11,20,15,0).strftime("%H:%M"),
-  working_hours: Time.new(2020,9,16,16,5,0).strftime("%H:%M"), # 7h = 22000 seconds -- SECONDS ?
+  working_hours: 6,
+  working_minutes: 25,
   user: employee_1
 )
 #1 shift reponse
@@ -62,7 +64,8 @@ shift3 = Shift.create!(
   line: l2,
   hour_start: Time.new(2020,9,18,9,35,0).strftime("%H:%M"),
   hour_end: Time.new(2020,9,18,16,15,0).strftime("%H:%M"),
-  working_hours: Time.new(2020,9,17,16,5,0).strftime("%H:%M"), # 7h = 22000 seconds -- SECONDS ?
+  working_hours: 6,
+  working_minutes: 25,
   user: employee_2
 )
 
@@ -71,7 +74,8 @@ shift4 = Shift.create!(
   line: l1,
   hour_start: Time.new(2020,8,8,11,35,0).strftime("%H:%M"),
   hour_end: Time.new(2020,8,8,20,15,0).strftime("%H:%M"),
-  working_hours: Time.new(2020,9,18,16,5,0).strftime("%H:%M"), # 7h = 22000 seconds -- SECONDS ?
+  working_hours: 6,
+  working_minutes: 25,
   user: employee_1
 )
 #1 shift reponse
@@ -80,7 +84,8 @@ shift5 = Shift.create!(
   line: l2,
   hour_start: Time.new(2020,9,20,9,35,0).strftime("%H:%M"),
   hour_end: Time.new(2020,9,20,16,15,0).strftime("%H:%M"),
-  working_hours: Time.new(2020,9,19,16,5,0).strftime("%H:%M"), # 7h = 22000 seconds -- SECONDS ?
+  working_hours: 6,
+  working_minutes: 25,
   user: employee_2
 )
 
@@ -89,7 +94,8 @@ shift6 = Shift.create!(
   line: l2,
   hour_start: Time.new(2020,9,20,9,35,0).strftime("%H:%M"),
   hour_end: Time.new(2020,9,20,16,15,0).strftime("%H:%M"),
-  working_hours: Time.new(2020,9,19,16,5,0).strftime("%H:%M"), # 7h = 22000 seconds -- SECONDS ?
+  working_hours: 6,
+  working_minutes: 25,
   user: employee_2
 )
 
@@ -98,7 +104,8 @@ shift7 = Shift.create!(
   line: l2,
   hour_start: Time.new(2020,9,20,9,35,0).strftime("%H:%M"),
   hour_end: Time.new(2020,9,20,16,15,0).strftime("%H:%M"),
-  working_hours: Time.new(2020,9,19,16,5,0).strftime("%H:%M"), # 7h = 22000 seconds -- SECONDS ?
+  working_hours: 6,
+  working_minutes: 25,
   user: employee_2
 )
 puts ".... CREATE EXCHANGES"
@@ -168,7 +175,8 @@ Shift.create!(
   line: l1,
   hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
   hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
-  working_hours: Time.new(2020,9,15,16,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
+  working_hours: 6,
+  working_minutes: 25,
   user: joe
 )
 
@@ -177,7 +185,8 @@ Shift.create!(
   line: l3,
   hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
   hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
-  working_hours: Time.new(2020,9,15,16,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
+  working_hours: 6,
+  working_minutes: 25,
   user: toto
 )
 
@@ -186,7 +195,8 @@ Shift.create!(
   line: l1,
   hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
   hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
-  working_hours: Time.new(2020,9,15,16,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
+  working_hours: 6,
+  working_minutes: 25,
   user: jacky
 )
 
@@ -195,7 +205,8 @@ Shift.create!(
   line: l1,
   hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
   hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
-  working_hours: Time.new(2020,9,15,16,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
+  working_hours: 6,
+  working_minutes: 25,
   user: jacky
 )
 
@@ -206,7 +217,8 @@ shift_without_exchange = Shift.create!(
   line: l1,
   hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
   hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
-  working_hours: Time.new(2020,9,15,16,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
+  working_hours: 6,
+  working_minutes: 25,
   user: jacky
 )
 
@@ -216,7 +228,8 @@ shift_with_exchange1 = Shift.create!(
   line: l1,
   hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
   hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
-  working_hours: Time.new(2020,9,15,16,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
+  working_hours: 6,
+  working_minutes: 25,
   user: joe
 )
 
@@ -224,6 +237,16 @@ shift_with_exchange1 = Shift.create!(
 shift_with_exchange2 = Shift.create!(
   date: 2.days.from_now,
   line: l2,
+  hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
+  hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
+  working_hours: 6,
+  working_minutes: 25,
+  user: jacky
+)
+
+shift_with_exchange3 = Shift.create!(
+  date: 3.days.from_now,
+  line: l3,
   hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
   hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
   working_hours: Time.new(2020,9,15,16,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
@@ -243,7 +266,8 @@ shift_with_exchange3 = Shift.create!(
   line: l1,
   hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
   hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
-  working_hours: Time.new(2020,9,15,16,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
+  working_hours: 6,
+  working_minutes: 25,
   user: joe
 )
 
@@ -253,7 +277,8 @@ shift_with_exchange4 = Shift.create!(
   line: l2,
   hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
   hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
-  working_hours: Time.new(2020,9,15,16,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
+  working_hours: 6,
+  working_minutes: 25,
   user: jacky
 )
 
@@ -262,7 +287,8 @@ shift_with_exchange5 = Shift.create!(
   line: l4,
   hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
   hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
-  working_hours: Time.new(2020,9,15,16,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
+  working_hours: 6,
+  working_minutes: 25,
   user: titi
 )
 
@@ -288,7 +314,8 @@ shift_with_exchange6 = Shift.create!(
   line: l2,
   hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
   hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
-  working_hours: Time.new(2020,9,15,16,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
+  working_hours: 6,
+  working_minutes: 25,
   user: jacky
 )
 
@@ -297,7 +324,8 @@ shift_with_exchange7 = Shift.create!(
   line: l4,
   hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
   hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
-  working_hours: Time.new(2020,9,15,16,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
+  working_hours: 6,
+  working_minutes: 25,
   user: titi
 )
 
@@ -307,7 +335,8 @@ shift_with_exchange8 = Shift.create!(
   line: l4,
   hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
   hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
-  working_hours: Time.new(2020,9,15,16,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
+  working_hours: 6,
+  working_minutes: 25,
   user: titi
 )
 
@@ -316,7 +345,8 @@ shift_with_exchange9 = Shift.create!(
   line: l2,
   hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
   hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
-  working_hours: Time.new(2020,9,15,16,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
+  working_hours: 6,
+  working_minutes: 25,
   user: jacky
 )
 
@@ -326,7 +356,8 @@ shift_with_exchange10 = Shift.create!(
   line: l4,
   hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
   hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
-  working_hours: Time.new(2020,9,15,16,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
+  working_hours: 6,
+  working_minutes: 25,
   user: titi
 )
 
@@ -335,7 +366,8 @@ shift_with_exchange11 = Shift.create!(
   line: l2,
   hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
   hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
-  working_hours: Time.new(2020,9,15,16,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
+  working_hours: 6,
+  working_minutes: 25,
   user: jacky
 )
 
@@ -345,7 +377,8 @@ shift_with_exchange12 = Shift.create!(
   line: l4,
   hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
   hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
-  working_hours: Time.new(2020,9,15,16,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
+  working_hours: 6,
+  working_minutes: 25,
   user: titi
 )
 
@@ -354,7 +387,8 @@ shift_with_exchange13 = Shift.create!(
   line: l1,
   hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
   hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
-  working_hours: Time.new(2020,9,15,12,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
+  working_hours: 6,
+  working_minutes: 25,
   user: titi
 )
 

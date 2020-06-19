@@ -13,6 +13,7 @@
             <li>Heure fin: <%= shift_owner.hour_end.strftime("%H:%M") %></li>
             <li>Owner ID : <%= shift_owner.user_id %></li>
             <li>Shift ID : <%= shift_owner.id %></li>
+            <li>Working Hours: <%= working_hours_to_h(shift_owner) %></li>
           </ul>
         </div>
         <div class="flex">
@@ -27,7 +28,7 @@
             <li>Heure début: <%= shift_answer.hour_start.strftime("%H:%M") %></li>
             <li>Heure fin: <%= shift_answer.hour_end.strftime("%H:%M") %></li>
             <li>Owner ID : <%= shift_answer.user_id %></li>
-            <li>Shift ID : <%= shift_owner.id %></li>
+            <li>Shift ID : <%= shift_answer.id %></li>
           </ul>
         </div>
 
