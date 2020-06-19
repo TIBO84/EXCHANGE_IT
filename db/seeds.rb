@@ -249,7 +249,8 @@ shift_with_exchange3 = Shift.create!(
   line: l3,
   hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
   hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
-  working_hours: Time.new(2020,9,15,16,5,0).strftime("%H:%M"), # 7h = 25200 seconds -- SECONDS ?
+  working_hours: 6,
+  working_minutes: 25,
   user: jacky
 )
 
