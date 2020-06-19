@@ -5,13 +5,14 @@
 </div>
 
 <div class="container mx-auto">
-  <%= simple_form_for @shift do |f| %>
+  <%= simple_form_for(@shift, url: url_for(action: 'create', controller: 'exchanges'), method: 'POST') do |f| %>
   <%= f.input :date, as: :date, html5: true  %>
   <%= f.input :line_id, collection: @lines %>
   <%= f.input :hour_start %>
   <%= f.input :hour_end %>
   <%= f.input :working_hours, collection: (1..10) %>
   <%= f.input :working_minutes, collection: (0..60).select { |x| x%5 == 0 || x == 0}  %>
+  <%= hidden_field_tag :shift_owner_id, @shift_answered.id %>
   <%= f.button :submit, class: 'bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded'%>
   <% end %>
 </div>
