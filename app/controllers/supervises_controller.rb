@@ -7,8 +7,24 @@ class SupervisesController < ApplicationController
 
   def stat
     @exchanges = Exchange.joins(joins_sql).where(where_sql_stat, user_unit_id: current_user.unit_id).order(date: :desc)
-    @shifts = @exchanges.map do |exchange|
-      Shift.find(exchange.shift_owner_id)
+    @lines = Unit.find(current_user.unit_id).lines
+    if params[:date].present?
+      @exchanges = @exchanges.select do |exchange|
+        Shift.find(exchange.shift_owner_id).date.to_s == params[:date]
+      end
+    end
+
+    if params[:line_id].present?
+      @exchanges = @exchanges.select do |exchange|
+        Shift.find(exchange.shift_owner_id).line_id == params[:line_id].to_i
+      end
+      # @exchanges = Exchange.where(line_id: params[:line_id])
+    end
+
+    if (params[:date].present? && params[:line_id].present?)
+      @exchanges = @exchanges.select do |exchange|
+        Shift.find(exchange.shift_owner_id).line_id == params[:line_id].to_i && Shift.find(exchange.shift_owner_id).date.to_s == params[:date]
+      end
     end
   end
 
