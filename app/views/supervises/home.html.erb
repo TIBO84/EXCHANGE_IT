@@ -33,6 +33,15 @@
         </div>
 
       </div>
+      <br>
+      <div class="manager-answer">
+        <%= simple_form_for(exchange,url: url_for(action: 'update', controller: 'exchanges'), method: 'POST'), html: { class: 'flex', id: 'manager-answer' } do |f| %>
+          <%= f.input :accepted_manager, as: :radio_buttons, collection: [[true, 'Yes'], [false, 'No']], label_method: :second, value_method: :first, label: "Accept?" %>
+          <%= f.input :message, label: 'Enter your message to users', input_html: { id: 'manager-message' } %>
+          <%= f.button :submit %>
+        <% end %>
+
+      </div>
       <br><br><br><br>
     <% end %>
   </div>
