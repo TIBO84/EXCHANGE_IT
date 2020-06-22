@@ -1,16 +1,22 @@
 <h1 class="text-center text-2xl font-semibold mt-8">History - <%= Unit.find(current_user.unit_id).name %></h1>
 <%= link_to "Back to dashboard", supervise_path %>
 <br><br>
-<input type="date" id="manager-select-date">
 
-<form action=""></form>
-<label for="line">Line:</label>
-<input list="lines" name="line" id="line">
-<datalist id="lines">
-  <% Unit.find(current_user.unit_id).lines.each do |line| %>
-  <option value = <%= "#{line.name}" %> >
-  <% end %>
-</datalist>
+<div class="results-filter">
+  <!-- Filtre par date -->
+  <form action="/supervise/stat" method="get">
+    <input type="date" name="date">
+    <!-- Filtre par line -->
+    <label for="line_id">Line:</label>
+    <select name="line_id">
+      <option value=""></option>
+      <% @lines.each do |line| %>
+      <option value="<%= line.id %>"><%= line.name %></option>
+      <% end %>
+    </select>
+    <button>Filtrer</button>
+  </form>
+</div>
 
 <br><br>
     <div class="table">
