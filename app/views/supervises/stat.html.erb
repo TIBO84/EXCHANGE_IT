@@ -1,8 +1,38 @@
-<h1>Supervises#stat</h1>
-
-<% @exchanges.each do |exchange| %>
-    <%= exchange %>
-    <br><br>
-<% end %>
-
+<h1 class="text-center text-2xl font-semibold mt-8">History - <%= Unit.find(current_user.unit_id).name %></h1>
 <%= link_to "Back to dashboard", supervise_path %>
+<br><br>
+
+    <div class="table">
+    <table>
+      <thead>
+        <tr>
+          <th>Exchange ID</th>
+          <th>Date</th>
+          <th>Line</th>
+          <th>User 1</th>
+          <th>User 2</th>
+          <th>Created</th>
+          <th>Validated</th>
+          <th>Message</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @exchanges.each do |exchange| %>
+        <% shift_owner = Shift.find(exchange.shift_owner_id) %>
+        <% shift_answer = Shift.find(exchange.shift_answer_id) %>
+        <tr>
+          <td><%= exchange.id %></td>
+          <td><%= shift_owner.date %></td>
+          <td><%= Line.find(shift_owner.line_id).name %></td>
+          <td><%= "#{User.find(shift_owner.user_id).first_name} #{User.find(shift_owner.user_id).last_name}"%></td>
+          <td><%= "#{User.find(shift_answer.user_id).first_name} #{User.find(shift_answer.user_id).last_name}"%></td>
+          <td><%= exchange.created_at %></td>
+          <td><%= exchange.updated_at %></td>
+          <td><%= exchange.message %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+
+<br><br>
