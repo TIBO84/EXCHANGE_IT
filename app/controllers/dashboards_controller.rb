@@ -44,6 +44,9 @@ class DashboardsController < ApplicationController
   end
 
   def my_answers
+    @accepted_shifts = current_user.shift_answered.where('exchanges.accepted_owner = ?', true)
+    @pending_shifts = current_user.shift_answered.where('exchanges.accepted_owner IS ?', nil).pending
+
     @shifts = current_user.shifts.where(shift_answer_id: true)
   end
 
