@@ -11,16 +11,32 @@ class ExchangesController < ApplicationController
   def create
     @shift = Shift.new(shift_params)
     @shift.user_id = current_user.id
-    if @shift.save
-      @exchange = Exchange.new(shift_answer_id: @shift.id, shift_owner_id: params[:shift_owner_id])
-      if @exchange.save
-        redirect_to my_answers_path, notice: 'Shift and Exchange successfully created.'
+    
+    if (params[:commit] == "Ajouter une autre proposition")
+      if @shift.save
+        @exchange = Exchange.new(shift_answer_id: @shift.id, shift_owner_id: params[:shift_owner_id])
+        if @exchange.save
+          redirect_to shift_new_path, notice: 'Proposition bien enregistrée'
+        else
+          redirect_to dashboard_path, notice: 'Proposition non valide'
+        end
       else
-        redirect_to dashboard_path, notice: 'Exchange could not be created'
+        @shift_answered = Shift.find(params[:shift_owner_id])
+        render :new, notice: 'Shift could not be created'
       end
+
     else
-      @shift_answered = Shift.find(params[:shift_owner_id])
-      render :new, notice: 'Shift could not be created'
+      if @shift.save
+        @exchange = Exchange.new(shift_answer_id: @shift.id, shift_owner_id: params[:shift_owner_id])
+        if @exchange.save
+          redirect_to my_answers_path, notice: 'Proposition bien enregistrée'
+        else
+          redirect_to dashboard_path, notice: 'Proposition non valide'
+        end
+      else
+        @shift_answered = Shift.find(params[:shift_owner_id])
+        render :new, notice: 'Shift could not be created'
+      end
     end
   end
 

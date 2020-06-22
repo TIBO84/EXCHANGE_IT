@@ -3,11 +3,27 @@
 
 <h2>Demandes d'échange:</h2>
 
+<div class="container">
+  <!-- Filtre par date -->
+  <form action="/dashboard" method="get">
+    <input type="date" name="date">
+    <!-- Filtre par line -->
+    <select name="line_id">
+      <option value=""></option>
+      <% @lines.each do |line| %>
+      <option value="<%= line.id %>"><%= line.name %></option>
+      <% end %>
+    </select>
+    <button>Filtrer</button>
+  </form>
+</div>
+
+
 <% @shifts.each do |shift| %>
 
-<div class="test">
+<div class="card_dashboard">
   <%= raw(ap shift) %>
-  <p><%= link_to "Proposer un échange", shift_answer_path(shift.id) %></p>
+  <p><%= link_to "Proposer un échange", shift_answer_path(shift.id), class: 'btn-success' %></p>
 </div>
 
 <% end %>
@@ -21,6 +37,3 @@
   <%= link_to "My Answers", my_answers_path, class: "container mx-auto bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
 </div>
 
-<div class="test">
-
-</div>
