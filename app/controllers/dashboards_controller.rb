@@ -4,9 +4,21 @@ class DashboardsController < ApplicationController
   before_action :set_current_user, only: [:home, :my_shifts, :my_answers]
 
   def home
+    @lines = Line.all
     @shifts = Shift.joins(joins_sql)
                    .where(where_sql, user_id: current_user.id, unit_id: current_user.unit_id, date: Date.today)
                    .order(:date)
+    if params[:date].present?
+      @shifts = Shift.where(date: params[:date])
+    end
+
+    if params[:line_id].present?
+      @shifts = Shift.where(line_id: params[:line_id])
+    end
+
+    if (params[:date].present? && params[:line_id].present?)
+      @shifts = Shift.where(date: params[:date]).where(line_id: params[:line_id])
+    end
   end
 
   def my_shifts
