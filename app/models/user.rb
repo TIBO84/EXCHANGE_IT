@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :shifts
   has_many :exchange_answers, through: :shifts, source: :exchange_owners
-  has_many :shift_answered, through: :exchange_answers, source: :shift_owner
+  has_many :shift_answered, -> { distinct }, through: :exchange_answers, source: :shift_owner
   belongs_to :unit
   validates :first_name, :last_name, :unit_id, :email, :matricule, presence: :true
   validates :matricule, uniqueness: :true
