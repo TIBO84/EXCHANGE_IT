@@ -7,6 +7,9 @@ class SupervisesController < ApplicationController
 
   def stat
     @exchanges = Exchange.joins(joins_sql).where(where_sql_stat, user_unit_id: current_user.unit_id).order(date: :desc)
+    @shifts = @exchanges.map do |exchange|
+      Shift.find(exchange.shift_owner_id)
+    end
   end
 
 
