@@ -4,7 +4,8 @@
 <div>
   <div class = "container">
     <% @exchanges.each do |exchange| %>
-      <div class="exchange_review" style="display: flex">
+      <p><strong>Exchange #<%= exchange.id %></strong></p>
+      <div class="exchange-review" style="display: flex">
         <div>
           <% shift_owner = Shift.find(exchange.shift_owner_id) %>
           <ul>
@@ -15,11 +16,6 @@
             <li>Shift ID : <%= shift_owner.id %></li>
             <li>Working Hours: <%= working_hours_to_h(shift_owner) %></li>
           </ul>
-        </div>
-        <div class="flex">
-          <%=link_to 'Accepter', exchange_accepted_manager_path(exchange.id), class: "ml-2"%>
-          |
-          <%=link_to 'Refuser', exchange_refused_manager_path(exchange.id), class: "mr-2"%>
         </div>
         <div>
           <% shift_answer = Shift.find(exchange.shift_answer_id) %>
@@ -34,13 +30,12 @@
 
       </div>
       <br>
-      <div class="manager-answer">
-        <%= simple_form_for(exchange,url: url_for(action: 'update', controller: 'exchanges'), method: 'POST'), html: { class: 'flex', id: 'manager-answer' } do |f| %>
+      <div class="exchange-review manager-answer">
+        <%= simple_form_for(exchange, url: exchange_path(exchange.id), method: 'PATCH') do |f| %>
           <%= f.input :accepted_manager, as: :radio_buttons, collection: [[true, 'Yes'], [false, 'No']], label_method: :second, value_method: :first, label: "Accept?" %>
-          <%= f.input :message, label: 'Enter your message to users', input_html: { id: 'manager-message' } %>
+          <%= f.input :message, label: 'Enter your message to users', input_html: { id: 'manager-answer__message' } %>
           <%= f.button :submit %>
         <% end %>
-
       </div>
       <br><br><br><br>
     <% end %>

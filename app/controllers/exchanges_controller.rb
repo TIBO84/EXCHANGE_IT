@@ -24,6 +24,15 @@ class ExchangesController < ApplicationController
     end
   end
 
+  def update
+    @exchange = Exchange.find(params[:id])
+    if @exchange.update(exchange_params)
+      redirect_to supervise_path, notice: 'Answer sent to the user.'
+    else
+      render :edit
+    end
+  end
+
   def accept_user!
     @exchange = Exchange.find(params[:exchange_id])
     # @exchanges_refused = Exchange.joins(joins_sql_myexchanges).where(where_sql_myexchanges_refused, user_id: current_user.id)
@@ -53,6 +62,6 @@ class ExchangesController < ApplicationController
   end
 
   def exchange_params
-    params.require(:exchange).permit(:exchange_id, :shift_owner_id, :shift_answer_id, :accepted_owner, :accepted_manager)
+    params.require(:exchange).permit(:id, :shift_owner_id, :shift_answer_id, :accepted_owner, :accepted_manager, :message)
   end
 end
