@@ -18,13 +18,13 @@
   <% @shifts_and_answers.each do |owner, answers| %>
     <div class = "answers-block">
       <div class = "shift-owner">
-        <h1><%= Shift.find(owner) %></h1>
+        <h1><%= raw(ap Shift.find(owner)) %></h1>
       </div>
       <div class = "shift-answers">
         <% answers.each do |answer| %>
           <% answer.each do |shift_id, exchange_id| %>
             <ul>
-              <li> => <%= Shift.find(shift_id) %> | <%=link_to 'Accepter', exchange_accepted_owner_path(exchange_id), class: "btn_accept_user"%></li>
+              <li> => <%= raw(ap Shift.find(shift_id)) %> | <%=link_to 'Accepter', exchange_accepted_owner_path(exchange_id), class: "btn_accept_user"%></li>
             </ul>
           <% end %>
         <% end %>
