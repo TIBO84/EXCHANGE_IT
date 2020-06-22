@@ -40,20 +40,14 @@ class ExchangesController < ApplicationController
     end
   end
 
-      # if @shift.save
-      #   render :new, notice: 'Proposition bien enregistrée'
-      # else
-      #   render :new, notice: 'Proposition non valide'
-      # end
-
-    # else
-    #   if @shift.save
-    #     redirect_to my_answers_path, notice: 'Proposition bien enregistrée'
-    #   else
-    #     render :new, notice: 'Proposition précédente non valide'
-    #   end
-    # end
-      
+  def update
+    @exchange = Exchange.find(params[:id])
+    if @exchange.update(exchange_params)
+      redirect_to supervise_path, notice: 'Answer sent to the user.'
+    else
+      render :edit
+    end
+  end
 
   def accept_user!
     @exchange = Exchange.find(params[:exchange_id])
@@ -84,6 +78,6 @@ class ExchangesController < ApplicationController
   end
 
   def exchange_params
-    params.require(:exchange).permit(:exchange_id, :shift_owner_id, :shift_answer_id, :accepted_owner, :accepted_manager)
+    params.require(:exchange).permit(:id, :shift_owner_id, :shift_answer_id, :accepted_owner, :accepted_manager, :message)
   end
 end

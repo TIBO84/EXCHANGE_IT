@@ -1,10 +1,11 @@
-<h1 class="text-center text-2xl font-semibold mt-8">Supervises#home</h1>
-<p>Find me in app/views/supervises/home.html.erb</p>
-
-<div>
-  <div class = "container">
-    <% @exchanges.each do |exchange| %>
-      <div class="exchange_review" style="display: flex">
+<h1 class="text-center text-2xl font-semibold mt-8">Supervision Dashboard</h1>
+<%= link_to "Go to Stats page", stat_path %>
+<br><br>
+<div class = "reviews container" >
+  <% @exchanges.each do |exchange| %>
+    <div class="exchange-review">
+      <p><strong>Exchange #<%= exchange.id %></strong></p>
+      <div class ="exchange-review__overview" style="display: flex">
         <div>
           <% shift_owner = Shift.find(exchange.shift_owner_id) %>
           <ul>
@@ -16,11 +17,6 @@
             <li>Working Hours: <%= working_hours_to_h(shift_owner) %></li>
           </ul>
         </div>
-        <div class="flex">
-          <%=link_to 'Accepter', exchange_accepted_manager_path(exchange.id), class: "ml-2"%>
-          |
-          <%=link_to 'Refuser', exchange_refused_manager_path(exchange.id), class: "mr-2"%>
-        </div>
         <div>
           <% shift_answer = Shift.find(exchange.shift_answer_id) %>
           <ul>
@@ -31,9 +27,15 @@
             <li>Shift ID : <%= shift_answer.id %></li>
           </ul>
         </div>
-
       </div>
-      <br><br><br><br>
-    <% end %>
-  </div>
+      <br>
+      <div class="exchange-review__manager-answer">
+        <%= simple_form_for exchange, url: exchange_path(exchange.id), method: 'PATCH', html: { class: "flex" } do |f| %>
+          <%= f.input :accepted_manager, as: :radio_buttons, collection: [[true, 'Yes'], [false, 'No']], label_method: :second, value_method: :first, label: "Accept?" %>
+          <%= f.input :message, label: 'Enter your message to users', input_html: { id: 'manager-answer__message' } %>
+          <%= f.button :submit %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>
