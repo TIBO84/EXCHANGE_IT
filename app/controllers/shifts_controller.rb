@@ -11,7 +11,6 @@ class ShiftsController < ApplicationController
     @shift = Shift.new(shift_params)
     @shift.user_id = current_user.id
     if @shift.save
-
       redirect_to my_answers_path, notice: 'Shift successfully created.'
     else
       render :new
