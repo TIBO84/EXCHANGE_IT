@@ -21,7 +21,7 @@
 
 <% @shifts.each do |shift| %>
 
-<div class="test">
+<div class="card_dashboard">
   <%= raw(ap shift) %>
   <p><%= link_to "Proposer un échange", shift_answer_path(shift.id), class: 'btn-success' %></p>
 </div>
