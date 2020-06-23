@@ -1,5 +1,6 @@
 <div class="my_answers">
-  <h1>Mes réponses acceptées par le demandeur</h1>
+  <div class="answers"><h1>Réponses que j'ai faites à des demandes</h1></div>
+  <div class="accepted_answer"><h2>Mes réponses acceptées par le demandeur</h2></div>
   <br>
   
     <%# j'itère sur tous les shifts émetteurs qui ont fait l'objet d'une réponse acceptée %>
@@ -13,16 +14,20 @@
               <p><%= shift.line.name %></p>
             </div>
 
-            <div class="date">
-              <p><%= shift.date.strftime('%d/%m/%y') %></p>
-            </div>
+            <div class="date_hours">
+              <div class="date">
+                <p><%= shift.date.strftime('%d/%m/%y') %></p>
+              </div>
 
-            <div class="starting_hour">
-              <p>Début <br> <%= shift.hour_start.strftime('%H:%M') %></p>
-            </div>
-          
-            <div class="ending_hour">
-              <p>Fin <br> <%= shift.hour_end.strftime('%H:%M') %></p>
+              <div class ="shift_hours">
+                <div class="starting_hour">
+                  <p>Début <br> <%= shift.hour_start.strftime('%H:%M') %></p>
+                </div>
+              
+                <div class="ending_hour">
+                  <p>Fin <br> <%= shift.hour_end.strftime('%H:%M') %></p>
+                </div>
+              </div>
             </div>
           </div>
         
@@ -39,16 +44,20 @@
                   <p><%= exchange.shift_answer.line.name %></p>
                 </div>
 
-                <div class="date">
-                  <p><%= exchange.shift_answer.date.strftime('%d/%m/%y') %></p>
-                </div>
+                <div class="date_hours">
+                  <div class="date">
+                    <p><%= exchange.shift_answer.date.strftime('%d/%m/%y') %></p>
+                  </div>
 
-                <div class="starting_hour">
-                  <p>Début <br> <%= exchange.shift_answer.hour_start.strftime('%H:%M') %></p>
-                </div>
-              
-                <div class="ending_hour">
-                  <p>Fin <br> <%= exchange.shift_answer.hour_end.strftime('%H:%M') %></p>
+                  <div class ="shift_hours">
+                    <div class="starting_hour">
+                      <p>Début <br> <%= exchange.shift_answer.hour_start.strftime('%H:%M') %></p>
+                    </div>
+                  
+                    <div class="ending_hour">
+                      <p>Fin <br> <%= exchange.shift_answer.hour_end.strftime('%H:%M') %></p>
+                    </div>
+                  </div>
                 </div>
               </div>
             <%end%>
@@ -57,8 +66,9 @@
       </div>  
     <%end%>
   
-
-  <h1>Mes réponses en attente d'acceptation par le demandeur</h1>
+  <br>
+  <br>
+  <h2 class="waiting_answer">Mes réponses en attente d'acceptation par le demandeur</h2>
 
   <%# j'itère sur tous les shifts émetteurs qui n'ont pas encore fait l'objet d'une réponse acceptée %>
   <%@pending_shifts.each do |shift|%>
