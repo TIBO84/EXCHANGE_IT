@@ -1,60 +1,86 @@
-<%= @accepted_shifts.pluck(:id) %>
-<br>
-<%= @pending_shifts.pluck(:id) %>
-<br>
-<%= current_user.exchange_answers.pluck(:id) %>
-<br>
-<%= "identifiants des shifts auxquels j'ai répondu" %>
-<%= current_user.exchange_answers.map { |a| a.shift_owner.id } %>
-
-<h1>Mes réponses acceptées par le demandeur</h1>
-
-<%# j'itère sur tous les shifts émetteurs qui ont fait l'objet d'une réponse acceptée %>
-<%@accepted_shifts.each do |shift|%>
-
-  <%# je vérifie que la date de ce shift est bien ultérieure ou égale a la date du jour %>
-  <% if shift.date >= Date.today %>
-  <%# je commence par afficher chacun de ces shifts %>
-  <p>Demande originelle</p>
-  <%= raw(ap shift)%>
-
-  <%# pour chacun de ces shift, je vais ensuite chercher quel est le shift du répondant qui a été accepté %>
-  <%# pour ca, il faut que j'identifie quel est l'exchange correspondant qui a un booléen accepted_owner = true %>
-  <%# je vais donc itérer sur tous les exchanges associés à ce shift %>
-    <%shift.exchange_answers.each do |exchange|%>
-    
-      <%# je teste si l'exchange en question a son accepted_owner = true  %>
-      <%if exchange.accepted_owner == true %>
-        <%# dans ce cas, j'affiche le shift en question%>
-        <p>réponse que j'avais faite qui a été choisie par le demandeur</p>
-        <%= raw(ap exchange.shift_answer)%>
-      <%end%>
-    <%end%>
-  <%end%>
-<%end%>
-
-<h1>Mes réponses en attente d'acceptation par le demandeur</h1>
-
-<%# j'itère sur tous les shifts émetteurs qui n'ont pas encore fait l'objet d'une réponse acceptée %>
-<%@pending_shifts.each do |shift|%>
+<div class="my_answers">
+  <h1>Mes réponses acceptées par le demandeur</h1>
+  <br>
   
-  <%# je vérifie que la date de ce shift est bien ultérieure ou égale a la date du jour %>
-  <% if shift.date >= Date.today %>
-    <%# je commence par afficher chacun de ces shifts %>
-    <p>Demande originelle</p>
-    <%= raw(ap shift)%>
+    <%# j'itère sur tous les shifts émetteurs qui ont fait l'objet d'une réponse acceptée %>
+    <%@accepted_shifts.each do |shift|%>
+      <div class= "exchange_cards">
+        <%# je vérifie que la date de ce shift est bien ultérieure ou égale a la date du jour %>
+        <% if shift.date >= Date.today %>
+        <%# je commence par afficher chacun de ces shifts %>
+          <div class= "owner_shift_card">
+            <div class="line">
+              <p><%= shift.line.name %></p>
+            </div>
 
-    <%# pour chacun de ces shift, je vais ensuite chercher quel sont les shifts des répondants qui n'ont pas encore été acceptés %>
-    <%# pour ca, il faut que j'identifie quel sont les exchanges correspondants qui ont un booléen accepted_owner = false %>
-    <%# je vais donc itérer sur tous les exchanges associés à ce shift %>
-    <p>réponse que j'avais faite qui n'a pas encore été choisie par le demandeur</p>
-    <%shift.exchange_answers.each do |exchange|%>
+            <div class="date">
+              <p><%= shift.date.strftime('%d/%m/%y') %></p>
+            </div>
 
-      <%# je teste si l'exchange en question a son accepted_owner = nil  %>
-      <%if exchange.accepted_owner == nil %>
-        <%# dans ce cas, j'affiche le shift en question %>
-        <%= raw(ap exchange.shift_answer)%>
+            <div class="starting_hour">
+              <p>Début <br> <%= shift.hour_start.strftime('%H:%M') %></p>
+            </div>
+          
+            <div class="ending_hour">
+              <p>Fin <br> <%= shift.hour_end.strftime('%H:%M') %></p>
+            </div>
+          </div>
+        
+        <%# pour chacun de ces shift, je vais ensuite chercher quel est le shift du répondant qui a été accepté %>
+        <%# pour ca, il faut que j'identifie quel est l'exchange correspondant qui a un booléen accepted_owner = true %>
+        <%# je vais donc itérer sur tous les exchanges associés à ce shift %>
+          <%shift.exchange_answers.each do |exchange|%>
+          
+            <%# je teste si l'exchange en question a son accepted_owner = true  %>
+            <%if exchange.accepted_owner == true %>
+              <%# dans ce cas, j'affiche le shift en question%>
+              <div class= "answer_shift_card">
+                <div class="line">
+                  <p><%= exchange.shift_answer.line.name %></p>
+                </div>
+
+                <div class="date">
+                  <p><%= exchange.shift_answer.date.strftime('%d/%m/%y') %></p>
+                </div>
+
+                <div class="starting_hour">
+                  <p>Début <br> <%= exchange.shift_answer.hour_start.strftime('%H:%M') %></p>
+                </div>
+              
+                <div class="ending_hour">
+                  <p>Fin <br> <%= exchange.shift_answer.hour_end.strftime('%H:%M') %></p>
+                </div>
+              </div>
+            <%end%>
+          <%end%>
+        <%end%>
+      </div>  
+    <%end%>
+  
+
+  <h1>Mes réponses en attente d'acceptation par le demandeur</h1>
+
+  <%# j'itère sur tous les shifts émetteurs qui n'ont pas encore fait l'objet d'une réponse acceptée %>
+  <%@pending_shifts.each do |shift|%>
+    
+    <%# je vérifie que la date de ce shift est bien ultérieure ou égale a la date du jour %>
+    <% if shift.date >= Date.today %>
+      <%# je commence par afficher chacun de ces shifts %>
+      <p>Demande originelle</p>
+      <%= raw(ap shift)%>
+
+      <%# pour chacun de ces shift, je vais ensuite chercher quel sont les shifts des répondants qui n'ont pas encore été acceptés %>
+      <%# pour ca, il faut que j'identifie quel sont les exchanges correspondants qui ont un booléen accepted_owner = false %>
+      <%# je vais donc itérer sur tous les exchanges associés à ce shift %>
+      <p>réponse que j'avais faite qui n'a pas encore été choisie par le demandeur</p>
+      <%shift.exchange_answers.each do |exchange|%>
+
+        <%# je teste si l'exchange en question a son accepted_owner = nil  %>
+        <%if exchange.accepted_owner == nil %>
+          <%# dans ce cas, j'affiche le shift en question %>
+          <%= raw(ap exchange.shift_answer)%>
+        <%end%>
       <%end%>
     <%end%>
   <%end%>
-<%end%>
+</div>
