@@ -1,0 +1,116 @@
+
+
+.exchange_cards{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+
+
+.owner_shift_card {
+  display: flex;
+  margin-right: 0.3rem;
+  border-right: groove;
+  margin-left: 0.2rem;
+}
+
+.answer_shift_card {
+  display: flex;
+  margin-right: 0.2rem;
+  border-right: groove;
+}
+
+.owner_shift_card .line{
+  font-family: 'Heebo', sans-serif;
+  font-weight: 600;
+  background-color: #C4C4C4;
+  border-right: groove;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.owner_shift_card .date{
+  font-family: 'Heebo', sans-serif;
+  font-weight: 600;
+  background-color: #AEFFDD;
+  border-right: groove;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+
+.owner_shift_card .starting_hour{
+  font-family: 'Heebo', sans-serif;
+  font-weight: 600;
+  background-color: #AEFFDD;
+  border-right: groove;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+.owner_shift_card .ending_hour{
+  font-family: 'Heebo', sans-serif;
+  font-weight: 600;
+  background-color: #AEFFDD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+
+.answer_shift_card .line{
+  font-family: 'Heebo', sans-serif;
+  font-weight: 600;
+  background-color: #C4C4C4;
+  border-right: groove;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.answer_shift_card .date{
+  font-family: 'Heebo', sans-serif;
+  font-weight: 600;
+  background-color: #FFAEDF;
+  border-right: groove;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+
+.answer_shift_card .starting_hour{
+  font-family: 'Heebo', sans-serif;
+  font-weight: 600;
+  background-color: #FFAEDF;
+  border-right: groove;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+.answer_shift_card .ending_hour{
+  font-family: 'Heebo', sans-serif;
+  font-weight: 600;
+  background-color: #FFAEDF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+}
