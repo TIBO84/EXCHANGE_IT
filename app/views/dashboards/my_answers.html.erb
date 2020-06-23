@@ -2,7 +2,7 @@
   <div class="answers"><h1>Réponses que j'ai faites à des demandes</h1></div>
   <div class="accepted_answer"><h2>Mes réponses acceptées par le demandeur</h2></div>
   <br>
-  
+
     <%# j'itère sur tous les shifts émetteurs qui ont fait l'objet d'une réponse acceptée %>
     <%@accepted_shifts.each do |shift|%>
       <div class= "exchange_cards">
@@ -19,6 +19,7 @@
                 <p><%= shift.date.strftime('%d/%m/%y') %></p>
               </div>
 
+
               <div class ="shift_hours">
                 <div class="starting_hour">
                   <p>Début <br> <%= shift.hour_start.strftime('%H:%M') %></p>
@@ -28,14 +29,15 @@
                   <p>Fin <br> <%= shift.hour_end.strftime('%H:%M') %></p>
                 </div>
               </div>
+
             </div>
           </div>
-        
+
         <%# pour chacun de ces shift, je vais ensuite chercher quel est le shift du répondant qui a été accepté %>
         <%# pour ca, il faut que j'identifie quel est l'exchange correspondant qui a un booléen accepted_owner = true %>
         <%# je vais donc itérer sur tous les exchanges associés à ce shift %>
           <%shift.exchange_answers.each do |exchange|%>
-          
+
             <%# je teste si l'exchange en question a son accepted_owner = true  %>
             <%if exchange.accepted_owner == true %>
               <%# dans ce cas, j'affiche le shift en question%>
@@ -49,6 +51,7 @@
                     <p><%= exchange.shift_answer.date.strftime('%d/%m/%y') %></p>
                   </div>
 
+
                   <div class ="shift_hours">
                     <div class="starting_hour">
                       <p>Début <br> <%= exchange.shift_answer.hour_start.strftime('%H:%M') %></p>
@@ -58,21 +61,24 @@
                       <p>Fin <br> <%= exchange.shift_answer.hour_end.strftime('%H:%M') %></p>
                     </div>
                   </div>
+
                 </div>
               </div>
             <%end%>
           <%end%>
         <%end%>
-      </div>  
+      </div>
     <%end%>
+
   
   <br>
   <br>
   <h2 class="waiting_answer">Mes réponses en attente d'acceptation par le demandeur</h2>
 
+
   <%# j'itère sur tous les shifts émetteurs qui n'ont pas encore fait l'objet d'une réponse acceptée %>
   <%@pending_shifts.each do |shift|%>
-    
+
     <%# je vérifie que la date de ce shift est bien ultérieure ou égale a la date du jour %>
     <% if shift.date >= Date.today %>
       <%# je commence par afficher chacun de ces shifts %>
@@ -93,4 +99,16 @@
       <%end%>
     <%end%>
   <%end%>
+</div>
+
+<div class="main">
+  <div class="white"></div>
+  <div class="grey">
+    <span><%= link_to "My Shifts", my_shifts_path %></span>
+    <p class="plus">
+      <span><%= link_to "Home", shift_new_path %></span>
+    </p>
+    <span><%= link_to "My Answers", my_answers_path %></span>
+  </div>
+  <div class="black"></div>
 </div>
