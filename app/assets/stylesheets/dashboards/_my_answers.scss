@@ -1,3 +1,44 @@
-.
 
+.my_answers{
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  height: 100%;
+
+  .answers{
+    font-family: 'Heebo', sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .accepted_answer{
+    font-family: 'Heebo', sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;   
+  }
+
+  .waiting_answer{
+    font-family: 'Heebo', sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem; 
+  }
+}
 
