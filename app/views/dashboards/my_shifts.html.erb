@@ -1,37 +1,103 @@
-<h1>My Shifts</h1>
-
-
-<h2>Demandes en attentes validation manager</h2>
+<div class="my_shifts">
+  <h1>My Shifts</h1>
+  <h2>Demandes en attentes validation manager</h2>
 
   <% @exchanges_pending_manager.each do |exchange| %>
-    <%= raw(ap exchange) %>
+  <div class= "exchange_cards">
+    <div class= "owner_shift_card">
+      <div class="line">
+        <p><%= exchange.shift_owner.line.name %></p>
+      </div>
+
+      <div class="date">
+        <p><%= exchange.shift_owner.date.strftime('%d/%m/%y') %></p>
+      </div>
+
+      <div class="starting_hour">
+        <p>Début <br> <%= exchange.shift_owner.hour_start.strftime('%H:%M') %></p>
+      </div>
+
+      <div class="ending_hour">
+        <p>Fin <br> <%= exchange.shift_owner.hour_end.strftime('%H:%M') %></p>
+      </div>
+    </div>
+
+    <div class= "answer_shift_card">
+      <div class="line">
+        <p><%= exchange.shift_answer.line.name %></p>
+      </div>
+
+      <div class="date">
+        <p><%= exchange.shift_answer.date.strftime('%d/%m/%y') %></p>
+      </div>
+
+      <div class="starting_hour">
+        <p>Début <br> <%= exchange.shift_answer.hour_start.strftime('%H:%M') %></p>
+      </div>
+
+      <div class="ending_hour">
+        <p>Fin <br> <%= exchange.shift_answer.hour_end.strftime('%H:%M') %></p>
+      </div>
+    </div>
+  </div>
   <% end %>
 
 
-<br>
-<br>
+  <br>
+  <br>
 
-<h2>Demande en attentes de réponses / ou avec réponses</h2>
+  <h2>Demande en attentes de réponses / ou avec réponses</h2>
 
   <h1>ICI</h1>
 
   <% @shifts_and_answers.each do |owner, answers| %>
-    <div class = "answers-block">
-      <div class = "shift-owner">
-        <h1><%= raw(ap Shift.find(owner)) %></h1>
+<!--   <div class = "answers-block">
+    <div class = "shift-owner">
+      <div class="line-owner">
+        <p>C4</p>
       </div>
-      <div class = "shift-answers">
-        <% answers.each do |answer| %>
-          <% answer.each do |shift_id, exchange_id| %>
-            <ul>
-              <li> => <%= raw(ap Shift.find(shift_id)) %> | <%=link_to 'Accepter', exchange_accepted_owner_path(exchange_id), class: "btn_accept_user"%></li>
-            </ul>
-          <% end %>
-        <% end %>
+      <div class="date-owner">
+        <p>Ven 11 Septembre</p>
+      </div>
+      <div class="heure-debut">
+        <p>Debut:</p>
+        <p>11:32</p>
+      </div>
+      <div class="heure-fin">
+        <p>Fin:</p>
+        <p>11:32</p>
       </div>
     </div>
-    <br>
-  <% end  %>
+    <div class = "shift-answers">
+      <div class="line-answer">
+        <p>C4</p>
+      </div>
+      <div class="date-answer">
+        <p>Ven 11 Septembre</p>
+      </div>
+      <div class="heure-debut">
+        <p>Debut:</p>
+        <p>11:32</p>
+      </div>
+      <div class="heure-fin">
+        <p>Fin:</p>
+        <p>11:32</p>
+      </div>
+    </div> -->
+
+
+
+<!--     <% answers.each do |answer| %>
+    <% answer.each do |shift_id, exchange_id| %>
+    <ul>
+      <li> => <%= raw(ap Shift.find(shift_id)) %> | <%=link_to 'Accepter', exchange_accepted_owner_path(exchange_id), class: "btn_accept_user"%></li>
+    </ul>
+    <% end %>
+    <% end %>
+  </div>
+</div>
+<br>
+<% end  %>
 
 <p>Hash de :  "shift_owner" => [ {shifft_answers => exchange associés} ] </p>
 <%= @shifts_and_answers %>
@@ -40,6 +106,18 @@
 
 <h2>Historiques des demandes acceptées</h2>
 
-  <% @exchanges_validated.each do |exchange| %>
-    <%= raw(ap exchange) %>
-  <% end %>
+<% @exchanges_validated.each do |exchange| %>
+<%= raw(ap exchange) %>
+<% end %>
+</div> -->
+<div class="main">
+  <div class="white"></div>
+  <div class="grey">
+    <span><%= link_to "My Shifts", my_shifts_path %></span>
+    <p class="plus">
+      <span><%= link_to "Home", shift_new_path %></span>
+    </p>
+    <span><%= link_to "My Answers", my_answers_path %></span>
+  </div>
+  <div class="black"></div>
+</div>

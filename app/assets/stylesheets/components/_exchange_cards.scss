@@ -1,0 +1,168 @@
+
+.exchange_cards{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+
+.owner_shift_card {
+  display: flex;
+  background-color: #AEFFDD;
+  justify-content: space-between;
+  margin-right: 0.3rem;
+  margin-left: 0.2rem;
+  border-radius: 15px;
+}
+
+.answer_shift_card {
+  display: flex;
+  background-color: #FFAEDF;
+  justify-content: space-between;
+  margin-right: 0.2rem;
+  border-radius: 15px;
+}
+
+.owner_shift_card .line{
+  font-family: 'Heebo', sans-serif;
+  font-weight: 600;
+  background-color: #C4C4C4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+}
+
+
+.owner_shift_card .date_hours{
+  background-color: #AEFFDD;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.answer_shift_card .date_hours{
+  background-color: #FFAEDF;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+
+.owner_shift_card .shift_hours{
+  display: flex;
+
+}
+
+.answer_shift_card .shift_hours{
+  display: flex;
+  
+}
+
+.owner_shift_card .date{
+  font-family: 'Heebo', sans-serif;
+  font-weight: 600;
+  background-color: #AEFFDD;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.5rem;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  border-top-right-radius: 15px;
+}
+
+
+.owner_shift_card .starting_hour{
+  font-family: 'Heebo', sans-serif;
+  font-weight: 600;
+  font-size: smaller;
+  background-color: #AEFFDD;
+  color:#4f4747;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.owner_shift_card .ending_hour{
+  font-family: 'Heebo', sans-serif;
+  font-weight: 600;
+  font-size: smaller;
+  background-color: #AEFFDD;
+  color:#4f4747;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.5rem;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+
+.answer_shift_card .line{
+  font-family: 'Heebo', sans-serif;
+  font-weight: 600;
+  background-color: #C4C4C4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+}
+
+.answer_shift_card .date{
+  font-family: 'Heebo', sans-serif;
+  font-weight: 600;
+  background-color: #FFAEDF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  padding-top: 0.5rem;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  border-top-right-radius: 15px;
+}
+
+
+.answer_shift_card .starting_hour{
+  font-family: 'Heebo', sans-serif;
+  font-weight: 600;
+  font-size: smaller;
+  background-color: #FFAEDF;
+  color:#4f4747;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.answer_shift_card .ending_hour{
+  font-family: 'Heebo', sans-serif;
+  font-weight: 600;
+  font-size: smaller;
+  background-color: #FFAEDF;
+  color:#4f4747;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.5rem;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+}
