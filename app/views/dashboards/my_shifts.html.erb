@@ -1,54 +1,66 @@
 <div class="my_shifts">
-  <h1>My Shifts</h1>
-  <h2>Demandes en attentes validation manager</h2>
+  <div class="shifts"><h1>Mes demandes en attente</h1></div>
+  <div class="accepted_answer"><h2>Demandes en attentes validation manager</h2></div>
 
   <% @exchanges_pending_manager.each do |exchange| %>
-  <div class= "exchange_cards">
-    <div class= "owner_shift_card">
-      <div class="line">
-        <p><%= exchange.shift_owner.line.name %></p>
-      </div>
+    <div class= "exchange_cards">
+  
+      <% if exchange.shift_owner.date >= Date.today %>
+        <%# je commence par afficher chacun de ces shifts %>
+        <div class= "owner_shift_card">
+          <div class="line">
+            <p><%= exchange.shift_owner.line.name %></p>
+          </div>
 
-      <div class="date">
-        <p><%= exchange.shift_owner.date.strftime('%d/%m/%y') %></p>
-      </div>
+          <div class="date_hours">
+            <div class="date">
+              <p><%= exchange.shift_owner.date.strftime('%d/%m/%y') %></p>
+            </div>
 
-      <div class="starting_hour">
-        <p>Début <br> <%= exchange.shift_owner.hour_start.strftime('%H:%M') %></p>
-      </div>
+            <div class ="shift_hours">
+              <div class="starting_hour">
+                <p>Début <br> <%= exchange.shift_owner.hour_start.strftime('%H:%M') %></p>
+              </div>
+            
+              <div class="ending_hour">
+                <p>Fin <br> <%= exchange.shift_owner.hour_end.strftime('%H:%M') %></p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <div class="ending_hour">
-        <p>Fin <br> <%= exchange.shift_owner.hour_end.strftime('%H:%M') %></p>
-      </div>
-    </div>
+        <div class= "answer_shift_card">
+          <div class="line">
+            <p><%= exchange.shift_answer.line.name %></p>
+          </div>
 
-    <div class= "answer_shift_card">
-      <div class="line">
-        <p><%= exchange.shift_answer.line.name %></p>
-      </div>
+          <div class="date_hours">
+            <div class="date">
+              <p><%= exchange.shift_answer.date.strftime('%d/%m/%y') %></p>
+            </div>
 
-      <div class="date">
-        <p><%= exchange.shift_answer.date.strftime('%d/%m/%y') %></p>
-      </div>
+            <div class ="shift_hours">
+              <div class="starting_hour">
+                <p>Début <br> <%= exchange.shift_answer.hour_start.strftime('%H:%M') %></p>
+              </div>
+            
+              <div class="ending_hour">
+                <p>Fin <br> <%= exchange.shift_answer.hour_end.strftime('%H:%M') %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <%end%>
+    </div> 
+  <%end%>
 
-      <div class="starting_hour">
-        <p>Début <br> <%= exchange.shift_answer.hour_start.strftime('%H:%M') %></p>
-      </div>
-
-      <div class="ending_hour">
-        <p>Fin <br> <%= exchange.shift_answer.hour_end.strftime('%H:%M') %></p>
-      </div>
-    </div>
-  </div>
-  <% end %>
 
 
   <br>
   <br>
 
-  <h2>Demande en attentes de réponses / ou avec réponses</h2>
+  <div class="waiting_answer"><h2>Demande en attentes de réponses / ou avec réponses</h2></div>
 
-  <h1>ICI</h1>
 
   <% @shifts_and_answers.each do |owner, answers| %>
   <div class = "answers-block">
