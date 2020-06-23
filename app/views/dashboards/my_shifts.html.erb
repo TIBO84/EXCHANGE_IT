@@ -51,7 +51,7 @@
   <h1>ICI</h1>
 
   <% @shifts_and_answers.each do |owner, answers| %>
-  <div class = "answers-block">
+<!--   <div class = "answers-block">
     <div class = "shift-owner">
       <div class="line-owner">
         <p>C4</p>
@@ -83,7 +83,7 @@
         <p>Fin:</p>
         <p>11:32</p>
       </div>
-    </div>
+    </div> -->
 
 
 
@@ -110,3 +110,14 @@
 <%= raw(ap exchange) %>
 <% end %>
 </div> -->
+<div class="main">
+  <div class="white"></div>
+  <div class="grey">
+    <span><%= link_to "My Shifts", my_shifts_path %></span>
+    <p class="plus">
+      <span><%= link_to "Home", shift_new_path %></span>
+    </p>
+    <span><%= link_to "My Answers", my_answers_path %></span>
+  </div>
+  <div class="black"></div>
+</div>
