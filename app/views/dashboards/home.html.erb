@@ -1,31 +1,59 @@
-
-<h1 class="first_name">Dashboard <%= "#{@current_user.first_name} #{@current_user.last_name}" %></h1>
-
-<h2>Demandes d'échange:</h2>
-
+<div class="phone_header flex justify-center m-0 mb-2">
+  <h1>Dashboard <%= "#{@current_user.first_name} #{@current_user.last_name}" %></h1>
+</div>
 <div class="container">
+  <h2 class="my-2">Demandes d'échange:</h2>
   <!-- Filtre par date -->
-  <form action="/dashboard" method="get">
-    <input type="date" name="date">
-    <!-- Filtre par line -->
-    <select name="line_id">
-      <option value=""></option>
-      <% @lines.each do |line| %>
-      <option value="<%= line.id %>"><%= line.name %></option>
-      <% end %>
-    </select>
-    <button>Filtrer</button>
-  </form>
-</div>
-
-
-<% @shifts.each do |shift| %>
-
-<div class="card_dashboard">
-  <p><%= link_to "Proposer un échange", shift_answer_path(shift.id), class: 'btn-success' %></p>
-</div>
-
-<% end %>
+  <div class="filter mb-4 p-2">
+    <form action="/dashboard" method="get" class="flex justify-between">
+      <div class="flex justify-between">
+      <input type="date" name="date" class="bg-gray-200 rounded-lg">
+      <!-- Filtre par line -->
+      <select name="line_id" class="ml-2 bg-gray-200 rounded-lg">
+        <option value="" ></option>
+        <% @lines.each do |line| %>
+        <option value="<%= line.id %>"><%= line.name %></option>
+        <% end %>
+      </select>
+      </div>
+      <button>Filtrer</button>
+    </form>
+  </div>
+  <% x = 1 %>
+  <% @shifts.each do |shift| %>
+    <div class="card_dashboard p-2 mb-4">
+      <label for="<%= "foo_#{x}" %>" class="block mb-0">
+      <div class="container__card-exchange flex justify-between items-center">
+        <div class="card-exchange__line w-16 flex justify-center items-center"><h2><%= Line.find(shift.line_id).name %></h2></div>
+        <h2><%= shift.date %></h2>
+        <div class="card-exchange__hour-start" >
+          <p>Début :</p>
+          <h3><%= shift.hour_start.strftime("%H:%M") %></h3>
+        </div>
+        <div class="card-exchange__hour-end">
+          <p>Fin :</p>
+          <h3><%= shift.hour_end.strftime("%H:%M") %></h3>
+        </div>
+        <div class="card_avatar"></div>
+      </div>
+      </label>
+      <input type="checkbox" id="<%= "foo_#{x}" %>" class="" name="test" style="opacity:0; position:absolute;">
+      <div class="container__detail-button flex justify-around w-9/12 mx-auto">
+        <div class="detail-button__detail mb-2">
+          <div class="detail-button__detail-owner flex justify-between items-center">
+            <p class = "mr-2">Emetteur:</p>
+            <p><%= "#{User.find(shift.user_id).first_name} #{User.find(shift.user_id).last_name}"%></p>
+          </div>
+          <div class="detail-button__detail-hours flex justify-between items-center">
+            <p class = "mr-2">Heures travaillées:</p>
+            <p><%= working_hours_to_h(shift) %></p>
+          </div>
+        </div>
+          <%= link_to "Proposer", shift_answer_path(shift.id), class: 'button_action flex justify-center items-center mb-2' %>
+      </div>
+    </div>
+    <% x += 1 %>
+  <% end %>
 
 <div class="main">
   <div class="white"></div>
@@ -38,5 +66,3 @@
   </div>
   <div class="black"></div>
 </div>
-
-
