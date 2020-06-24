@@ -41,6 +41,7 @@
     </div>
   </div>
   <% end %>
+</div>
 
 
   <br>
@@ -48,61 +49,21 @@
 
   <h2>Demande en attentes de réponses / ou avec réponses</h2>
 
-  <h1>ICI</h1>
-
-  <% @shifts_and_answers.each do |owner, answers| %>
-<!--   <div class = "answers-block">
-    <div class = "shift-owner">
-      <div class="line-owner">
-        <p>C4</p>
+  <div class="mb-4">
+    <% @shifts_and_answers.each do |owner, answers| %>
+      <div class="card_dashboard p-2 mb-4">
+        <% shift_owner = Shift.find(owner) %>
+        <%= render partial: "shared/main_card", locals: { shift: shift_owner } %>
       </div>
-      <div class="date-owner">
-        <p>Ven 11 Septembre</p>
-      </div>
-      <div class="heure-debut">
-        <p>Debut:</p>
-        <p>11:32</p>
-      </div>
-      <div class="heure-fin">
-        <p>Fin:</p>
-        <p>11:32</p>
-      </div>
-    </div>
-    <div class = "shift-answers">
-      <div class="line-answer">
-        <p>C4</p>
-      </div>
-      <div class="date-answer">
-        <p>Ven 11 Septembre</p>
-      </div>
-      <div class="heure-debut">
-        <p>Debut:</p>
-        <p>11:32</p>
-      </div>
-      <div class="heure-fin">
-        <p>Fin:</p>
-        <p>11:32</p>
-      </div>
-    </div> -->
-
-
-
-<!--     <% answers.each do |answer| %>
-    <% answer.each do |shift_id, exchange_id| %>
-    <ul>
-      <li> => <%= raw(ap Shift.find(shift_id)) %> | <%=link_to 'Accepter', exchange_accepted_owner_path(exchange_id), class: "btn_accept_user"%></li>
-    </ul>
-    <% end %>
-    <% end %>
+      <% answers.each do |answer| %>
+        <% answer.each do |shift_id, exchange_id| %>
+          <% shift_answer = Shift.find(shift_id) %>
+          <%= render partial: "shared/main_card_answer", locals: { shift: shift_answer } %> | <%=link_to 'Accepter', exchange_accepted_owner_path(exchange_id), class: "btn_accept_user"%>
+        <% end %>
+      <% end %>
+    <% end  %>
   </div>
-</div>
-<br>
-<% end  %>
 
-<p>Hash de :  "shift_owner" => [ {shifft_answers => exchange associés} ] </p>
-<%= @shifts_and_answers %>
-<br>
-<br>
 
 <h2>Historiques des demandes acceptées</h2>
 
@@ -110,14 +71,6 @@
 <%= raw(ap exchange) %>
 <% end %>
 </div> -->
-<div class="main">
-  <div class="white"></div>
-  <div class="grey">
-    <span><%= link_to "My Shifts", my_shifts_path %></span>
-    <p class="plus">
-      <span><%= link_to "Home", shift_new_path %></span>
-    </p>
-    <span><%= link_to "My Answers", my_answers_path %></span>
-  </div>
-  <div class="black"></div>
-</div>
+
+<%= render partial: "shared/bottom_navbar", locals: { home: false } %>
+

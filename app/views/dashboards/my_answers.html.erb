@@ -24,7 +24,7 @@
                 <div class="starting_hour">
                   <p>Début <br> <%= shift.hour_start.strftime('%H:%M') %></p>
                 </div>
-              
+
                 <div class="ending_hour">
                   <p>Fin <br> <%= shift.hour_end.strftime('%H:%M') %></p>
                 </div>
@@ -56,7 +56,7 @@
                     <div class="starting_hour">
                       <p>Début <br> <%= exchange.shift_answer.hour_start.strftime('%H:%M') %></p>
                     </div>
-                  
+
                     <div class="ending_hour">
                       <p>Fin <br> <%= exchange.shift_answer.hour_end.strftime('%H:%M') %></p>
                     </div>
@@ -70,7 +70,7 @@
       </div>
     <%end%>
 
-  
+
   <br>
   <br>
   <h2 class="waiting_answer">Mes réponses en attente d'acceptation par le demandeur</h2>
@@ -101,14 +101,4 @@
   <%end%>
 </div>
 
-<div class="main">
-  <div class="white"></div>
-  <div class="grey">
-    <span><%= link_to "My Shifts", my_shifts_path %></span>
-    <p class="plus">
-      <span><%= link_to "Home", shift_new_path %></span>
-    </p>
-    <span><%= link_to "My Answers", my_answers_path %></span>
-  </div>
-  <div class="black"></div>
-</div>
+<%= render partial: "shared/bottom_navbar", locals: { home: false } %>

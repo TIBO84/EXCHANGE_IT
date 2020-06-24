@@ -6,7 +6,7 @@
       <% if home %>
         <span><%= link_to "+", shift_new_path %></span>
       <% else %>
-        <span><%= link_to "Home", shift_new_path %></span>
+        <span><a href="/dashboard"><i class="fa fa-home"></i></a></span>
       <% end %>
     </p>
     <span><%= link_to "My Answers", my_answers_path %></span>
