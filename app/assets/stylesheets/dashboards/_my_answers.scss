@@ -1,42 +1,50 @@
+$color-h1:#5B27EF;
 
 .my_answers{
   max-width: 700px;
+  background-color: #ffff;
   display: flex;
   flex-direction: column;
   margin: auto;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding-top: 2rem;
   padding-bottom: 2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   height: 100%;
 
   .answers{
+    width: 100%;
     font-family: 'Heebo', sans-serif;
+    color: $color-h1;
     font-weight: 600;
     font-size: 1.5rem;
-    text-align: center;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    text-align: left;
+    background-color: #ffff;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
   }
 
   .accepted_answer{
+    width: 100%;
     font-family: 'Heebo', sans-serif;
     font-weight: 500;
     font-size: 1.2rem;
     margin-top: 0.2rem;
-    text-align: center;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    text-align: left;
+    background-color: #ffff;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;   
   }
 
   .waiting_answer{
+    width: 100%;
     font-family: 'Heebo', sans-serif;
     font-weight: 500;
     font-size: 1.2rem;
     margin-top: 0.2rem;
-    text-align: center;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    text-align: left;
+    background-color: #ffff;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem; 
   }
