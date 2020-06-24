@@ -1,105 +1,43 @@
 <div class="my_shifts">
-
-  <div class="container">
-      <div class="shifts"><h1>Mes demandes en attente</h1></div>
+  <div class="shifts"><h1>Mes demandes en attente</h1></div>
   <div class="accepted_answer"><h2>Demandes en attentes validation manager</h2></div>
-
-  <% @exchanges_pending_manager.each do |exchange| %>
-    <div class= "exchange_cards">
-
-      <% if exchange.shift_owner.date >= Date.today %>
-        <%# je commence par afficher chacun de ces shifts %>
-        <div class= "owner_shift_card">
-          <div class="line">
-            <p><%= exchange.shift_owner.line.name %></p>
+  <div class="mt-4 mb-">
+    <% @exchanges_pending_manager.each do |exchange| %>
+      <div class= "exchange_cards">
+        <% if exchange.shift_owner.date >= Date.today %>
+          <%# je commence par afficher chacun de ces shifts %>
+          <% shift_of_current_user = User.find(exchange.shift_owner.user_id) == current_user %>
+          <%= render partial: "shared/one_exchange-card", locals: { shift: exchange.shift_owner, shift_of_current_user: shift_of_current_user } %>
+          <div class="exchange_symbol">
+            <i class="fas fa-exchange-alt"></i>
           </div>
-
-          <div class="date_hours">
-            <div class="date">
-              <p><%= exchange.shift_owner.date.strftime('%d/%m/%y') %></p>
-            </div>
-
-            <div class ="shift_hours">
-              <div class="starting_hour">
-                <p>Début <br> <%= exchange.shift_owner.hour_start.strftime('%H:%M') %></p>
-              </div>
-
-              <div class="ending_hour">
-                <p>Fin <br> <%= exchange.shift_owner.hour_end.strftime('%H:%M') %></p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class= "answer_shift_card">
-          <div class="line">
-            <p><%= exchange.shift_answer.line.name %></p>
-          </div>
-
-          <div class="date_hours">
-            <div class="date">
-              <p><%= exchange.shift_answer.date.strftime('%d/%m/%y') %></p>
-            </div>
-
-            <div class ="shift_hours">
-              <div class="starting_hour">
-                <p>Début <br> <%= exchange.shift_answer.hour_start.strftime('%H:%M') %></p>
-              </div>
-
-              <div class="ending_hour">
-                <p>Fin <br> <%= exchange.shift_answer.hour_end.strftime('%H:%M') %></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      <%end%>
-    </div>
-  <%end%>
-
-
-
-  <br>
-  <br>
-
+          <% shift_of_current_user = User.find(exchange.shift_answer.user_id) == current_user %>
+          <%= render partial: "shared/one_exchange-card", locals: { shift: exchange.shift_answer, shift_of_current_user: shift_of_current_user } %>
+        <%end%>
+      </div>
+    <%end%>
+  </div>
+  <hr class="separation_bar">
   <div class="waiting_answer"><h2>Demande en attentes de réponses / ou avec réponses</h2></div>
-
+  <div class="mb-4">
+    <% @shifts_and_answers.each do |owner, answers| %>
+      <div class="card_dashboard p-2 mb-4">
+        <% shift_owner = Shift.find(owner) %>
+        <%= render partial: "shared/main_card", locals: { shift: shift_owner } %>
+      </div>
+      <% answers.each do |answer| %>
+        <% answer.each do |shift_id, exchange_id| %>
+          <% shift_answer = Shift.find(shift_id) %>
+          <%= render partial: "shared/main_card_answer", locals: { shift: shift_answer } %> | <%=link_to 'Accepter', exchange_accepted_owner_path(exchange_id), class: "btn_accept_user"%>
+        <% end %>
+      <% end %>
+    <% end  %>
   </div>
-
-
-
-  <% @shifts_and_answers.each do |owner, answers| %>
-    <% answers.each do |answer| %>
-    <% answer.each do |shift_id, exchange_id| %>
-    <ul>
-      <li> => <%= raw(ap Shift.find(shift_id)) %> | <%=link_to 'Accepter', exchange_accepted_owner_path(exchange_id), class: "btn_accept_user"%></li>
-    </ul>
-    <% end %>
-    <% end %>
-  </div>
-</div>
-<br>
-<% end  %>
-
-<p>Hash de :  "shift_owner" => [ {shifft_answers => exchange associés} ] </p>
-<%= @shifts_and_answers %>
 <br>
 <br>
-
+<hr class="separation_bar">
 <h2>Historiques des demandes acceptées</h2>
-
 <% @exchanges_validated.each do |exchange| %>
 <%= raw(ap exchange) %>
 <% end %>
-</div>
-<div class="main">
-  <div class="white"></div>
-  <div class="grey">
-    <span><%= link_to "My Shifts", my_shifts_path %></span>
-    <p class="plus">
-      <span><a href="/dashboard"><i class="fa fa-home"></i></a>
-</span>
-    </p>
-    <span><%= link_to "My Answers", my_answers_path %></span>
-  </div>
-  <div class="black"></div>
-</div>
+<%= render partial: "shared/bottom_navbar", locals: { home: false } %>

@@ -5,37 +5,31 @@
   <% @exchanges.each do |exchange| %>
     <div class="exchange-review">
       <p><strong>Exchange #<%= exchange.id %></strong></p>
-      <div class ="exchange-review__overview" style="display: flex">
-        <div>
-          <% shift_owner = Shift.find(exchange.shift_owner_id) %>
-          <ul>
-            <li>Date du shift: <%= shift_owner.date %></li>
-            <li>Heure début: <%= shift_owner.hour_start.strftime("%H:%M") %></li>
-            <li>Heure fin: <%= shift_owner.hour_end.strftime("%H:%M") %></li>
-            <li>Owner ID : <%= shift_owner.user_id %></li>
-            <li>Shift ID : <%= shift_owner.id %></li>
-            <li>Working Hours: <%= working_hours_to_h(shift_owner) %></li>
-          </ul>
-        </div>
-        <div>
-          <% shift_answer = Shift.find(exchange.shift_answer_id) %>
-          <ul>
-            <li>Date du shift: <%= shift_answer.date %></li>
-            <li>Heure début: <%= shift_answer.hour_start.strftime("%H:%M") %></li>
-            <li>Heure fin: <%= shift_answer.hour_end.strftime("%H:%M") %></li>
-            <li>Owner ID : <%= shift_answer.user_id %></li>
-            <li>Shift ID : <%= shift_answer.id %></li>
-          </ul>
+      <div class ="exchange-review__overview">
+        <div class= "exchange_cards">
+          <div>
+            <% shift_owner = Shift.find(exchange.shift_owner_id) %>
+            <%= render partial: "shared/one_exchange-card", locals: { shift: shift_owner, shift_of_current_user: false } %>
+          </div>
+
+          <div class="exchange_symbol">
+            <i class="fas fa-exchange-alt"></i>
+          </div>
+
+          <div>
+            <% shift_answer = Shift.find(exchange.shift_answer_id) %>
+            <%= render partial: "shared/one_exchange-card", locals: { shift: shift_owner, shift_of_current_user: false } %>
+          </div>
         </div>
       </div>
       <br>
       <div class="exchange-review__manager-answer">
-        <%= simple_form_for exchange, url: exchange_path(exchange.id), method: 'PATCH', html: { class: "flex" } do |f| %>
+        <%= simple_form_for exchange, url: exchange_path(exchange.id), method: 'PATCH', html: { class: "flex w-9/12 mx-auto justify-around" } do |f| %>
           <%= f.input :accepted_manager, as: :radio_buttons, collection: [[true, 'Yes'], [false, 'No']], label_method: :second, value_method: :first, label: "Accept?" %>
           <%= f.input :message, label: 'Enter your message to users', input_html: { id: 'manager-answer__message' } %>
-          <%= f.button :submit %>
+          <%= f.submit 'Envoyer' %>
         <% end %>
       </div>
-    </div>
   <% end %>
+  </div>
 </div>

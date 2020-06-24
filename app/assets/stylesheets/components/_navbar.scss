@@ -14,7 +14,13 @@
 }
 
 #phone_navbar {
-  background-color: rgb(91,39,239);
+
+  background-color: #5b27ef;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-link {
   display: flex;
   justify-content: flex-end;
 }

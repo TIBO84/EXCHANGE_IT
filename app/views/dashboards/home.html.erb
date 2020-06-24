@@ -1,9 +1,10 @@
 <div class="phone_header flex justify-center m-0 mb-2">
-  <h1>Dashboard <%= "#{@current_user.first_name} #{@current_user.last_name}" %></h1>
+  <h1>Acceuil <%= "#{@current_user.first_name} #{@current_user.last_name}" %></h1>
 </div>
 <div class="container">
+
   <h2 class="my-2">Demandes d'échange:</h2>
-  <!-- Filtre par date -->
+
   <div class="filter mb-4 p-2">
     <form action="/dashboard" method="get" class="flex justify-between">
       <div class="flex justify-between">
@@ -16,53 +17,24 @@
         <% end %>
       </select>
       </div>
-      <button>Filtrer</button>
+      <button class="button_action">Filtrer</button>
     </form>
   </div>
+
   <% x = 1 %>
   <% @shifts.each do |shift| %>
     <div class="card_dashboard p-2 mb-4">
-      <label for="<%= "foo_#{x}" %>" class="block mb-0">
-      <div class="container__card-exchange flex justify-between items-center">
-        <div class="card-exchange__line w-16 flex justify-center items-center"><h2><%= Line.find(shift.line_id).name %></h2></div>
-        <h2><%= shift.date %></h2>
-        <div class="card-exchange__hour-start" >
-          <p>Début :</p>
-          <h3><%= shift.hour_start.strftime("%H:%M") %></h3>
-        </div>
-        <div class="card-exchange__hour-end">
-          <p>Fin :</p>
-          <h3><%= shift.hour_end.strftime("%H:%M") %></h3>
-        </div>
-        <div class="card_avatar"></div>
-      </div>
+
+      <label for="<%= "ex_card_#{x}" %>" class="block mb-0">
+        <%= render partial: "shared/main_card", locals: {shift: shift} %>
       </label>
-      <input type="checkbox" id="<%= "foo_#{x}" %>" class="" name="test" style="opacity:0; position:absolute;">
-      <div class="container__detail-button flex justify-around w-9/12 mx-auto">
-        <div class="detail-button__detail mb-2">
-          <div class="detail-button__detail-owner flex justify-between items-center">
-            <p class = "mr-2">Emetteur:</p>
-            <p><%= "#{User.find(shift.user_id).first_name} #{User.find(shift.user_id).last_name}"%></p>
-          </div>
-          <div class="detail-button__detail-hours flex justify-between items-center">
-            <p class = "mr-2">Heures travaillées:</p>
-            <p><%= working_hours_to_h(shift) %></p>
-          </div>
-        </div>
-          <%= link_to "Proposer", shift_answer_path(shift.id), class: 'button_action flex justify-center items-center mb-2' %>
-      </div>
+
+      <input type="checkbox" id="<%= "ex_card_#{x}" %>" class="" name="test" style="opacity:0; position:absolute;">
+        <%= render partial: "shared/main_card-detail", locals: {shift: shift} %>
     </div>
+
     <% x += 1 %>
   <% end %>
-
-<div class="main">
-  <div class="white"></div>
-  <div class="grey">
-    <span><%= link_to "My Shifts", my_shifts_path %></span>
-    <p class="plus">
-      <span><%= link_to "+", shift_new_path %></span>
-    </p>
-    <span><%= link_to "My Answers", my_answers_path %></span>
-  </div>
-  <div class="black"></div>
 </div>
+<%= render partial: "shared/bottom_navbar", locals: { home: true } %>
+

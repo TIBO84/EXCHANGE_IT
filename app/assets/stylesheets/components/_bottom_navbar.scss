@@ -1,0 +1,49 @@
+.bottom_navbar {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .white {
+    flex-grow: 1;
+  }
+
+  .grey {
+    background: #5b27ef;
+    color: white;
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: bolder;
+  }
+
+  .plus {
+    display: flex;
+    height: 81px;
+    width: 87px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+    z-index: 10;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    background: #5b27ef;
+
+  }
+
+  .plus span {
+    font-size: 50px;
+    line-height: 30px;
+    vertical-align: middle;
+  }
+
+  .black {
+    background: #5b27ef;
+    height: 30px;
+  }
+}
+
