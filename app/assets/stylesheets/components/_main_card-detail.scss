@@ -1,0 +1,9 @@
+.container__detail-button {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+
+  .detail-button__detail {
+    background-color: white;
+  }
+}

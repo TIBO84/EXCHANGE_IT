@@ -1,53 +1,22 @@
-.dashboards-home {
-  background-color: white;
-
-  h1 {
-    font-size: 32px;
-  }
-}
 .card_dashboard {
   background-color: #F9F9F9;
   border-radius: 2rem;
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.4);
 
   h2 {
-    font-size: 18px;
+    font-size: 16px;
   }
+
+  h3 {
+    font-size: 14px;
+  }
+
   p {
-    font-size: 12px;
+    font-size: 10px;
   }
 
   input:checked + div {
     max-height: 1000px;
     transition: max-height 0.6s ease-in-out;
-  }
-
-  .container__detail-button {
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
-    .detail-button__detail {
-      background-color: white;
-    }
-  }
-
-  .container__card-exchange {
-    .card-exchange__line {
-      background-color: #CAFF8A;
-      color: black;
-      border-radius: 2rem;
-      height: 5rem;
-    }
-
-    .card_avatar {
-      background-color: #C4C4C4;
-      width: 4rem;
-      height: 4rem;
-      border-radius: 50%;
-    }
-  }
-
-  .container__detail-hours {
-
   }
 }
