@@ -1,7 +1,9 @@
 <div class="my_shifts">
   <div class="shifts"><h1>Mes demandes en attente</h1></div>
   <div class="accepted_answer"><h2>Demandes en attentes validation manager</h2></div>
-
+  <hr class="separation_bar">
+  <br>
+  <br>
   <% @exchanges_pending_manager.each do |exchange| %>
     <div class= "exchange_cards">
   
@@ -74,7 +76,9 @@
     <% end  %>
   </div>
 
-
+<br>
+<br>
+<hr class="separation_bar">
 <h2>Historiques des demandes acceptées</h2>
 
 <% @exchanges_validated.each do |exchange| %>

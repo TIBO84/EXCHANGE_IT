@@ -5,13 +5,21 @@
 }
 
 .button_action {
-  width: 98px;
-  border: solid rgba(0, 0, 0, 0.25) 1px;
-  border-radius: 16px;
-  background-color: white;
+  border-radius: 5px;
+  background-color: #5B27EF;
+  border: solid 2px #5B27EF;
+  color: #FFFFFF;
   text-align: center;
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
-  font-weight: lighter;
+  font-weight: 550;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  padding: 0.5rem;
+}
+
+.button_action:hover {
+  background-color: #ffff;
+  color: #5B27EF;
+  text-decoration: none;
+  border : solid 2px #5B27EF;
 }
