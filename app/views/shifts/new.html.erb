@@ -1,17 +1,231 @@
 <h1>Shifts#new</h1>
 
-<div class="container">
-  <%= link_to "ANNULER", dashboard_path, class: 'button_action btn btn-success' %>
-</div>
+
 
 <div class="container mx-auto">
-  <%= simple_form_for @shift do |f| %>
-    <%= f.input :date, as: :date, html5: true  %>
-    <%= f.input :line_id, collection: @lines %>
-    <%= f.input :hour_start %>
-    <%= f.input :hour_end %>
-    <%= f.input :working_hours, collection: (1..10) %>
-    <%= f.input :working_minutes, collection: (0..60).select { |x| x%5 == 0 || x == 0}  %>
-    <%= f.button :submit, "ENVOYER", class: 'button_action bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded'%>
-  <% end %>
-</div>
+  <form class="simple_form new_shift" id="new_shift" novalidate="novalidate" action="/shifts" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="2OBrrtuBmFzfg+/4sZBkEXXRAcXCWWFFvNckmTLdWJa+OX4N7s3b2gitH3Qp3bdvuG2e/T6G045aRAWyVloHDw==" />
+    <!-- <div class="form-group date required shift_date"><label class="date required" for="shift_date">Date <abbr title="required">*</abbr></label><div class="d-flex flex-row justify-content-between align-items-center"><input class="form-control mx-1 date required" type="date" name="shift[date]" id="shift_date" /></div></div> -->
+    <input class="a" type="date" name="shift[date]" id="shift_date">
+    <div class="form-group select required shift_line_id"><label class="select required" for="shift_line_id">Line <abbr title="required">*</abbr></label><select class="form-control select required" name="shift[line_id]" id="shift_line_id"><option value=""></option>
+      <option value="21">T1</option>
+      <option value="22">T2</option>
+      <option value="23">T3</option>
+      <option value="24">T4</option></select></div>
+      <div class="form-group time required shift_hour_start"><label class="time required" for="shift_hour_start_4i">Hour start <abbr title="required">*</abbr></label><div class="d-flex flex-row justify-content-between align-items-center"><input type="hidden" id="shift_hour_start_1i" name="shift[hour_start(1i)]" value="2020" />
+        <input type="hidden" id="shift_hour_start_2i" name="shift[hour_start(2i)]" value="6" />
+        <input type="hidden" id="shift_hour_start_3i" name="shift[hour_start(3i)]" value="24" />
+        <select id="shift_hour_start_4i" name="shift[hour_start(4i)]" class="form-control mx-1 time required">
+          <option value="00">00</option>
+          <option value="01">01</option>
+          <option value="02">02</option>
+          <option value="03">03</option>
+          <option value="04">04</option>
+          <option value="05">05</option>
+          <option value="06">06</option>
+          <option value="07">07</option>
+          <option value="08">08</option>
+          <option value="09" selected="selected">09</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+        </select>
+        : <select id="shift_hour_start_5i" name="shift[hour_start(5i)]" class="form-control mx-1 time required">
+          <option value="00">00</option>
+          <option value="01">01</option>
+          <option value="02">02</option>
+          <option value="03">03</option>
+          <option value="04">04</option>
+          <option value="05">05</option>
+          <option value="06">06</option>
+          <option value="07">07</option>
+          <option value="08">08</option>
+          <option value="09">09</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
+          <option value="32">32</option>
+          <option value="33">33</option>
+          <option value="34">34</option>
+          <option value="35">35</option>
+          <option value="36">36</option>
+          <option value="37">37</option>
+          <option value="38">38</option>
+          <option value="39">39</option>
+          <option value="40">40</option>
+          <option value="41">41</option>
+          <option value="42">42</option>
+          <option value="43">43</option>
+          <option value="44">44</option>
+          <option value="45" selected="selected">45</option>
+          <option value="46">46</option>
+          <option value="47">47</option>
+          <option value="48">48</option>
+          <option value="49">49</option>
+          <option value="50">50</option>
+          <option value="51">51</option>
+          <option value="52">52</option>
+          <option value="53">53</option>
+          <option value="54">54</option>
+          <option value="55">55</option>
+          <option value="56">56</option>
+          <option value="57">57</option>
+          <option value="58">58</option>
+          <option value="59">59</option>
+        </select>
+      </div></div>
+      <div class="form-group time required shift_hour_end"><label class="time required" for="shift_hour_end_4i">Hour end <abbr title="required">*</abbr></label><div class="d-flex flex-row justify-content-between align-items-center"><input type="hidden" id="shift_hour_end_1i" name="shift[hour_end(1i)]" value="2020" />
+        <input type="hidden" id="shift_hour_end_2i" name="shift[hour_end(2i)]" value="6" />
+        <input type="hidden" id="shift_hour_end_3i" name="shift[hour_end(3i)]" value="24" />
+        <select id="shift_hour_end_4i" name="shift[hour_end(4i)]" class="form-control mx-1 time required">
+          <option value="00">00</option>
+          <option value="01">01</option>
+          <option value="02">02</option>
+          <option value="03">03</option>
+          <option value="04">04</option>
+          <option value="05">05</option>
+          <option value="06">06</option>
+          <option value="07">07</option>
+          <option value="08">08</option>
+          <option value="09" selected="selected">09</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+        </select>
+        : <select id="shift_hour_end_5i" name="shift[hour_end(5i)]" class="form-control mx-1 time required">
+          <option value="00">00</option>
+          <option value="01">01</option>
+          <option value="02">02</option>
+          <option value="03">03</option>
+          <option value="04">04</option>
+          <option value="05">05</option>
+          <option value="06">06</option>
+          <option value="07">07</option>
+          <option value="08">08</option>
+          <option value="09">09</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
+          <option value="32">32</option>
+          <option value="33">33</option>
+          <option value="34">34</option>
+          <option value="35">35</option>
+          <option value="36">36</option>
+          <option value="37">37</option>
+          <option value="38">38</option>
+          <option value="39">39</option>
+          <option value="40">40</option>
+          <option value="41">41</option>
+          <option value="42">42</option>
+          <option value="43">43</option>
+          <option value="44">44</option>
+          <option value="45" selected="selected">45</option>
+          <option value="46">46</option>
+          <option value="47">47</option>
+          <option value="48">48</option>
+          <option value="49">49</option>
+          <option value="50">50</option>
+          <option value="51">51</option>
+          <option value="52">52</option>
+          <option value="53">53</option>
+          <option value="54">54</option>
+          <option value="55">55</option>
+          <option value="56">56</option>
+          <option value="57">57</option>
+          <option value="58">58</option>
+          <option value="59">59</option>
+        </select>
+      </div></div>
+      <div class="form-group select required shift_working_hours"><label class="select required" for="shift_working_hours">Working hours <abbr title="required">*</abbr></label><select class="form-control select required" name="shift[working_hours]" id="shift_working_hours"><option value=""></option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option></select></div>
+        <div class="form-group select required shift_working_minutes"><label class="select required" for="shift_working_minutes">Working minutes <abbr title="required">*</abbr></label><select class="form-control select required" name="shift[working_minutes]" id="shift_working_minutes"><option value=""></option>
+          <option value="0">0</option>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+          <option value="25">25</option>
+          <option value="30">30</option>
+          <option value="35">35</option>
+          <option value="40">40</option>
+          <option value="45">45</option>
+          <option value="50">50</option>
+          <option value="55">55</option>
+          <option value="60">60</option></select></div>
+          <input type="submit" name="commit" value="Soumettre la demande" class="btn bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" data-disable-with="Soumettre la demande" />
+        </form></div>
+
+
+        <div class="container">
+          <div class="annuler">
+            <a class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" href="/dashboard">Annuler la demande</a>
+          </div>
+        </div>
