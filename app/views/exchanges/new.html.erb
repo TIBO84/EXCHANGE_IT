@@ -1,7 +1,7 @@
 <h1>Proposition d'échange</h1>
 
-<div class="shift_answered">
-  <%= raw(ap @shift_answered)%>
+<div class="card_dashboard p-2 mb-4">
+  <%= render partial: "shared/main_card", locals: {shift: @shift_answered} %>
 </div>
 
   <div class="container mx-auto">
