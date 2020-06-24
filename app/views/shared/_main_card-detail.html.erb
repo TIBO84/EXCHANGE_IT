@@ -1,0 +1,13 @@
+<div class="container__detail-button flex justify-around w-9/12 mx-auto">
+  <div class="detail-button__detail mb-2">
+    <div class="detail-button__detail-owner flex justify-between items-center">
+      <p class = "mr-2">Emetteur:</p>
+      <p><%= "#{User.find(shift.user_id).first_name} #{User.find(shift.user_id).last_name}"%></p>
+    </div>
+    <div class="detail-button__detail-hours flex justify-between items-center">
+      <p class = "mr-2">Heures travaillées:</p>
+      <p><%= working_hours_to_h(shift) %></p>
+    </div>
+  </div>
+    <%= link_to "Proposer", shift_answer_path(shift.id), class: 'button_action flex justify-center items-center mb-2' %>
+</div>

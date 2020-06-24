@@ -1,0 +1,46 @@
+.bottom_navbar {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .white {
+    flex-grow: 1;
+  }
+
+  .grey {
+    background: grey;
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .plus {
+    display: flex;
+    height: 72px;
+    width: 72px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+    z-index: 10;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    background: grey;
+  }
+
+  .plus span {
+    font-size: 50px;
+    line-height: 30px;
+    vertical-align: middle;
+  }
+
+  .black {
+    background: black;
+    height: 30px;
+  }
+}
+

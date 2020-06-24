@@ -1,0 +1,15 @@
+<div class="bottom_navbar">
+  <div class="white"></div>
+  <div class="grey">
+    <span><%= link_to "My Shifts", my_shifts_path %></span>
+    <p class="plus">
+      <% if home %>
+        <span><%= link_to "+", shift_new_path %></span>
+      <% else %>
+        <span><%= link_to "Home", shift_new_path %></span>
+      <% end %>
+    </p>
+    <span><%= link_to "My Answers", my_answers_path %></span>
+  </div>
+  <div class="black"></div>
+</div>
