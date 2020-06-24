@@ -8,7 +8,7 @@
     </div>
     <div class="date_hours">
       <div class="date">
-        <p><%= shift.date.strftime('%a/%m/%y') %></p>
+        <p><%= l(shift.date, format: "%a %e %b").upcase %></p>
       </div>
       <div class ="shift_hours">
         <div class="starting_hour">
