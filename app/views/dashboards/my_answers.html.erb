@@ -1,4 +1,8 @@
-<div class="my_answers">
+
+<div class="container">
+
+
+  <div class="my_answers">
   <div class="answers"><h1>Réponses que j'ai faites à des demandes</h1></div>
   <div class="accepted_answer"><h2>Mes réponses acceptées par le demandeur</h2></div>
   <br>
@@ -24,7 +28,7 @@
                 <div class="starting_hour">
                   <p>Début <br> <%= shift.hour_start.strftime('%H:%M') %></p>
                 </div>
-              
+
                 <div class="ending_hour">
                   <p>Fin <br> <%= shift.hour_end.strftime('%H:%M') %></p>
                 </div>
@@ -56,7 +60,7 @@
                     <div class="starting_hour">
                       <p>Début <br> <%= exchange.shift_answer.hour_start.strftime('%H:%M') %></p>
                     </div>
-                  
+
                     <div class="ending_hour">
                       <p>Fin <br> <%= exchange.shift_answer.hour_end.strftime('%H:%M') %></p>
                     </div>
@@ -70,7 +74,7 @@
       </div>
     <%end%>
 
-  
+
   <br>
   <br>
   <div class="waiting_answer"><h2>Mes réponses en attente d'acceptation par le demandeur</h2></div>
@@ -100,13 +104,16 @@
     <%end%>
   <%end%>
 </div>
+</div>
+
 
 <div class="main">
   <div class="white"></div>
   <div class="grey">
     <span><%= link_to "My Shifts", my_shifts_path %></span>
     <p class="plus">
-      <span><%= link_to "Home", shift_new_path %></span>
+      <span><a href="/dashboard"><i class="fa fa-home"></i></a>
+</span>
     </p>
     <span><%= link_to "My Answers", my_answers_path %></span>
   </div>

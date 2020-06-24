@@ -44,8 +44,8 @@
 
 .plus {
   display: flex;
-  height: 60px;
-  width: 60px;
+  height: 70px;
+  width: 72px;
   margin-top: -10px;
   margin-bottom: -10px;
   z-index: 10;
@@ -65,5 +65,11 @@
   background: black;
   height: 30px;
 }
+
+.filter {
+  display: flex;
+  justify-content: flex-end;
+}
+
 
 
