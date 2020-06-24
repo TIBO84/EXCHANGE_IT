@@ -42,6 +42,7 @@ import flatpickr from "flatpickr";
 
 const inputDate = document.querySelector("#data-flatpickr")
 
+
 if (inputDate) {
   flatpickr(inputDate);
 }
