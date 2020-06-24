@@ -5,7 +5,7 @@ $color-h1:#5B27EF;
     opacity: 0.8;
   }
 
-.my_answers{
+.my_container{
   max-width: 700px;
   background-color: #ffff;
   display: flex;
@@ -18,7 +18,7 @@ $color-h1:#5B27EF;
   padding-right: 0.5rem;
   height: 100%;
 
-  .answers{
+  .titre_1{
     width: 100%;
     font-family: 'Heebo', sans-serif;
     color: $color-h1;
@@ -30,19 +30,7 @@ $color-h1:#5B27EF;
     padding-bottom: 1.5rem;
   }
 
-  .accepted_answer{
-    width: 100%;
-    font-family: 'Heebo', sans-serif;
-    font-weight: 500;
-    font-size: 1.2rem;
-    margin-top: 0.2rem;
-    text-align: left;
-    background-color: #ffff;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-  }
-
-  .waiting_answer{
+  .titre_2{
     width: 100%;
     font-family: 'Heebo', sans-serif;
     font-weight: 500;

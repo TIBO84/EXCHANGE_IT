@@ -1,9 +1,7 @@
-<div class="phone_header flex justify-center m-0 mb-2">
-  <h1>Acceuil <%= "#{@current_user.first_name} #{@current_user.last_name}" %></h1>
-</div>
-<div class="container">
+<div class="my_container">
+  <h1 class= "titre_1">Acceuil <%= "#{@current_user.first_name} #{@current_user.last_name}" %></h1>
 
-  <h2 class="my-2">Demandes d'échange:</h2>
+  <h2 class= "titre_2">Demandes d'échange</h2>
 
   <div class="filter mb-4 p-2">
     <form action="/dashboard" method="get" class="flex justify-between">
@@ -24,17 +22,18 @@
   <% x = 1 %>
   <% @shifts.each do |shift| %>
     <div class="card_dashboard p-2 mb-4">
-
       <label for="<%= "ex_card_#{x}" %>" class="block mb-0">
         <%= render partial: "shared/main_card", locals: {shift: shift} %>
       </label>
 
       <input type="checkbox" id="<%= "ex_card_#{x}" %>" class="" name="test" style="opacity:0; position:absolute;">
-        <%= render partial: "shared/main_card-detail", locals: {shift: shift} %>
+      <%= render partial: "shared/main_card-detail", locals: {shift: shift} %>
     </div>
 
     <% x += 1 %>
-  <% end %>
-</div>
-<%= render partial: "shared/bottom_navbar", locals: { home: true } %>
+    <% end %>
 
+
+</div>
+
+<%= render partial: "shared/bottom_navbar", locals: { home: true } %>

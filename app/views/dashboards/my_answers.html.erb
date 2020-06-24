@@ -1,6 +1,7 @@
 <div class="my_container">
-  <h1 class="answers">Mes réponses</h1>
-  <h2 class="accepted_answer">Mes réponses acceptées</h2>
+  <h1 class="titre_1">Mes réponses</h1>
+  <h2 class="titre_2">Mes réponses acceptées</h2>
+
   <hr class="separation_bar">
   <div class="mt-4 mb-">
     <%# j'itère sur tous les shifts émetteurs qui ont fait l'objet d'une réponse acceptée %>
@@ -29,7 +30,8 @@
     <%end%>
   </div>
   <hr class="separation_bar">
-  <h2 class="waiting_answer">Mes réponses en attente</h2>
+  <h2 class="titre_2">Mes réponses en attente</h2>
+
   <%# j'itère sur tous les shifts émetteurs qui n'ont pas encore fait l'objet d'une réponse acceptée %>
   <%@pending_shifts.each do |shift|%>
     <%# je vérifie que la date de ce shift est bien ultérieure ou égale a la date du jour %>
