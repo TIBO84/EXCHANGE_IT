@@ -1,0 +1,113 @@
+$color-line: #27EFE3;
+$color-owner: #27EFE3;
+$color-answer: #27EFE3;
+
+.exchange_cards{
+ .line{
+    font-family: 'Heebo', sans-serif;
+    color: #ffff;
+    font-size: larger;
+    font-weight: 600;
+    background-color: $color-answer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .exchange_symbol{
+    width: 40px;
+    height: 40px;
+    margin-left: -1.5rem;
+    margin-right: -2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffff;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    z-index: 2;
+  }
+
+  .one_exchange-card {
+    display: flex;
+    background-color: #ffff;
+    justify-content: space-between;
+    margin-right: 0.3rem;
+    margin-left: 0.2rem;
+    border-radius: 5px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+
+    &.shift_of_current_user {
+      border: 3px solid #27EFE3;
+    }
+  }
+
+
+  .date_hours{
+    background-color: #ffff;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+  .shift_hours{
+    display: flex;
+
+  }
+
+  .date{
+    font-family: 'Heebo', sans-serif;
+    font-weight: 600;
+    background-color: #ffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0.5rem;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    border-top-right-radius: 5px;
+  }
+
+
+
+
+  .starting_hour{
+    font-family: 'Heebo', sans-serif;
+    font-weight: 600;
+    font-size: smaller;
+    background-color: #ffff;
+    color:#4f4747;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.5rem;
+      #start{
+        font-size: larger;
+      }
+  }
+
+  .ending_hour{
+    font-family: 'Heebo', sans-serif;
+    font-weight: 600;
+    font-size: smaller;
+    background-color: #ffff;
+    color:#4f4747;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.5rem;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+      #end{
+        font-size: larger;
+      }
+  }
+}

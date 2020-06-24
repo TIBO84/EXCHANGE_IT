@@ -1,5 +1,10 @@
 $color-h1:#5B27EF;
 
+.separation_bar{
+    color: #bfb5b5;
+    opacity: 0.8;
+  }
+
 .my_answers{
   max-width: 700px;
   background-color: #ffff;
@@ -34,7 +39,7 @@ $color-h1:#5B27EF;
     text-align: left;
     background-color: #ffff;
     padding-top: 1.5rem;
-    padding-bottom: 1.5rem;   
+    padding-bottom: 1.5rem;
   }
 
   .waiting_answer{
@@ -46,7 +51,7 @@ $color-h1:#5B27EF;
     text-align: left;
     background-color: #ffff;
     padding-top: 1.5rem;
-    padding-bottom: 1.5rem; 
+    padding-bottom: 1.5rem;
   }
 }
 
