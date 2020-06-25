@@ -17,7 +17,6 @@
 
           <% shift_of_current_user = User.find(exchange.shift_answer.user_id) == current_user %>
           <%= render partial: "shared/one_exchange-card", locals: { shift: exchange.shift_answer, shift_of_current_user: shift_of_current_user } %>
-
         <%end%>
       </div>
     <%end%>
@@ -28,28 +27,35 @@
 
   <div class="titre_2"><h2>En attentes de réponses / ou avec réponses</h2></div>
 
-  <div class="mb-4">
+    <% x = 1 %>
     <% @shifts_and_answers.each do |owner, answers| %>
-      <div class="card_dashboard p-2 mb-4">
+    <div class="mb-2">
+      <div class="card_dashboard mb-1">
         <% shift_owner = Shift.find(owner) %>
-        <%= render partial: "shared/main_card", locals: { shift: shift_owner } %>
+        <%= render partial: "shared/main_card", locals: { shift: shift_owner, avatar: false } %>
       </div>
       <% answers.each do |answer| %>
         <% answer.each do |shift_id, exchange_id| %>
           <% shift_answer = Shift.find(shift_id) %>
-          <%= render partial: "shared/main_card_answer", locals: { shift: shift_answer } %> | <%=link_to 'ACCEPTER', exchange_accepted_owner_path(exchange_id), class: "button_action"%>
+
+          <div class="card_answer_full">
+            <label for="<%= "ans_card_#{x}" %>" class="block mb-0">
+              <%= render partial: "shared/main_card_answer", locals: { shift: shift_answer, avatar: true, highlight: false } %>
+            </label>
+
+            <input type="checkbox" id="<%= "ans_card_#{x}" %>" class="" name="test" style="opacity:0; position:absolute;">
+            <%= render partial: "shared/main_card_answer-detail", locals: {shift: shift_answer, exchange_id: exchange_id} %>
+            <% x += 1 %>
+          </div>
+
         <% end %>
       <% end %>
-    <% end  %>
   </div>
+    <% end  %>
 
 <br>
 <br>
 <hr class="separation_bar">
-<h2>Historiques des demandes acceptées</h2>
 
-<% @exchanges_validated.each do |exchange| %>
-<%= raw(ap exchange) %>
-<% end %>
 
 <%= render partial: "shared/bottom_navbar", locals: { home: false } %>
