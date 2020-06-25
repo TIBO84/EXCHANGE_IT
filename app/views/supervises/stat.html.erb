@@ -1,4 +1,8 @@
-<div class="my_supervise_container">
+
+<div class="my_supervise_stats_container">
+  <div class="stats_div">
+  <h1 class="titre_1">Historique des demandes d'échange </h1>
+  <h2 class="titre_2"><%= Unit.find(current_user.unit_id).name %></h1>
   <div class="w-50%">
     <%= link_to "Back to dashboard", supervise_path, class:"button_action" %>
   </div>
@@ -22,38 +26,41 @@
     </form>
   </div>
   <br><br>
-  <div class="table">
-  <table>
-    <thead>
-      <tr>
-        <th>Identifiant de l'échange</th>
-        <th>Date</th>
-        <th>Ligne</th>
-        <th>Demandeur</th>
-        <th>Répondant</th>
-        <th>Date de création</th>
-        <th>Date de validation</th>
-        <th>Message</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @exchanges.each do |exchange| %>
-      <% shift_owner = Shift.find(exchange.shift_owner_id) %>
-      <% shift_answer = Shift.find(exchange.shift_answer_id) %>
-      <% date = shift_owner.date %>
-      <% line = Line.find(shift_owner.line_id).name %>
-      <tr>
-        <td><%= exchange.id %></td>
-        <td><%= date %></td>
-        <td><%= line %></td>
-        <td><%= "#{User.find(shift_owner.user_id).first_name} #{User.find(shift_owner.user_id).last_name}"%></td>
-        <td><%= "#{User.find(shift_answer.user_id).first_name} #{User.find(shift_answer.user_id).last_name}"%></td>
-        <td><%= exchange.created_at.strftime("%d/%m/%Y") %></td>
-        <td><%= exchange.updated_at.strftime("%d/%m/%Y") %></td>
-        <td><%= exchange.message %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+  </div>
+<div>
+  <div class="table_centrage table">
+    <table>
+      <thead>
+        <tr>
+          <th>Identifiant de l'échange</th>
+          <th>Date</th>
+          <th>Ligne</th>
+          <th>Demandeur</th>
+          <th>Répondant</th>
+          <th>Date de création</th>
+          <th>Date de validation</th>
+          <th>Message</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @exchanges.each do |exchange| %>
+        <% shift_owner = Shift.find(exchange.shift_owner_id) %>
+        <% shift_answer = Shift.find(exchange.shift_answer_id) %>
+        <% date = shift_owner.date %>
+        <% line = Line.find(shift_owner.line_id).name %>
+        <tr>
+          <td><%= exchange.id %></td>
+          <td><%= date %></td>
+          <td><%= line %></td>
+          <td><%= "#{User.find(shift_owner.user_id).first_name} #{User.find(shift_owner.user_id).last_name}"%></td>
+          <td><%= "#{User.find(shift_answer.user_id).first_name} #{User.find(shift_answer.user_id).last_name}"%></td>
+          <td><%= exchange.created_at.strftime("%d/%m/%Y") %></td>
+          <td><%= exchange.updated_at.strftime("%d/%m/%Y") %></td>
+          <td><%= exchange.message %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
   </div>
 </div>
