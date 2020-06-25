@@ -1,27 +1,29 @@
 <div class="my_container">
   <h1 class= "titre_1">Accueil <%= "#{@current_user.first_name} #{@current_user.last_name}" %></h1>
 
-  <h2 classe="titre_2">Echanges à venir - validés par manager</h2>
+  <h2 class= "titre_2">Echange(s) à venir (validé(s) par manager)</h2>
 
     <% @exchanges_validated.each do |exchange| %>
       <div class= "exchange_cards">
         <% shift_owner = Shift.find(exchange.shift_owner_id) %>
         <% shift_of_current_user = User.find(shift_owner.user_id) == current_user %>
-        <%= render partial: "shared/one_exchange-card", locals: { shift: shift_owner, shift_of_current_user: shift_of_current_user } %>
+        <% validated = User.find(shift_owner.user_id) != current_user %>
+        <%= render partial: "shared/one_exchange-card", locals: { shift: shift_owner, shift_of_current_user: shift_of_current_user, validated: validated } %>
 
         <div class="exchange_symbol">
           <i class="fas fa-exchange-alt"></i>
         </div>
         <% shift_answer = Shift.find(exchange.shift_answer_id) %>
         <% shift_of_current_user = User.find(shift_answer.user_id) == current_user %>
-        <%= render partial: "shared/one_exchange-card", locals: { shift: shift_answer, shift_of_current_user: shift_of_current_user } %>
+        <% validated = User.find(shift_answer.user_id) != current_user %>
+        <%= render partial: "shared/one_exchange-card", locals: { shift: shift_answer, shift_of_current_user: shift_of_current_user, validated: validated } %>
       </div>
     <% end %>
 
 
   <hr class="separation_bar">
-
-  <h2 class= "titre_2">Demandes d'échange</h2>
+  
+  <h2 class= "titre_2">Service(s) disponible(s)</h2>
 
   <div class="filter mb-4 p-2">
     <form action="/dashboard" method="get" class="form_filter_class">

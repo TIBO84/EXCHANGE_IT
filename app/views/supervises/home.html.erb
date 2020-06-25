@@ -1,39 +1,40 @@
 <div class="my_container">
-<h1 class="titre_1">Supervision Dashboard</h1>
-<div><%= link_to "Voir les statistiques", stat_path, class:"button_action" %></div>
-<br><br>
-  <% @exchanges.each do |exchange| %>
-    <div class="exchange-review">
-      <p><strong>Exchange #<%= exchange.id %></strong></p>
-      <div class="supervise_identities">
-        <p><strong><%= exchange.shift_owner.user.first_name %> <%= exchange.shift_owner.user.last_name %></strong></p>
-        <p><strong><%= exchange.shift_answer.user.first_name %> <%= exchange.shift_answer.user.last_name %></strong></p>
-      </div>
-      <div class ="exchange-review__overview">
-        <div class= "exchange_cards">
-          <div>
-            <% shift_owner = Shift.find(exchange.shift_owner_id) %>
-            <%= render partial: "shared/one_exchange-card", locals: { shift: shift_owner, shift_of_current_user: false } %>
-          </div>
 
-          <div class="exchange_symbol">
-            <i class="fas fa-exchange-alt"></i>
-          </div>
+  <h1 class="titre_1">Supervision Dashboard</h1>
+  <div><%= link_to "Voir les statistiques", stat_path, class:"button_action" %></div>
+  <br><br>
+    <% @exchanges.each do |exchange| %>
+      <div class="exchange-review">
+        <p><strong>Exchange #<%= exchange.id %></strong></p>
+        <div class="supervise_identities">
+          <p><strong><%= exchange.shift_owner.user.first_name %> <%= exchange.shift_owner.user.last_name %></strong></p>
+          <p><strong><%= exchange.shift_answer.user.first_name %> <%= exchange.shift_answer.user.last_name %></strong></p>
+        </div>
+        <div class ="exchange-review__overview">
+          <div class= "exchange_cards">
+            <div>
+              <% shift_owner = Shift.find(exchange.shift_owner_id) %>
+              <%= render partial: "shared/one_exchange-card", locals: { shift: shift_owner, shift_of_current_user: false } %>
+            </div>
 
-          <div>
-            <% shift_answer = Shift.find(exchange.shift_answer_id) %>
-            <%= render partial: "shared/one_exchange-card", locals: { shift: shift_owner, shift_of_current_user: false } %>
+            <div class="exchange_symbol">
+              <i class="fas fa-exchange-alt"></i>
+            </div>
+
+            <div>
+              <% shift_answer = Shift.find(exchange.shift_answer_id) %>
+              <%= render partial: "shared/one_exchange-card", locals: { shift: shift_owner, shift_of_current_user: false } %>
+            </div>
           </div>
         </div>
-      </div>
-      <br>
-      <div class="exchange-review__manager-answer">
-        <%= simple_form_for exchange, url: exchange_path(exchange.id), method: 'PATCH', html: { class: "flex w-9/12 mx-auto justify-around" } do |f| %>
-          <%= f.input :accepted_manager, as: :radio_buttons, collection: [[true, 'Yes'], [false, 'No']], label_method: :second, value_method: :first, label: "Accept?" %>
-          <%= f.input :message, label: 'Enter your message to users', input_html: { id: 'manager-answer__message' } %>
-          <%= f.submit 'Envoyer', class:"button_action" %>
-        <% end %>
-      </div>
-  <% end %>
+        <br>
+        <div class="exchange-review__manager-answer">
+          <%= simple_form_for exchange, url: exchange_path(exchange.id), method: 'PATCH', html: { class: "flex w-9/12 mx-auto justify-around" } do |f| %>
+            <%= f.input :accepted_manager, as: :radio_buttons, collection: [[true, 'Yes'], [false, 'No']], label_method: :second, value_method: :first, label: "Accept?" %>
+            <%= f.input :message, label: 'Enter your message to users', input_html: { id: 'manager-answer__message' } %>
+            <%= f.submit 'Envoyer', class:"button_action" %>
+          <% end %>
+        </div>
+    <% end %>
   </div>
 </div>
