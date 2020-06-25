@@ -5,6 +5,10 @@
   <% @exchanges.each do |exchange| %>
     <div class="exchange-review">
       <p><strong>Exchange #<%= exchange.id %></strong></p>
+      <div class="supervise_identities">
+        <p><strong><%= exchange.shift_owner.user.first_name %> <%= exchange.shift_owner.user.last_name %></strong></p>
+        <p><strong><%= exchange.shift_answer.user.first_name %> <%= exchange.shift_answer.user.last_name %></strong></p>
+      </div>
       <div class ="exchange-review__overview">
         <div class= "exchange_cards">
           <div>
