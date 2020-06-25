@@ -11,6 +11,7 @@ $color-h1:#5B27EF;
   display: flex;
   flex-direction: column;
   margin: auto;
+  min-height: 100vh;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -43,3 +44,38 @@ $color-h1:#5B27EF;
   }
 }
 
+.my_home_page{
+  max-width: 800px;
+  background-color: #ffff;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  min-height: 100vh;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+
+  .home_page_title{
+    width: 100vw;
+    font-size: 3rem;
+    font-weight: 600;
+    text-align: center;
+    color: #ffff;
+  }
+
+  .home_page_baseline{
+    font-size: 2rem;
+    width: 100vw;
+    font-weight: 500;
+    text-align: center;
+    color: #ffff;
+  }
+
+  .home_page_image{
+    margin-top: 1rem;
+    height: 300px;
+    max-width: 350px;
+    background-size: cover;
+    background-color:#5B27EF;  
+  }
+}

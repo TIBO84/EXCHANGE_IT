@@ -22,3 +22,24 @@
   text-decoration: none;
   border : solid 2px #5B27EF;
 }
+
+.button_filter {
+  height: 30px;
+  border-radius: 5px;
+  vertical-align: center;
+  background-color: #5B27EF;
+  border: solid 2px #5B27EF;
+  color: #FFFFFF;
+  text-align: center;
+  font-weight: 550;
+  transition: all 0.5s;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.button_filter:hover {
+  background-color: #ffff;
+  color: #5B27EF;
+  text-decoration: none;
+  border : solid 2px #5B27EF;
+}

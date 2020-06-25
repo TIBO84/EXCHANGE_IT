@@ -1,7 +1,7 @@
-<h1 class="text-center text-2xl font-semibold mt-8">Supervision Dashboard</h1>
-<%= link_to "Go to Stats page", stat_path %>
+<div class="my_container">
+<h1 class="titre_1">Supervision Dashboard</h1>
+<%= link_to "Voir les statistiques", stat_path, class:"button_action" %>
 <br><br>
-<div class = "reviews container" >
   <% @exchanges.each do |exchange| %>
     <div class="exchange-review">
       <p><strong>Exchange #<%= exchange.id %></strong></p>

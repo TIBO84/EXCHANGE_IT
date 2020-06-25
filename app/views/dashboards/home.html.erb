@@ -4,18 +4,24 @@
   <h2 class= "titre_2">Demandes d'échange</h2>
 
   <div class="filter mb-4 p-2">
-    <form action="/dashboard" method="get" class="flex justify-between">
-      <div class="flex justify-between">
-      <input type="date" name="date" class="bg-gray-200 rounded-lg" id="data-flatpickr" placeholder="Selectionner une date">
-      <!-- Filtre par line -->
-      <select name="line_id" class="ml-2 bg-gray-200 rounded-lg">
-        <option value="" ></option>
-        <% @lines.each do |line| %>
-        <option value="<%= line.id %>"><%= line.name %></option>
-        <% end %>
-      </select>
+    <form action="/dashboard" method="get" class="form_filter_class">
+      <div class="filtres_date_ligne">
+        <div class="filtre_date">
+          <p>Date</p>
+          <input type="date" name="date" class="champ_date bg-gray-200 rounded-lg" id="data-flatpickr" placeholder="Date">
+        </div>
+        <!-- Filtre par line -->
+        <div class="filtre_ligne">
+          <p>Ligne</p>
+          <select name="line_id" class="champ_ligne bg-gray-200 rounded-lg">
+            <option value="" ></option>
+            <% @lines.each do |line| %>
+              <option value="<%= line.id %>"><%= line.name %></option>
+            <% end %>
+          </select>
+        </div>
       </div>
-      <button class="button_action">Filtrer</button>
+      <button class="button_filter">Filtrer</button>
     </form>
   </div>
 
