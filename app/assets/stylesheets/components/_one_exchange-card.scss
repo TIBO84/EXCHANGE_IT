@@ -3,10 +3,22 @@ $color-owner: #27EFE3;
 $color-answer: #27EFE3;
 
 .exchange_cards{
+  h2 {
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  h3 {
+    font-size: 12px;
+  }
+
+  p {
+    font-size: 8px;
+  }
  .line{
-    font-family: 'Heebo', sans-serif;
-    color: #ffff;
-    font-size: larger;
+    h2 {
+      color: white;
+    }
     font-weight: 600;
     background-color: $color-answer;
     display: flex;
@@ -43,6 +55,7 @@ $color-answer: #27EFE3;
 
     &.shift_of_current_user {
       border: 3px solid #27EFE3;
+      border-radius: 8px;
     }
 
     &.validated {
@@ -52,6 +65,7 @@ $color-answer: #27EFE3;
 
 
   .date_hours{
+    margin-top: 0.5rem;
     background-color: transparent;
     display: flex;
     flex-grow: 1;
@@ -60,15 +74,12 @@ $color-answer: #27EFE3;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
   }
-
   .shift_hours{
     display: flex;
 
   }
 
   .date{
-    font-family: 'Heebo', sans-serif;
-    font-weight: 600;
     background-color: transparent;
     display: flex;
     align-items: center;
@@ -82,8 +93,6 @@ $color-answer: #27EFE3;
 
 
   .starting_hour{
-    font-family: 'Heebo', sans-serif;
-    font-weight: 600;
     font-size: smaller;
     background-color: transparent;
     color:#4f4747;
@@ -91,14 +100,9 @@ $color-answer: #27EFE3;
     justify-content: center;
     text-align: center;
     padding: 0.5rem;
-      #start{
-        font-size: larger;
-      }
   }
 
   .ending_hour{
-    font-family: 'Heebo', sans-serif;
-    font-weight: 600;
     font-size: smaller;
     background-color: transparent;
     color:#4f4747;
@@ -108,9 +112,5 @@ $color-answer: #27EFE3;
     padding: 0.5rem;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-
-      #end{
-        font-size: larger;
-      }
   }
 }

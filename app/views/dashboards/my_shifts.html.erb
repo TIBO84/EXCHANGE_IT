@@ -30,7 +30,7 @@
 
     <% x = 1 %>
     <% @shifts_and_answers.each do |owner, answers| %>
-    <div class="mb-2">
+    <div class="mb-4">
       <div class="card_dashboard mb-1">
         <% shift_owner = Shift.find(owner) %>
         <%= render partial: "shared/main_card", locals: { shift: shift_owner, avatar: false } %>
