@@ -4,6 +4,7 @@ class DashboardsController < ApplicationController
   before_action :set_current_user, only: [:home, :my_shifts, :my_answers]
 
   def home
+    @exchanges_validated = Exchange.joins(joins_sql_myshifts).where(where_sql_myshifts_validated, user_id: current_user.id)
     @lines = Line.all
     @shifts = Shift.joins(joins_sql)
                    .where(where_sql, user_id: current_user.id, unit_id: current_user.unit_id, date: Date.today)
@@ -40,7 +41,6 @@ class DashboardsController < ApplicationController
       end
     end
     # HISTORIQUE DES ECHANGES ACCEPTES
-    @exchanges_validated = Exchange.joins(joins_sql_myshifts).where(where_sql_myshifts_validated, user_id: current_user.id)
   end
 
   def my_answers

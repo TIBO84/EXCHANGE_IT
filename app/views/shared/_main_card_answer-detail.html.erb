@@ -1,4 +1,4 @@
-<div class="container__detail-button flex justify-around w-9/12 mx-auto">
+<div class="container__detail-button flex justify-around">
   <div class="detail-button__detail">
     <div class="detail-button__detail-owner flex justify-between items-center">
       <p class = "mr-2">Emetteur:</p>
@@ -9,5 +9,5 @@
       <p><%= working_hours_to_h(shift) %></p>
     </div>
   </div>
-    <%= link_to "ECHANGER", shift_answer_path(shift.id), class: 'button_action flex justify-center items-center' %>
+    <%=link_to 'ACCEPTER', exchange_accepted_owner_path(exchange_id), class: "button_action"%>
 </div>
