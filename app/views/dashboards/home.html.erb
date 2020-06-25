@@ -4,7 +4,8 @@
   <h2 classe="titre_2">Echanges à venir - validés par manager</h2>
 
     <% @exchanges_validated.each do |exchange| %>
-      <div class= "exchange_cards">
+      <div class="mb-3">
+      <div class= "exchange_cards mb-1">
         <% shift_owner = Shift.find(exchange.shift_owner_id) %>
         <% shift_of_current_user = User.find(shift_owner.user_id) == current_user %>
         <% validated = User.find(shift_owner.user_id) != current_user %>
@@ -18,7 +19,16 @@
         <% validated = User.find(shift_answer.user_id) != current_user %>
         <%= render partial: "shared/one_exchange-card", locals: { shift: shift_answer, shift_of_current_user: shift_of_current_user, validated: validated } %>
       </div>
-    <% end %>
+        <% if exchange.message %>
+          <div class="flex justify-center items-center">
+            <em class="bg-gray-200 text-xl px-8 rounded-lg">
+              <p class="text-xs">Commentaire du manager:</p>
+              <p class="text-xs"><%= exchange.message %></p>
+            </em>
+          </div>
+        <% end %>
+      </div>
+      <% end %>
 
 
   <hr class="separation_bar">

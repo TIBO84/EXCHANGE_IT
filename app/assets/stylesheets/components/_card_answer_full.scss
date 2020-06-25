@@ -28,4 +28,16 @@
     padding-bottom: 0.5rem;
     margin-left: 3rem;
   }
+
+  position: relative;
+  &:before {
+    color: rgba(0,0,0,0.2);
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 900;
+    content: "\f064";
+    transform: rotateX(180deg);
+    position: absolute;
+    top: 22px;
+    left: 10px;
+  }
 }
