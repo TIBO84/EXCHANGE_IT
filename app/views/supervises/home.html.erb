@@ -31,7 +31,7 @@
         <%= simple_form_for exchange, url: exchange_path(exchange.id), method: 'PATCH', html: { class: "flex w-9/12 mx-auto justify-around" } do |f| %>
           <%= f.input :accepted_manager, as: :radio_buttons, collection: [[true, 'Yes'], [false, 'No']], label_method: :second, value_method: :first, label: "Accept?" %>
           <%= f.input :message, label: 'Enter your message to users', input_html: { id: 'manager-answer__message' } %>
-          <%= f.submit 'Envoyer' %>
+          <%= f.submit 'Envoyer', class:"button_action" %>
         <% end %>
       </div>
   <% end %>

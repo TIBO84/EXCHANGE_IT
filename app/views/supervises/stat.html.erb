@@ -1,7 +1,9 @@
-<div class="my_container">
+<div class="my_supervise_container">
   <h1 class="titre_1">Historique des demandes d'échange </h1>
   <h2 class="titre_2"><%= Unit.find(current_user.unit_id).name %></h1>
-  <%= link_to "Back to dashboard", supervise_path, class:"button_action" %>
+  <div class="w-50%">
+    <%= link_to "Back to dashboard", supervise_path, class:"button_action" %>
+  </div>
   <br><br>
 
   <div class="results-filter">
