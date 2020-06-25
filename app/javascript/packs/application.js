@@ -29,9 +29,7 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
-import {showReviewAnswer} from './supervise_home';
-require("flatpickr/dist/themes/dark.css");
-
+import { showReviewAnswer } from './supervise_home';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
