@@ -5,6 +5,10 @@
   <% @exchanges.each do |exchange| %>
     <div class="exchange-review">
       <p><strong>Exchange #<%= exchange.id %></strong></p>
+      <div class="supervise_identities">
+        <p><strong><%= exchange.shift_owner.user.first_name %> <%= exchange.shift_owner.user.last_name %></strong></p>
+        <p><strong><%= exchange.shift_answer.user.first_name %> <%= exchange.shift_answer.user.last_name %></strong></p>
+      </div>
       <div class ="exchange-review__overview">
         <div class= "exchange_cards">
           <div>
@@ -27,7 +31,7 @@
         <%= simple_form_for exchange, url: exchange_path(exchange.id), method: 'PATCH', html: { class: "flex w-9/12 mx-auto justify-around" } do |f| %>
           <%= f.input :accepted_manager, as: :radio_buttons, collection: [[true, 'Yes'], [false, 'No']], label_method: :second, value_method: :first, label: "Accept?" %>
           <%= f.input :message, label: 'Enter your message to users', input_html: { id: 'manager-answer__message' } %>
-          <%= f.submit 'Envoyer' %>
+          <%= f.submit 'Envoyer', class:"button_action" %>
         <% end %>
       </div>
   <% end %>
