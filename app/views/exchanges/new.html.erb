@@ -14,7 +14,7 @@
       <%= f.input :working_hours, collection: (1..10) %>
       <%= f.input :working_minutes, collection: (0..60).select { |x| x%5 == 0 || x == 0}  %>
       <%= hidden_field_tag :shift_owner_id, @shift_answered.id %>
-      <%= f.button :submit, "Faire une 2ème proposition", class: 'button_action'%>
+      <%= f.button :submit, "Nouvelle proposition", class: 'button_action'%>
       <%= f.button :submit, "ENVOYER", class: 'button_action'%>
     <% end %>
 
