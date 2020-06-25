@@ -21,8 +21,34 @@ $color-h1:#5B27EF;
   justify-content: flex-end;
 }
 
+.titre {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.titre h1 {
+  font-size: 25px;
+}
 .annuler {
-margin-top: 20px;
+  margin-top: 40px;
+
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+  border: 1px solid black;
+
+}
+
+.link:hover {
+
+}
+
+.annuler a {
+  padding: 5px;
+  border-radius: 5px;
+  text-decoration: none;
 }
 
 .btn-submit {
@@ -47,9 +73,9 @@ margin-top: 20px;
 }
 
 .button {
-color: #FFFFFF;
-font-weight: 550;
-background-color: $color-h1;
+  color: #FFFFFF;
+  font-weight: 550;
+  background-color: $color-h1;
 }
 
 
