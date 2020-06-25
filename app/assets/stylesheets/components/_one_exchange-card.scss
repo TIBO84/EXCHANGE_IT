@@ -44,11 +44,15 @@ $color-answer: #27EFE3;
     &.shift_of_current_user {
       border: 3px solid #27EFE3;
     }
+
+    &.validated {
+      background-color: #BFFFC9;
+    }
   }
 
 
   .date_hours{
-    background-color: #ffff;
+    background-color: transparent;
     display: flex;
     flex-grow: 1;
     justify-content: center;
@@ -65,11 +69,10 @@ $color-answer: #27EFE3;
   .date{
     font-family: 'Heebo', sans-serif;
     font-weight: 600;
-    background-color: #ffff;
+    background-color: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 0.5rem;
     padding-right: 0.5rem;
     padding-left: 0.5rem;
     border-top-right-radius: 5px;
@@ -82,7 +85,7 @@ $color-answer: #27EFE3;
     font-family: 'Heebo', sans-serif;
     font-weight: 600;
     font-size: smaller;
-    background-color: #ffff;
+    background-color: transparent;
     color:#4f4747;
     align-items: center;
     justify-content: center;
@@ -97,7 +100,7 @@ $color-answer: #27EFE3;
     font-family: 'Heebo', sans-serif;
     font-weight: 600;
     font-size: smaller;
-    background-color: #ffff;
+    background-color: transparent;
     color:#4f4747;
     align-items: center;
     justify-content: center;
