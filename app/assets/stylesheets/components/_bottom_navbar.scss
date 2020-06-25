@@ -1,11 +1,23 @@
 .bottom_navbar {
-  height: 200px;
   display: flex;
   flex-direction: column;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 10;
+
+  a {
+    text-decoration: none;
+    color: white;
+    font-weight: bolder;
+    font-size: 16px;
+  }
+
+  a:hover {
+    font-size: 18px;
+    transition: 0.2s;
+  }
 
   .white {
     flex-grow: 1;
@@ -27,7 +39,6 @@
     width: 87px;
     margin-top: -10px;
     margin-bottom: -10px;
-    z-index: 10;
     border-radius: 50%;
     align-items: center;
     justify-content: center;
@@ -35,10 +46,17 @@
 
   }
 
-  .plus span {
+  #plus_icon {
     font-size: 50px;
     line-height: 30px;
     vertical-align: middle;
+  }
+
+  #plus_icon:hover {
+    font-size: 66px;
+    line-height: 30px;
+    vertical-align: middle;
+    transition: 0.2s;
   }
 
   .black {
