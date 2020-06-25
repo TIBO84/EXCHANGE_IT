@@ -23,20 +23,21 @@
       placeholder: "Entrez votre mot de passe",
       required: false,
       input_html: {
-        autocomplete: "current-password",
-        class: ''
-        } %>
-        <%= f.check_box :remember_me, checked: true, id: 'remember-me', class: 'hidden' %>
-      </div>
-    </div>
-
-
-    <div class="container">
-      <div class="form-log">
-        <%= f.button :submit, "Log in", class: 'button_action'%>
-        <% end %>
-      </div>
-      <%= render "devise/shared/links" %>
-    </div>
+      autocomplete: "current-password",
+      class: ''
+    } %>
+    <%= f.check_box :remember_me, checked: true, id: 'remember-me', class: 'hidden' %>
   </div>
+</div>
+
+
+<div class="container">
+  <div class="form-log">
+    <%= f.button :submit, "Log in", class: 'button_action'%>
+    <% end %>
+  </div>
+  <div>
+    <%= render "devise/shared/links" %>
+  </div>
+</div>
 
