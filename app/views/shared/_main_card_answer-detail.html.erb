@@ -1,0 +1,13 @@
+<div class="container__detail-button flex justify-around">
+  <div class="detail-button__detail">
+    <div class="detail-button__detail-owner flex justify-between items-center">
+      <p class = "mr-2">Emetteur:</p>
+      <p><%= "#{User.find(shift.user_id).first_name} #{User.find(shift.user_id).last_name}"%></p>
+    </div>
+    <div class="detail-button__detail-hours flex justify-between items-center">
+      <p class = "mr-2">Heures travaillées:</p>
+      <p><%= working_hours_to_h(shift) %></p>
+    </div>
+  </div>
+    <%=link_to 'ACCEPTER', exchange_accepted_owner_path(exchange_id), class: "button_action"%>
+</div>
