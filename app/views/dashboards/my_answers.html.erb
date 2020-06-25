@@ -37,12 +37,12 @@
     <% @pending_shifts.each do |shift| %>
       <% if shift.date >= Date.today %>
         <div class="card_dashboard mb-1">
-            <%= render partial: "shared/main_card", locals: { shift: shift } %>
+            <%= render partial: "shared/main_card", locals: { shift: shift, avatar: true } %>
         </div>
 
       <%shift.exchange_answers.each do |exchange|%>
         <% if exchange.accepted_owner == nil %>
-          <%= render partial: "shared/main_card_answer", locals: { shift: exchange.shift_answer } %>
+          <%= render partial: "shared/main_card_answer", locals: { shift: exchange.shift_answer, highlight: true, avatar: false } %>
         <% end %>
       <% end %>
     <% end  %>

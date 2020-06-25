@@ -46,10 +46,6 @@
 <br>
 <br>
 <hr class="separation_bar">
-<h2>Historiques des demandes acceptées</h2>
 
-<% @exchanges_validated.each do |exchange| %>
-<%= raw(ap exchange) %>
-<% end %>
 
 <%= render partial: "shared/bottom_navbar", locals: { home: false } %>
