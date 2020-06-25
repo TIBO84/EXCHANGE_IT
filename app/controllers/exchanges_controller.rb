@@ -12,7 +12,7 @@ class ExchangesController < ApplicationController
     @shift = Shift.new(shift_params)
     @shift.user_id = current_user.id
 
-    if (params[:commit] == "Ajouter une autre proposition")
+    if (params[:commit] == "Nouvelle proposition")
       if @shift.save
         @exchange = Exchange.new(shift_answer_id: @shift.id, shift_owner_id: params[:shift_owner_id])
         if @exchange.save
