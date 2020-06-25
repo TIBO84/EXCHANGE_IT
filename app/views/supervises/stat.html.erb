@@ -1,57 +1,58 @@
-<h1 class="text-center text-2xl font-semibold mt-8">History - <%= Unit.find(current_user.unit_id).name %></h1>
-<%= link_to "Back to dashboard", supervise_path %>
-<br><br>
+<div class="my_container">
+  <h1 class="titre_1">Historique des demandes d'échange </h1>
+  <h2 class="titre_2"><%= Unit.find(current_user.unit_id).name %></h1>
+  <%= link_to "Back to dashboard", supervise_path, class:"button_action" %>
+  <br><br>
 
-<div class="results-filter">
-  <!-- Filtre par date -->
-  <form action="/supervise/stat" method="get">
-    <input type="date" name="date">
-    <!-- Filtre par line -->
-    <label for="line_id">Line:</label>
-    <select name="line_id">
-      <option value=""></option>
-      <% @lines.each do |line| %>
-      <option value="<%= line.id %>"><%= line.name %></option>
-      <% end %>
-    </select>
-    <button>Filtrer</button>
-  </form>
-</div>
-
-<br><br>
-    <div class="table">
-    <table>
-      <thead>
-        <tr>
-          <th>Exchange ID</th>
-          <th>Date</th>
-          <th>Line</th>
-          <th>User 1</th>
-          <th>User 2</th>
-          <th>Created</th>
-          <th>Validated</th>
-          <th>Message</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @exchanges.each do |exchange| %>
-        <% shift_owner = Shift.find(exchange.shift_owner_id) %>
-        <% shift_answer = Shift.find(exchange.shift_answer_id) %>
-        <% date = shift_owner.date %>
-        <% line = Line.find(shift_owner.line_id).name %>
-        <tr>
-          <td><%= exchange.id %></td>
-          <td><%= date %></td>
-          <td><%= line %></td>
-          <td><%= "#{User.find(shift_owner.user_id).first_name} #{User.find(shift_owner.user_id).last_name}"%></td>
-          <td><%= "#{User.find(shift_answer.user_id).first_name} #{User.find(shift_answer.user_id).last_name}"%></td>
-          <td><%= exchange.created_at %></td>
-          <td><%= exchange.updated_at %></td>
-          <td><%= exchange.message %></td>
-        </tr>
+  <div class="results-filter">
+    <!-- Filtre par date -->
+    <form action="/supervise/stat" method="get">
+      <input type="date" name="date">
+      <!-- Filtre par line -->
+      <label for="line_id">Line:</label>
+      <select name="line_id">
+        <option value=""></option>
+        <% @lines.each do |line| %>
+        <option value="<%= line.id %>"><%= line.name %></option>
         <% end %>
-      </tbody>
-    </table>
-    </div>
+      </select>
+      <button>Filtrer</button>
+    </form>
+  </div>
 
-<br><br>
+  <br><br>
+      <div class="table">
+      <table>
+        <thead>
+          <tr>
+            <th>Exchange ID</th>
+            <th>Date</th>
+            <th>Line</th>
+            <th>User 1</th>
+            <th>User 2</th>
+            <th>Created</th>
+            <th>Validated</th>
+            <th>Message</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @exchanges.each do |exchange| %>
+          <% shift_owner = Shift.find(exchange.shift_owner_id) %>
+          <% shift_answer = Shift.find(exchange.shift_answer_id) %>
+          <% date = shift_owner.date %>
+          <% line = Line.find(shift_owner.line_id).name %>
+          <tr>
+            <td><%= exchange.id %></td>
+            <td><%= date %></td>
+            <td><%= line %></td>
+            <td><%= "#{User.find(shift_owner.user_id).first_name} #{User.find(shift_owner.user_id).last_name}"%></td>
+            <td><%= "#{User.find(shift_answer.user_id).first_name} #{User.find(shift_answer.user_id).last_name}"%></td>
+            <td><%= exchange.created_at %></td>
+            <td><%= exchange.updated_at %></td>
+            <td><%= exchange.message %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+</div>
