@@ -1,8 +1,8 @@
 <div class="my_container">
   <h1 class="titre_1">Proposition d'échange</h1>
 
-<div class="card_dashboard p-2 mb-4">
-  <%= render partial: "shared/main_card", locals: {shift: @shift_answered} %>
+<div class="card_dashboard mb-4">
+  <%= render partial: "shared/main_card", locals: {shift: @shift_answered, avatar: true} %>
 </div>
 
   <div class="container mx-auto">
