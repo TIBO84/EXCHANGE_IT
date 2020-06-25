@@ -19,7 +19,11 @@
   justify-content: flex-end;
 }
 
-.annuler, .btn-submit {
+.annuler {
+margin-top: 20px;
+}
+
+.btn-submit {
   margin-top: 40px;
   text-align: center;
   border-radius: 5px;
@@ -33,7 +37,7 @@
   padding: 0.5rem;
 }
 
-.annuler:hover, .btn-submit:hover, .button:hover {
+.btn-submit:hover, .button:hover {
   background-color: #ffff;
   color: #5B27EF;
   text-decoration: none;
