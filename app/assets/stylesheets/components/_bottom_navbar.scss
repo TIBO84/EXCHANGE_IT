@@ -17,7 +17,8 @@ $color-h1:#5B27EF;
   }
 
   a:hover {
-    font-size: 18px;
+    display: block;
+    transform: scale(1.2);
     transition: 0.2s;
   }
 
@@ -55,8 +56,8 @@ $color-h1:#5B27EF;
   }
 
   #plus_icon:hover {
-    font-size: 66px;
-    line-height: 30px;
+    display: block;
+    transform: scale(1.2);
     vertical-align: middle;
     transition: 0.2s;
   }
