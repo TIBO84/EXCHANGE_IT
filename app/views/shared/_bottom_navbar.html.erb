@@ -4,9 +4,9 @@
     <span><%= link_to "MES DEMANDES", my_shifts_path %></span>
     <p class="plus">
       <% if home %>
-        <span><%= link_to "+", shift_new_path %></span>
+        <span><%= link_to "+", shift_new_path, id:"plus_icon"%></span>
       <% else %>
-        <span><a href="/dashboard"><i class="fa fa-home"></i></a></span>
+        <span><a href="/dashboard"><i id="plus_icon"class="fa fa-home"></i></a></span>
       <% end %>
     </p>
     <span><%= link_to "MES REPONSES", my_answers_path %></span>
