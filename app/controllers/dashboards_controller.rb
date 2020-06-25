@@ -122,7 +122,8 @@ class DashboardsController < ApplicationController
 
   def where_sql_myshifts_shifts_owner
     <<~SQL
-      users.id = :user_id
+      users.id = :user_id AND
+      exchange_accepted_level_one IS NULL
     SQL
   end
 end

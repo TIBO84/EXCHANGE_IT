@@ -11,7 +11,7 @@ class ExchangesController < ApplicationController
   def create
     @shift = Shift.new(shift_params)
     @shift.user_id = current_user.id
-    
+
     if (params[:commit] == "Ajouter une autre proposition")
       if @shift.save
         @exchange = Exchange.new(shift_answer_id: @shift.id, shift_owner_id: params[:shift_owner_id])
@@ -51,8 +51,10 @@ class ExchangesController < ApplicationController
 
   def accept_user!
     @exchange = Exchange.find(params[:exchange_id])
+    @shift_owner = Shift.find(@exchange.shift_owner_id)
     # @exchanges_refused = Exchange.joins(joins_sql_myexchanges).where(where_sql_myexchanges_refused, user_id: current_user.id)
-    @exchange.update(accepted_owner:true)
+    @exchange.update(accepted_owner: true)
+    @shift_owner.update(exchange_accepted_level_one: true)
 
     # @exchanges_refused.update(accepted_owner:false)
     redirect_to my_shifts_path, notice: 'Echange validé'
