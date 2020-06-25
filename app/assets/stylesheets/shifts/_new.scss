@@ -33,11 +33,15 @@ $color-h1:#5B27EF;
   margin-top: 40px;
 
 }
+.sub-form {
+  background-color: aliceblue;
+
+
+}
 
 .link {
   color: black;
   text-decoration: none;
-  border: 1px solid black;
 
 }
 
@@ -46,9 +50,13 @@ $color-h1:#5B27EF;
 }
 
 .annuler a {
-  padding: 5px;
+  padding: 15px;
   border-radius: 5px;
   text-decoration: none;
+}
+
+.form {
+  display: grid
 }
 
 .btn-submit {
