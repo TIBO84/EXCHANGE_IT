@@ -1,29 +1,55 @@
 <div class="my_container">
-  <h1 class= "titre_1">Acceuil <%= "#{@current_user.first_name} #{@current_user.last_name}" %></h1>
+  <h1 class= "titre_1">Accueil <%= "#{@current_user.first_name} #{@current_user.last_name}" %></h1>
+
+  <h2>Echanges à venir - validés par manager</h2>
+
+    <% @exchanges_validated.each do |exchange| %>
+      <div class= "exchange_cards">
+        <% shift_owner = Shift.find(exchange.shift_owner_id) %>
+        <% shift_of_current_user = User.find(shift_owner.user_id) == current_user %>
+        <%= render partial: "shared/one_exchange-card", locals: { shift: shift_owner, shift_of_current_user: shift_of_current_user } %>
+
+        <div class="exchange_symbol">
+          <i class="fas fa-exchange-alt"></i>
+        </div>
+        <% shift_answer = Shift.find(exchange.shift_answer_id) %>
+        <% shift_of_current_user = User.find(shift_answer.user_id) == current_user %>
+        <%= render partial: "shared/one_exchange-card", locals: { shift: shift_answer, shift_of_current_user: shift_of_current_user } %>
+      </div>
+    <% end %>
+
+
+  <hr class="separation_bar">
 
   <h2 class= "titre_2">Demandes d'échange</h2>
 
   <div class="filter mb-4 p-2">
-    <form action="/dashboard" method="get" class="flex justify-between">
-      <div class="flex justify-between">
-      <input type="date" name="date" class="bg-gray-200 rounded-lg" id="data-flatpickr" placeholder="Selectionner une date">
-      <!-- Filtre par line -->
-      <select name="line_id" class="ml-2 bg-gray-200 rounded-lg">
-        <option value="" ></option>
-        <% @lines.each do |line| %>
-        <option value="<%= line.id %>"><%= line.name %></option>
-        <% end %>
-      </select>
+    <form action="/dashboard" method="get" class="form_filter_class">
+      <div class="filtres_date_ligne">
+        <div class="filtre_date">
+          <p>Date</p>
+          <input type="date" name="date" class="champ_date bg-gray-200 rounded-lg" id="data-flatpickr" placeholder="Date">
+        </div>
+        <!-- Filtre par line -->
+        <div class="filtre_ligne">
+          <p>Ligne</p>
+          <select name="line_id" class="champ_ligne bg-gray-200 rounded-lg">
+            <option value="" ></option>
+            <% @lines.each do |line| %>
+              <option value="<%= line.id %>"><%= line.name %></option>
+            <% end %>
+          </select>
+        </div>
       </div>
-      <button class="button_action">Filtrer</button>
+      <button class="button_filter">Filtrer</button>
     </form>
   </div>
 
   <% x = 1 %>
   <% @shifts.each do |shift| %>
-    <div class="card_dashboard p-2 mb-4">
+    <div class="card_dashboard mb-4">
       <label for="<%= "ex_card_#{x}" %>" class="block mb-0">
-        <%= render partial: "shared/main_card", locals: {shift: shift} %>
+        <%= render partial: "shared/main_card", locals: {shift: shift, avatar: true} %>
       </label>
 
       <input type="checkbox" id="<%= "ex_card_#{x}" %>" class="" name="test" style="opacity:0; position:absolute;">

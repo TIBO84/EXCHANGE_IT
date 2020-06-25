@@ -24,8 +24,47 @@
 
 .filter {
   display: flex;
+  justify-content: center;
+}
+
+.form_filter_class{
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.filtres_date_ligne{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filtre_date{
+  display: flex;
+  flex-direction: column;
   justify-content: flex-end;
+  // margin-bottom: 0.5rem;
+  margin-right: 1rem;
 }
 
 
+.filtre_ligne{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-right: 0.5rem;
+}
+
+.champ_date{
+  // margin-right: 1rem;
+  // margin-left: 1rem;
+  height: 25px;
+  width: 75px;
+}
+
+.champ_ligne{
+  height: 25px;
+  margin-right: 1rem;
+  width: 75px;
+}
 

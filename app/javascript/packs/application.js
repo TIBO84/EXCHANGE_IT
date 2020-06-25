@@ -29,7 +29,8 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
-import {showReviewAnswer} from './supervise_home';
+
+import { showReviewAnswer } from './supervise_home';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -39,7 +40,6 @@ document.addEventListener('turbolinks:load', () => {
 import flatpickr from "flatpickr";
 
 const inputDate = document.querySelector("#data-flatpickr")
-
 
 if (inputDate) {
   flatpickr(inputDate);
