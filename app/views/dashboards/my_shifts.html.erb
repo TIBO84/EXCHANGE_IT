@@ -10,14 +10,14 @@
           <% if exchange.shift_owner.date >= Date.today %>
             <%# je commence par afficher chacun de ces shifts %>
             <% shift_of_current_user = User.find(exchange.shift_owner.user_id) == current_user %>
-            <%= render partial: "shared/one_exchange-card", locals: { shift: exchange.shift_owner, shift_of_current_user: shift_of_current_user } %>
+            <%= render partial: "shared/one_exchange-card", locals: { shift: exchange.shift_owner, shift_of_current_user: shift_of_current_user, validated: false } %>
 
               <div class="exchange_symbol">
                 <i class="fas fa-exchange-alt"></i>
               </div>
 
               <% shift_of_current_user = User.find(exchange.shift_answer.user_id) == current_user %>
-              <%= render partial: "shared/one_exchange-card", locals: { shift: exchange.shift_answer, shift_of_current_user: shift_of_current_user } %>
+              <%= render partial: "shared/one_exchange-card", locals: { shift: exchange.shift_answer, shift_of_current_user: shift_of_current_user, validated: false } %>
             <%end%>
           </div>
         <%end%>

@@ -7,14 +7,16 @@
       <div class= "exchange_cards">
         <% shift_owner = Shift.find(exchange.shift_owner_id) %>
         <% shift_of_current_user = User.find(shift_owner.user_id) == current_user %>
-        <%= render partial: "shared/one_exchange-card", locals: { shift: shift_owner, shift_of_current_user: shift_of_current_user } %>
+        <% validated = User.find(shift_owner.user_id) != current_user %>
+        <%= render partial: "shared/one_exchange-card", locals: { shift: shift_owner, shift_of_current_user: shift_of_current_user, validated: validated } %>
 
         <div class="exchange_symbol">
           <i class="fas fa-exchange-alt"></i>
         </div>
         <% shift_answer = Shift.find(exchange.shift_answer_id) %>
         <% shift_of_current_user = User.find(shift_answer.user_id) == current_user %>
-        <%= render partial: "shared/one_exchange-card", locals: { shift: shift_answer, shift_of_current_user: shift_of_current_user } %>
+        <% validated = User.find(shift_answer.user_id) != current_user %>
+        <%= render partial: "shared/one_exchange-card", locals: { shift: shift_answer, shift_of_current_user: shift_of_current_user, validated: validated } %>
       </div>
     <% end %>
 
