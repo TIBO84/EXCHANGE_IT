@@ -1,7 +1,7 @@
 <div class="my_container">
   <h1 class= "titre_1">Accueil <%= "#{@current_user.first_name} #{@current_user.last_name}" %></h1>
 
-  <h2>Echanges à venir - validés par manager</h2>
+  <h2 classe="titre_2">Echanges à venir - validés par manager</h2>
 
     <% @exchanges_validated.each do |exchange| %>
       <div class= "exchange_cards">
