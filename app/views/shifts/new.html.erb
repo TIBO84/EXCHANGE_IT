@@ -15,7 +15,8 @@
 <div class="titre container">
   <h1>Creer une nouvelle proposition</h1>
 </div>
-<div class="container">
+
+<div class="form container">
   <%= simple_form_for @shift do |f| %>
   <%= f.input :date, label: 'Date', as: :string, input_html: {id: "data-flatpickr"} %>
   <%= f.input :line_id, collection: @lines, label: 'Lignes' %>
@@ -23,7 +24,7 @@
   <%= f.input :hour_end, label: 'Heure de fin' %>
   <%= f.input :working_hours, as: :time, label: 'Heures travaillés (début)' %>
   <%= f.input :working_minutes, as: :time, label: 'Heures travaillés (fin)' %>
-  <%= f.button :submit, "Soumettre le formulaire", data: {confirm: "Etes vous sûr des informations saisies ?"}, class: 'button_action' %>
+  <%= f.button :submit, "Soumettre le formulaire", data: {confirm: "Etes vous sûr des informations saisies ?"}, class: 'sub-form' %>
   <% end %>
 </div>
 
