@@ -1,15 +1,22 @@
 
 <h1>Shifts#new</h1>
 
+<%= simple_form_for @shift do |f| %>
+  <%= f.input :date %>
+  <%= f.input :username %>
+  <%= f.input :password %>
+  <%= f.button :submit %>
+<% end %>
 
 
 <div class="container mx-auto">
   <form class="simple_form new_shift" id="new_shift" novalidate="novalidate" action="/shifts" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="2OBrrtuBmFzfg+/4sZBkEXXRAcXCWWFFvNckmTLdWJa+OX4N7s3b2gitH3Qp3bdvuG2e/T6G045aRAWyVloHDw==" />
     <!-- <div class="form-group date required shift_date"><label class="date required" for="shift_date">Date <abbr title="required">*</abbr></label><div class="d-flex flex-row justify-content-between align-items-center"><input class="form-control mx-1 date required" type="date" name="shift[date]" id="shift_date" /></div></div> -->
-    <div class="date-elm">
-      <input class="date" type="date" name="shift[date]" id="shift_date">
-    </div>
+
     <div class="fond">
+      <div class="date-elm">
+      <input class="date" type="date" name="shift[date]" id="data-flatpickr" placeholder="date">
+    </div>
 
       <div class="form-group select required shift_line_id"><label class="select required" for="shift_line_id">Ligne <abbr title="required">*</abbr></label><select class="form-control select required" name="shift[line_id]" id="shift_line_id"><option value=""></option>
         <option value="21">T1</option>

@@ -1,32 +1,42 @@
 
-<div class="my_home_page">
-  <div class="home_page_image"> 
+<!-- <div class="my_home_page">
+  <div class="home_page_image">
     <h1 class="home_page_title">Exchange-it</h1> <br>
     <h2 class="home_page_baseline">Simplifiez-vous l'échange</h1>
-  </div>
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs container md">
-    <%= f.input :email,
-    placeholder: "user@example.com",
-    required: false,
-    autofocus: true,
-    input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-        placeholder: "Entrez votre mot de passe",
-        required: false,
-        input_html: {
-          autocomplete: "current-password",
-          class: 'bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal'
-        } %>
+    </div> -->
+
+    <div class="">
+      <div class="present">
+        <p>Exchange It</p>
+        <p>Simplifier vous l'échange</p>
+      </div>
+    </div>
+    <div class="session-container container">
+     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+     <div class="form-inputs">
+      <%= f.input :email,
+      placeholder: "user@example.com",
+      required: false,
+      autofocus: true,
+      input_html: { autocomplete: "email" } %>
+      <%= f.input :password,
+      placeholder: "Entrez votre mot de passe",
+      required: false,
+      input_html: {
+      autocomplete: "current-password",
+      class: ''
+    } %>
     <%= f.check_box :remember_me, checked: true, id: 'remember-me', class: 'hidden' %>
   </div>
+</div>
 
 
-  <div class="form-actions container p-0">
-    <%= f.button :submit, "Log in", class: 'bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded' %>
+<div class="container">
+  <div class="form-log">
+    <%= f.button :submit, "Log in", class: 'button_action'%>
+    <% end %>
   </div>
-  <% end %>
-  <div class="container my-2">
-  <%= render "devise/shared/links" %>
+    <%= render "devise/shared/links" %>
   </div>
 </div>
+
