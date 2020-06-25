@@ -21,7 +21,7 @@
 
   <% x = 1 %>
   <% @shifts.each do |shift| %>
-    <div class="card_dashboard p-2 mb-4">
+    <div class="card_dashboard mb-4">
       <label for="<%= "ex_card_#{x}" %>" class="block mb-0">
         <%= render partial: "shared/main_card", locals: {shift: shift} %>
       </label>

@@ -1,15 +1,29 @@
+
+
 .container__card-exchange {
+    display: flex;
+    background-color: #ffff;
+    border-radius: 5px;
+    position: relative;
+    padding-right: 3rem;
+
   .card-exchange__line {
-    background-color: #CAFF8A;
-    color: black;
-    border-radius: 2rem;
+    background-color: #27EFE3;
+    color: #ffff;
+    font-size: bolder;
     height: 4rem;
+    padding: 0.7rem;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
   }
 
   .card_avatar {
     background-color: #C4C4C4;
-    width: 4rem;
-    height: 4rem;
+    width: 3.5rem;
+    height: 3.5rem;
     border-radius: 50%;
+    position: absolute;
+    right: -8px;
+    top: -16px;
   }
 }

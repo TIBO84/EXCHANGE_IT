@@ -10,10 +10,12 @@
   border: solid 2px #5B27EF;
   color: #FFFFFF;
   text-align: center;
-  font-weight: 550;
+  font-weight: 400;
   transition: all 0.5s;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.1rem;
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
 }
 
 .button_action:hover {

@@ -1,15 +1,15 @@
 <div class="container__card-exchange flex justify-between items-center">
-  <div class="card-exchange__line w-16 flex justify-center items-center">
-    <h2><%= Line.find(shift.line_id).name %></h2>
+  <div class="card-exchange__line flex justify-center items-center">
+    <h2> <%= Line.find(shift.line_id).name %></h2>
   </div>
-  <h2><%= l(shift.date, format: "%e %b") %></h2>
-  <div class="card-exchange__hour-start" >
-    <p>Début</p>
-    <h3><%= shift.hour_start.strftime("%H:%M") %></h3>
-  </div>
-  <div class="card-exchange__hour-end">
-    <p>Fin :</p>
-    <h3><%= shift.hour_end.strftime("%H:%M") %></h3>
-  </div>
+    <h2><%= l(shift.date, format: "%a %e %b").upcase %></h2>
+    <div class="card-exchange__hour-start" >
+      <p>Début</p>
+      <h3><%= shift.hour_start.strftime("%H:%M") %></h3>
+    </div>
+    <div class="card-exchange__hour-end">
+      <p>Fin :</p>
+      <h3><%= shift.hour_end.strftime("%H:%M") %></h3>
+    </div>
   <div class="card_avatar"></div>
 </div>

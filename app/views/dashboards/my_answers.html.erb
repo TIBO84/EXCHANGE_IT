@@ -32,25 +32,21 @@
   <hr class="separation_bar">
   <h2 class="titre_2">Mes réponses en attente</h2>
 
-  <%# j'itère sur tous les shifts émetteurs qui n'ont pas encore fait l'objet d'une réponse acceptée %>
-  <%@pending_shifts.each do |shift|%>
-    <%# je vérifie que la date de ce shift est bien ultérieure ou égale a la date du jour %>
-    <% if shift.date >= Date.today %>
-      <%# je commence par afficher chacun de ces shifts %>
-      <p>Demande originelle</p>
-      <%= raw(ap shift)%>
-      <%# pour chacun de ces shift, je vais ensuite chercher quel sont les shifts des répondants qui n'ont pas encore été acceptés %>
-      <%# pour ca, il faut que j'identifie quel sont les exchanges correspondants qui ont un booléen accepted_owner = false %>
-      <%# je vais donc itérer sur tous les exchanges associés à ce shift %>
-      <p>réponse que j'avais faite qui n'a pas encore été choisie par le demandeur</p>
+
+    <div class="mb-4">
+    <% @pending_shifts.each do |shift| %>
+      <% if shift.date >= Date.today %>
+        <div class="card_dashboard mb-1">
+            <%= render partial: "shared/main_card", locals: { shift: shift } %>
+        </div>
+
       <%shift.exchange_answers.each do |exchange|%>
-        <%# je teste si l'exchange en question a son accepted_owner = nil  %>
-        <%if exchange.accepted_owner == nil %>
-          <%# dans ce cas, j'affiche le shift en question %>
-          <%= raw(ap exchange.shift_answer)%>
-        <%end%>
-      <%end%>
-    <%end%>
-  <%end%>
+        <% if exchange.accepted_owner == nil %>
+          <%= render partial: "shared/main_card_answer", locals: { shift: exchange.shift_answer } %>
+        <% end %>
+      <% end %>
+    <% end  %>
+  <% end %>
+  </div>
 </div>
 <%= render partial: "shared/bottom_navbar", locals: { home: false } %>
