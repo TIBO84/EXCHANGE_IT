@@ -1,3 +1,5 @@
+$color-h1:#5B27EF;
+
 .shifts-new {
   background-color: white;
 }
@@ -27,8 +29,8 @@ margin-top: 20px;
   margin-top: 40px;
   text-align: center;
   border-radius: 5px;
-  background-color: #5B27EF;
-  border: solid 2px #5B27EF;
+  background-color: $color-h1;
+  border: solid 2px $color-h1;
   color: #FFFFFF;
   text-align: center;
   font-weight: 550;
@@ -39,15 +41,15 @@ margin-top: 20px;
 
 .btn-submit:hover, .button:hover {
   background-color: #ffff;
-  color: #5B27EF;
+  color: $color-h1;
   text-decoration: none;
-  border : solid 2px #5B27EF;
+  border : solid 2px $color-h1;
 }
 
 .button {
 color: #FFFFFF;
 font-weight: 550;
-background-color: #5B27EF;
+background-color: $color-h1;
 }
 
 

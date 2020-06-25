@@ -1,3 +1,5 @@
+$color-h1:#5B27EF;
+
 .button-sd {
   height: 80px;
   width: 250px;
@@ -6,8 +8,8 @@
 
 .button_action {
   border-radius: 5px;
-  background-color: #5B27EF;
-  border: solid 2px #5B27EF;
+  background-color: $color-h1;
+  border: solid 2px $color-h1;
   color: #FFFFFF;
   text-align: center;
   font-weight: 800;
@@ -20,17 +22,17 @@
 
 .button_action:hover {
   background-color: #ffff;
-  color: #5B27EF;
+  color: $color-h1;
   text-decoration: none;
-  border : solid 2px #5B27EF;
+  border : solid 2px $color-h1;
 }
 
 .button_filter {
   height: 30px;
   border-radius: 5px;
   vertical-align: center;
-  background-color: #5B27EF;
-  border: solid 2px #5B27EF;
+  background-color: $color-h1;
+  border: solid 2px $color-h1;
   color: #FFFFFF;
   text-align: center;
   font-weight: 550;
@@ -43,7 +45,7 @@
 
 .button_filter:hover {
   background-color: #ffff;
-  color: #5B27EF;
+  color: $color-h1;
   text-decoration: none;
-  border : solid 2px #5B27EF;
+  border : solid 2px $color-h1;
 }

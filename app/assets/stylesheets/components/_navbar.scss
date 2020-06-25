@@ -1,3 +1,6 @@
+
+$color-h1:#5B27EF;
+
 .navbar {
 
 }
@@ -15,7 +18,7 @@
 
 #phone_navbar {
 
-  background-color: #5b27ef;
+  background-color: $color-h1;
   display: flex;
   justify-content: flex-end;
 }
