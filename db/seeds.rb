@@ -29,9 +29,9 @@ l4 = Line.create!(unit: u1, name: "T4", transport_type: "Tramway")
 
 puts ".... CREATE USERS"
 #2 user employee
-employee_1 = User.create!(first_name: "Joe", last_name: "Rista", unit: u1, email: "employee_1@gmail.com", matricule: 1234, password: 123456, image: "raoni.jpeg" )
-employee_2 = User.create!(first_name: "Jacky", last_name: "Bonvita", unit: u1, email: "employee_2@gmail.com", matricule: 5678, password: 123456, image: "raoult.jpeg" )
-employee_3 = User.create!(first_name: "Toto", last_name: "Dupont", unit: u2, email: "employee_3@gmail.com", matricule: 5679, password: 123456, image: "trump.jpeg" )
+employee_1 = User.create!(first_name: "Joe", last_name: "Rista", unit: u1, email: "employee_1@gmail.com", matricule: 1234, password: 123456, image: "raoni.jpg" )
+employee_2 = User.create!(first_name: "Jacky", last_name: "Bonvita", unit: u1, email: "employee_2@gmail.com", matricule: 5678, password: 123456, image: "raoult.jpg" )
+employee_3 = User.create!(first_name: "Toto", last_name: "Dupont", unit: u2, email: "employee_3@gmail.com", matricule: 5679, password: 123456, image: "trump.jpg" )
 employee_3 = User.create!(first_name: "Titi", last_name: "TOCTOC", unit: u1, email: "employee_4@gmail.com", matricule: 5673, password: 123456, image: "kim.png" )
 
 #1 user manager
