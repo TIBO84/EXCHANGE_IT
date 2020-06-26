@@ -7,6 +7,7 @@
     <h2 class= "titre_2">Echanges à venir</h2><h3 class="titre_3 ml-2">(validés manager)</h3>
   </div>
 
+  <% if @exchanges_validated.any? %>
     <% @exchanges_validated.each do |exchange| %>
       <div class="mb-3">
       <div class= "exchange_cards mb-1">
@@ -33,6 +34,9 @@
         <% end %>
       </div>
       <% end %>
+    <% else %>
+      <p class="italic text-xs">Pas d'échanges validés pour le moment.</p>
+    <% end %>
 
 
   <hr class="separation_bar">

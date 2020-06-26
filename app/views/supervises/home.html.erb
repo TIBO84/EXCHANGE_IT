@@ -1,6 +1,6 @@
 <div class="my_container">
   <div class='flex justify-between mb-6'>
-    <h1 class="titre_1">Supervision Dashboard</h1>
+    <h1 class="titre_1 other">Supervision Dashboard</h1>
     <%= link_to "Historique", stat_path, class:"button_action hollow" %>
   </div>
   <% @exchanges.each do |exchange| %>
@@ -28,7 +28,7 @@
         </div>
       </div>
       <br>
-      <div class="exchange-review__manager-answer mx-2">
+      <div class="exchange-review__manager-answer mx-2 px-2">
         <%= simple_form_for exchange, url: exchange_path(exchange.id), method: 'PATCH', html: { class: "flex mx-auto justify-between items-center" } do |f| %>
           <%= f.input :accepted_manager, as: :radio_buttons, collection: [[true, 'Oui'], [false, 'Non']], label_method: :second, value_method: :first, label: 'Réponse :' %>
           <%= f.input :message, label: 'Commentaires :', input_html: { id: 'manager-answer__message' } %>
