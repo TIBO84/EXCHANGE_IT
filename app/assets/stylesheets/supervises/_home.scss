@@ -1,4 +1,6 @@
 .supervises-home {
+  position: relative;
+
   .exchange-review {
     .exchange-review__manager-answer {
       max-height: 0;
@@ -11,8 +13,27 @@
     &.full .exchange-review__manager-answer {
       max-height: 1000px;
       transition: max-height 1s ease-in-out;
-    }
 
+      label {
+        font-size: 12px;
+      }
+    }
+    .form-group.exchange_message {
+      flex-grow: 1;
+      margin-bottom: 2rem;
+      margin-left: 1.5rem;
+      margin-right: 1.5rem;
+
+      label {
+        margin-bottom: 0;
+      }
+    }
+    .form-group.exchange_accepted_manager{
+      margin-bottom: 2rem;
+      legend {
+        font-size: 12px;
+      }
+    }
   }
 
   .supervise_identities{

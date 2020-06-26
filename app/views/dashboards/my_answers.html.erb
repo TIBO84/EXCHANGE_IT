@@ -1,9 +1,9 @@
 <div class="my_container">
-  <h1 class="titre_1">Mes réponses</h1>
-  <h2 class="titre_2">Acceptées</h2>
+  <h1 class="titre_1 mb-4 other">Mes réponses</h1>
 
-  <hr class="separation_bar">
-  <div class="mt-4 mb-">
+  <div ><h2 class="titre_2 mb-3">En attente de validation</h2></div>
+
+  <div class="">
     <%# j'itère sur tous les shifts émetteurs qui ont fait l'objet d'une réponse acceptée %>
     <%@accepted_shifts.each do |shift|%>
       <div class= "exchange_cards">
@@ -30,7 +30,7 @@
     <%end%>
   </div>
   <hr class="separation_bar">
-  <h2 class="titre_2">Mes réponses en attente</h2>
+  <h2 class="titre_2 mb-3">Mes réponses en attente</h2>
 
 
     <div class="mb-4">

@@ -1,7 +1,11 @@
-<div class="my_container">
-  <h1 class= "titre_1">Accueil <%= "#{@current_user.first_name} #{@current_user.last_name}" %></h1>
-
-  <h2 class= "titre_2">Echange(s) à venir (validé(s) par manager)</h2>
+<div class='header-dashboard'>
+    <h1 class= "titre_1">Exchange-it</h1>
+    <h3 class= "titre_3">Bonjour, <strong><%= "#{@current_user.first_name} #{@current_user.last_name}" %></strong></h3>
+  </div>
+<div class="my_container home">
+  <div class='flex items-center mb-2 mt-2'>
+    <h2 class= "titre_2">Echanges à venir</h2><h3 class="titre_3 ml-2">(validés manager)</h3>
+  </div>
 
     <% @exchanges_validated.each do |exchange| %>
       <div class="mb-3">
@@ -20,10 +24,10 @@
         <%= render partial: "shared/one_exchange-card", locals: { shift: shift_answer, shift_of_current_user: shift_of_current_user, validated: validated } %>
       </div>
         <% if exchange.message %>
-          <div class="flex justify-center items-center">
-            <em class="bg-gray-200 text-xl px-8 rounded-lg">
-              <p class="text-xs">Commentaire du manager:</p>
-              <p class="text-xs"><%= exchange.message %></p>
+          <div class="flex justify-left items-center">
+            <em class="text-xl px-8 rounded-lg">
+              <p class="text-xs"><span class='not-italic'>Manager:</span> <%= exchange.message %></p>
+
             </em>
           </div>
         <% end %>
@@ -33,7 +37,7 @@
 
   <hr class="separation_bar">
 
-  <h2 class= "titre_2">Service(s) disponible(s)</h2>
+  <h2 class= "titre_2 mb-2">Services disponibles</h2>
 
   <div class="filter mb-4 p-2">
     <form action="/dashboard" method="get" class="form_filter_class">

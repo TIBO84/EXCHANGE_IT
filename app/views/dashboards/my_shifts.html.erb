@@ -1,10 +1,9 @@
-<div class="my_container">
-  <div class="titre_1"><h1>Mes demandes en attente</h1></div>
+  <div class="my_container">
+  <div class="titre_1 mb-4 other"><h1>Mes demandes</h1></div>
 
-  <% if @exchanges_pending_manager.any? %>
-  <div ><h2 class="titre_2">En attente de validation par le manager</h2></div>
-  <hr class="separation_bar">
-    <div class="mt-4 mb-">
+  <div class="">
+  <div ><h2 class="titre_2 mb-3">En attente de validation</h2></div>
+    <% if @exchanges_pending_manager.any? %>
       <% @exchanges_pending_manager.each do |exchange| %>
         <div class= "exchange_cards">
           <% if exchange.shift_owner.date >= Date.today %>
@@ -12,21 +11,21 @@
             <% shift_of_current_user = User.find(exchange.shift_owner.user_id) == current_user %>
             <%= render partial: "shared/one_exchange-card", locals: { shift: exchange.shift_owner, shift_of_current_user: shift_of_current_user, validated: false } %>
 
-              <div class="exchange_symbol">
-                <i class="fas fa-exchange-alt"></i>
-              </div>
+            <div class="exchange_symbol">
+              <i class="fas fa-exchange-alt"></i>
+            </div>
 
-              <% shift_of_current_user = User.find(exchange.shift_answer.user_id) == current_user %>
-              <%= render partial: "shared/one_exchange-card", locals: { shift: exchange.shift_answer, shift_of_current_user: shift_of_current_user, validated: false } %>
-            <%end%>
-          </div>
-        <%end%>
+            <% shift_of_current_user = User.find(exchange.shift_answer.user_id) == current_user %>
+            <%= render partial: "shared/one_exchange-card", locals: { shift: exchange.shift_answer, shift_of_current_user: shift_of_current_user, validated: false } %>
+          <%end%>
+        </div>
+      <%end%>
     </div>
   <% end %>
 
   <hr class="separation_bar">
 
-  <div ><h2 class="titre_2">En attente de réponse(s) / ou avec réponse(s)</h2></div>
+  <div ><h2 class="titre_2 mb-3">En attente de réponses</h2></div>
 
     <% x = 1 %>
     <% @shifts_and_answers.each do |owner, answers| %>
@@ -51,7 +50,7 @@
 
         <% end %>
       <% end %>
-  </div>
+    </div>
     <% end  %>
 
 <br>
