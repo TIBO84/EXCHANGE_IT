@@ -5,6 +5,6 @@ class Line < ApplicationRecord
   validates :name, uniqueness: :true
   TRANSPORT_TYPE = ["Bus", "Métro", "Trolley", "Tramway", "Funiculaire"]
   validates :transport_type, inclusion: { in: TRANSPORT_TYPE }
-  LINE_NAMES = ["T1", "T2", "T3", "T4"] # TODO
+  LINE_NAMES = ["T1", "T2", "T5", "T6"] # TODO
   validates :name, inclusion: { in: LINE_NAMES }
 end

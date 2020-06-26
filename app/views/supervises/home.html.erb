@@ -23,7 +23,7 @@
 
           <div>
             <% shift_answer = Shift.find(exchange.shift_answer_id) %>
-            <%= render partial: "shared/one_exchange-card", locals: { shift: shift_owner, shift_of_current_user: false, validated: false } %>
+            <%= render partial: "shared/one_exchange-card", locals: { shift: shift_answer, shift_of_current_user: false, validated: false } %>
           </div>
         </div>
       </div>
