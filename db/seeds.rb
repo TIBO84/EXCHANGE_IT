@@ -315,12 +315,12 @@ exchangedonald_pending_user3 = Exchange.create(
 )
 
 
-exchangedider_pending_user1 = Exchange.create(
-  shift_owner: shift11,
-  shift_answer: shiftdider1,
-  accepted_owner: nil,
-  accepted_manager: nil
-)
+# exchangedider_pending_user1 = Exchange.create(
+#   shift_owner: shift11,
+#   shift_answer: shiftdider1,
+#   accepted_owner: nil,
+#   accepted_manager: nil
+# )
 
 exchangeforkim1 = Exchange.create(
   shift_owner: shift5,
