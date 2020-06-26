@@ -1,41 +1,40 @@
-
-<div class="my_supervise_stats_container">
-  <div class='flex justify-between mb-6'>
+<div class="my_supervise_stats_container px-4">
+  <div class='flex justify-between mb-10'>
     <h1 class="titre_1 other">Historique des demandes d'échange </h1>
     <%= link_to "Back to dashboard", supervise_path, class:"button_action hollow" %>
   </div>
 
-  <h2 class="titre_2"><%= Unit.find(current_user.unit_id).name %></h1>
+  <h2 class="text-xl mb-6"><%= Unit.find(current_user.unit_id).name %></h1>
 
-  <div class="results-filter">
+  <div class="results-filter my-6">
     <!-- Filtre par date -->
     <form action="/supervise/stat" method="get">
-      <input type="date" name="date">
+      <label for="line_id">Date :</label>
+      <input type="date" name="date" class="mr-4 border-b border-gray-300 p-2 flatpickr">
       <!-- Filtre par line -->
-      <label for="line_id">Line:</label>
-      <select name="line_id">
-        <option value=""></option>
+      <label for="line_id">Ligne :</label>
+      <select name="line_id" class="w-32 border-b border-gray-300 mr-4 p-2">
+        <option value="" disabled selected></option>
         <% @lines.each do |line| %>
-        <option value="<%= line.id %>"><%= line.name %></option>
+          <option value="<%= line.id %>"><%= line.name %></option>
         <% end %>
       </select>
-      <button>Filtrer</button>
+      <button class="button_action">Filtrer</button>
     </form>
   </div>
-  <br><br>
-<div>
-  <div class="table_centrage table">
-    <table>
+
+  <div class="table_centrage table overflow-x-scroll">
+    <table class="w-full">
       <thead>
-        <tr>
-          <th>Identifiant de l'échange</th>
-          <th>Date</th>
-          <th>Ligne</th>
-          <th>Demandeur</th>
-          <th>Répondant</th>
-          <th>Date de création</th>
-          <th>Date de validation</th>
-          <th>Message</th>
+        <tr class="text-sm">
+          <th class="border-0 ">Id.</th>
+          <th class="border-0 ">Date</th>
+          <th class="border-0 ">Ligne</th>
+          <th class="border-0 ">Demandeur</th>
+          <th class="border-0 ">Répondant</th>
+          <th class="border-0 ">Date de création</th>
+          <th class="border-0 ">Date de validation</th>
+          <th class="border-0 ">Message</th>
         </tr>
       </thead>
       <tbody>
@@ -57,6 +56,5 @@
         <% end %>
       </tbody>
     </table>
-    </div>
   </div>
 </div>
