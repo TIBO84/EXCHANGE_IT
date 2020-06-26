@@ -13,7 +13,7 @@
         <div class= "exchange_cards">
           <div>
             <% shift_owner = Shift.find(exchange.shift_owner_id) %>
-            <%= render partial: "shared/one_exchange-card", locals: { shift: shift_owner, shift_of_current_user: false } %>
+            <%= render partial: "shared/one_exchange-card", locals: { shift: shift_owner, shift_of_current_user: false, validated: false } %>
           </div>
 
           <div class="exchange_symbol">
@@ -22,7 +22,7 @@
 
           <div>
             <% shift_answer = Shift.find(exchange.shift_answer_id) %>
-            <%= render partial: "shared/one_exchange-card", locals: { shift: shift_owner, shift_of_current_user: false } %>
+            <%= render partial: "shared/one_exchange-card", locals: { shift: shift_owner, shift_of_current_user: false, validated: false } %>
           </div>
         </div>
       </div>

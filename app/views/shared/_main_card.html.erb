@@ -12,6 +12,6 @@
       <h3><%= shift.hour_end.strftime("%H:%M") %></h3>
     </div>
     <% if avatar %>
-      <div class="card_avatar"></div>
+      <%= image_tag shift.user.image, alt: "alttext", class: "card_avatar" %>
     <% end %>
 </div>

@@ -1,3 +1,16 @@
+<div class="my_container">
+  <h1 class="titre_2">Créer une nouvelle proposition</h1>
+  <div class="container">
+    <%= simple_form_for @shift do |f| %>
+    <%= f.input :date, label: 'Date' %>
+    <%= f.input :line_id, collection: @lines, label: 'Ligne' %>
+    <%= f.input :hour_start, label: 'Heure de début'%>
+    <%= f.input :hour_end, label: 'Heure de fin' %>
+    <%= f.input :working_hours, as: :time, label: 'Heures travaillés (début)' %>
+    <%= f.input :working_minutes, as: :time, label: 'Heures travaillés (fin)' %>
+    <%= f.button :submit, "Soumettre le formulaire", data: {confirm: "Etes vous sûr des informations saisies ?"}, class: 'button_action' %>
+    <% end %>
+  </div>
 
 <div class="titre container">
   <h1>Creer une nouvelle proposition</h1>

@@ -6,20 +6,20 @@
   <div class= "one_exchange-card">
 <% end %>
     <div class="line">
-        <p><%= shift.line.name %></p>
+        <h2><%= shift.line.name %></h2>
     </div>
     <div class="date_hours">
       <div class="date">
-        <p><%= l(shift.date, format: "%a %e %b").upcase %></p>
+        <h2><%= l(shift.date, format: "%a %e %b").upcase %></h2>
       </div>
       <div class ="shift_hours">
         <div class="starting_hour">
           <p id="start"> Début </p>
-          <p> <%= shift.hour_start.strftime('%H:%M') %></p>
+          <h3> <%= shift.hour_start.strftime('%H:%M') %></h3>
         </div>
         <div class="ending_hour">
           <p id="end"> Fin </p>
-          <p><%= shift.hour_end.strftime('%H:%M') %></p>
+          <h3><%= shift.hour_end.strftime('%H:%M') %></h3>
         </div>
       </div>
     </div>
