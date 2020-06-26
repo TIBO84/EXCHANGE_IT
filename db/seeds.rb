@@ -43,8 +43,8 @@ employee_13 = User.create!(first_name: f_name_homme.sample.capitalize, last_name
 employee_14 = User.create!(first_name: f_name_homme.sample.capitalize, last_name: l_name[14].capitalize, unit: depot, email: "employee_14@gmail.com", matricule: rand(10000..30000), password: 123456, image: "m8.jpg" )
 
 # EMPLOYE PROTAGONISTE
-donald = User.create!(first_name: "Donald", last_name: "Trump", unit: depot, email: "donald@gmail.com", matricule: rand(10000..30000), password: 123456, image: "trump.jpg" )
-didier = User.create!(first_name: "Didier", last_name: "Raoult", unit: depot, email: "didier@gmail.com", matricule: rand(10000..30000), password: 123456, image: "raoult.jpg" )
+donald = User.create!(first_name: "Richard", last_name: "Mendosa", unit: depot, email: "richard@gmail.com", matricule: rand(10000..30000), password: 123456, image: "richard.jpg" )
+didier = User.create!(first_name: "Thibault", last_name: "Dautremer", unit: depot, email: "thibault@gmail.com", matricule: rand(10000..30000), password: 123456, image: "tibo.jpg" )
 
 # MANAGER
 kim = User.create!(first_name: "Kim", last_name: "Jong-un", unit: depot, email: "kim@gmail.com", matricule: rand(10000..30000), password: 123456, image: "f1.jpg", manager: true )
