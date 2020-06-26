@@ -10,7 +10,7 @@
       <%= f.input :date, as: :date, html5: true  %>
       <%= f.input :line_id, collection: @lines, label: 'Lignes' %>
       <%= f.input :hour_start, label: 'Heure de début' %>
-      <%= f.input :hour_end, label: Heure de fin' %>
+      <%= f.input :hour_end, label: 'Heure de fin' %>
       <%= f.input :working_hours, collection: (1..10) %>
       <%= f.input :working_minutes, collection: (0..60).select { |x| x%5 == 0 || x == 0}  %>
       <%= hidden_field_tag :shift_owner_id, @shift_answered.id %>
