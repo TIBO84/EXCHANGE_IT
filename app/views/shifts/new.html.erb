@@ -12,17 +12,10 @@
       <span style="position: relative; top: 38px; left: 4px;"> : </span>
       <%= f.input :working_minutes, label: 'Minutes', collection: (0..60).select { |x| x%5 == 0 || x == 0}, wrapper_html: {class: 'flex-grow ml-1'}, input_html: {class: 'mx-1'}  %>
     </div>
-    <%= f.button :submit, "Soumettre le formulaire", data: {confirm: "Etes vous sûr des informations saisies ?"}, class: 'button_action' %>
+    <div class="flex justify-around">
+      <%= f.button :submit, "Soumettre le formulaire", data: {confirm: "Etes vous sûr des informations saisies ?"}, class: 'button_action' %>
+      <a class="button_action inline-block hollow" href="/dashboard">Annuler la demande</a>
+    </div>
     <% end %>
   </div>
-
-<div class="titre container">
-  <h1>Creer une nouvelle proposition</h1>
-</div>
-
-<div class="container">
-  <div class="annuler">
-    <a class="link"href="/dashboard">Annuler la demande</a>
-  </div>
-</div>
 </div>

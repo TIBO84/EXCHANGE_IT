@@ -11,8 +11,12 @@
       <%= f.input :line_id, collection: @lines, label: 'Lignes' %>
       <%= f.input :hour_start, label: 'Heure de début' %>
       <%= f.input :hour_end, label: 'Heure de fin' %>
-      <%= f.input :working_hours, collection: (1..10) %>
-      <%= f.input :working_minutes, collection: (0..60).select { |x| x%5 == 0 || x == 0}  %>
+      <p>Heures travaillées : </p>
+      <div class = "flex">
+        <%= f.input :working_hours, label: 'Heures', collection: (1..10), wrapper_html: {class: 'flex-grow mr-1'}, input_html: {class: 'mx-1'}%>
+        <span style="position: relative; top: 38px; left: 4px;"> : </span>
+        <%= f.input :working_minutes, label: 'Minutes', collection: (0..60).select { |x| x%5 == 0 || x == 0}, wrapper_html: {class: 'flex-grow ml-1'}, input_html: {class: 'mx-1'}  %>
+      </div>
       <%= hidden_field_tag :shift_owner_id, @shift_answered.id %>
       <%= f.button :submit, "Nouvelle proposition", class: 'button_action'%>
       <%= f.button :submit, "ENVOYER", class: 'button_action'%>
