@@ -41,16 +41,16 @@
         <% @exchanges.each do |exchange| %>
         <% shift_owner = Shift.find(exchange.shift_owner_id) %>
         <% shift_answer = Shift.find(exchange.shift_answer_id) %>
-        <% date = shift_owner.date %>
+        <% date = shift_owner.date.strftime("%d/%m/%y") %>
         <% line = Line.find(shift_owner.line_id).name %>
-        <tr>
+        <tr class="text-sm">
           <td><%= exchange.id %></td>
           <td><%= date %></td>
           <td><%= line %></td>
           <td><%= "#{User.find(shift_owner.user_id).first_name} #{User.find(shift_owner.user_id).last_name}"%></td>
           <td><%= "#{User.find(shift_answer.user_id).first_name} #{User.find(shift_answer.user_id).last_name}"%></td>
-          <td><%= exchange.created_at.strftime("%d/%m/%Y") %></td>
-          <td><%= exchange.updated_at.strftime("%d/%m/%Y") %></td>
+          <td><%= exchange.created_at.strftime("%d/%m/%y") %></td>
+          <td><%= exchange.updated_at.strftime("%d/%m/%y") %></td>
           <td><%= exchange.message %></td>
         </tr>
         <% end %>
