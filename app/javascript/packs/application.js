@@ -4,7 +4,7 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-require("turbolinks").start()
+// require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
@@ -34,7 +34,7 @@ import { showReviewAnswer } from './supervise_home';
 import { timerAlerts } from './flashes';
 import flatpickr from "flatpickr";
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   // Call your functions here, e.g:
   // initSelect2();
   timerAlerts();
