@@ -31,16 +31,17 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 
 import { showReviewAnswer } from './supervise_home';
+import { timerAlerts } from './flashes';
+import flatpickr from "flatpickr";
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  timerAlerts();
   showReviewAnswer();
+
+  document.querySelectorAll(".flatpickr").forEach((input) => {
+    flatpickr(input);
+  });
 });
-import flatpickr from "flatpickr";
 
-const inputDate = document.querySelector("#data-flatpickr")
-
-if (inputDate) {
-  flatpickr(inputDate);
-}
