@@ -6,31 +6,16 @@
     <%= f.input :line_id, collection: @lines, label: 'Ligne' %>
     <%= f.input :hour_start, label: 'Heure de début'%>
     <%= f.input :hour_end, label: 'Heure de fin' %>
-    <%= f.input :working_hours, as: :time, label: 'Heures travaillés (début)' %>
-    <%= f.input :working_minutes, as: :time, label: 'Heures travaillés (fin)' %>
-    <%= f.button :submit, "Soumettre le formulaire", data: {confirm: "Etes vous sûr des informations saisies ?"}, class: 'button_action' %>
+    <p>Heures travaillées : </p>
+    <div class = "flex">
+      <%= f.input :working_hours, label: 'Heures', collection: (1..10), wrapper_html: {class: 'flex-grow mr-1'}, input_html: {class: 'mx-1'}%>
+      <span style="position: relative; top: 38px; left: 4px;"> : </span>
+      <%= f.input :working_minutes, label: 'Minutes', collection: (0..60).select { |x| x%5 == 0 || x == 0}, wrapper_html: {class: 'flex-grow ml-1'}, input_html: {class: 'mx-1'}  %>
+    </div>
+    <div class="flex justify-around">
+      <%= f.button :submit, "Soumettre le formulaire", data: {confirm: "Etes vous sûr des informations saisies ?"}, class: 'button_action' %>
+      <a class="button_action inline-block hollow" href="/dashboard">Annuler la demande</a>
+    </div>
     <% end %>
   </div>
-
-<div class="titre container">
-  <h1>Creer une nouvelle proposition</h1>
-</div>
-
-<div class="form container">
-  <%= simple_form_for @shift do |f| %>
-  <%= f.input :date, label: 'Date', as: :string, input_html: {id: "data-flatpickr"} %>
-  <%= f.input :line_id, collection: @lines, label: 'Lignes' %>
-  <%= f.input :hour_start, label: 'Heure de début'%>
-  <%= f.input :hour_end, label: 'Heure de fin' %>
-  <%= f.input :working_hours, as: :time, label: 'Heures travaillés (début)' %>
-  <%= f.input :working_minutes, as: :time, label: 'Heures travaillés (fin)' %>
-  <%= f.button :submit, "Soumettre le formulaire", data: {confirm: "Etes vous sûr des informations saisies ?"}, class: 'sub-form' %>
-  <% end %>
-</div>
-
-<div class="container">
-  <div class="annuler">
-    <a class="link"href="/dashboard">Annuler la demande</a>
-  </div>
-</div>
 </div>

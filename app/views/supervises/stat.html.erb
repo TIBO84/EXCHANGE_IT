@@ -1,14 +1,11 @@
 
 <div class="my_supervise_stats_container">
-  <div class="stats_div">
-  <h1 class="titre_1">Historique des demandes d'échange </h1>
-  <h2 class="titre_2"><%= Unit.find(current_user.unit_id).name %></h1>
-  <div class="w-50%">
-    <%= link_to "Back to dashboard", supervise_path, class:"button_action" %>
+  <div class='flex justify-between mb-6'>
+    <h1 class="titre_1 other">Historique des demandes d'échange </h1>
+    <%= link_to "Back to dashboard", supervise_path, class:"button_action hollow" %>
   </div>
-  <h1 class="titre_1">Historique des demandes d'échange </h1>
+
   <h2 class="titre_2"><%= Unit.find(current_user.unit_id).name %></h1>
-  <br><br>
 
   <div class="results-filter">
     <!-- Filtre par date -->
@@ -26,7 +23,6 @@
     </form>
   </div>
   <br><br>
-  </div>
 <div>
   <div class="table_centrage table">
     <table>

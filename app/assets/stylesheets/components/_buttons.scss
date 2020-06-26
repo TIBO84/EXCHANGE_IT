@@ -18,6 +18,18 @@ $color-h1:#5B27EF;
   padding: 0.1rem;
   padding-left: 0.2rem;
   padding-right: 0.2rem;
+
+  &.hollow {
+    background-color: transparent;
+    color: $color-h1;
+
+    &:hover {
+      background-color: $color-h1;
+      color: white;
+    }
+  }
+
+
 }
 
 .button_action:hover {
