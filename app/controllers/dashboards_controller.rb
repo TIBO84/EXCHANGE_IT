@@ -95,7 +95,6 @@ class DashboardsController < ApplicationController
     SQL
   end
 
-
   def where_sql_myshifts_pending_manager
     <<~SQL
       users.id = :user_id AND
@@ -123,6 +122,7 @@ class DashboardsController < ApplicationController
   def where_sql_myshifts_shifts_owner
     <<~SQL
       users.id = :user_id AND
+      exchanges.shift_owner_id = shifts.id AND
       exchange_accepted_level_one IS NULL
     SQL
   end
