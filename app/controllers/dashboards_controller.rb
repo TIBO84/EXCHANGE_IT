@@ -4,7 +4,7 @@ class DashboardsController < ApplicationController
   before_action :set_current_user, only: [:home, :my_shifts, :my_answers]
 
   def home
-    @exchanges_validated = Exchange.joins(joins_sql_myshifts).where(where_sql_myshifts_validated, user_id: current_user.id)
+    @exchanges_validated = Exchange.joins(joins_sql_validated).where(where_sql_myshifts_validated, user_id: current_user.id)
     @lines = Line.all
     @shifts = Shift.joins(joins_sql)
                    .where(where_sql, user_id: current_user.id, unit_id: current_user.unit_id, date: Date.today)
@@ -84,6 +84,13 @@ class DashboardsController < ApplicationController
   def joins_sql_myshifts
     <<~SQL
       INNER JOIN shifts ON shifts.id = exchanges.shift_owner_id
+      INNER JOIN users ON users.id = shifts.user_id
+    SQL
+  end
+
+    def joins_sql_validated
+    <<~SQL
+      INNER JOIN shifts ON shifts.id = exchanges.shift_owner_id OR shifts.id = exchanges.shift_answer_id
       INNER JOIN users ON users.id = shifts.user_id
     SQL
   end
