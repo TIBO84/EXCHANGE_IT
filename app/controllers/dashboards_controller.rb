@@ -4,7 +4,10 @@ class DashboardsController < ApplicationController
   before_action :set_current_user, only: [:home, :my_shifts, :my_answers]
 
   def home
-    @exchanges_validated = Exchange.joins(joins_sql_myshifts).where(where_sql_myshifts_validated, user_id: current_user.id)
+    @exchanges_validated_where_owner = Exchange.joins(joins_sql_validated_where_owner).where(where_sql_myshifts_validated, user_id: current_user.id)
+    @exchanges_validated_where_answer = Exchange.joins(joins_sql_validated_where_answer).where(where_sql_myshifts_validated, user_id: current_user.id)
+    @exchanges_validated = @exchanges_validated_where_answer + @exchanges_validated_where_owner
+
     @lines = Line.all
     @shifts = Shift.joins(joins_sql)
                    .where(where_sql, user_id: current_user.id, unit_id: current_user.unit_id, date: Date.today)
@@ -40,7 +43,6 @@ class DashboardsController < ApplicationController
         @shifts_and_answers["#{exchange.shift_owner_id}"] <<  { exchange.shift_answer_id => exchange.id } # pour integrer instance plutot que id : Shift.find(exchange.shift_answer_id)
       end
     end
-    # HISTORIQUE DES ECHANGES ACCEPTES
   end
 
   def my_answers
@@ -88,6 +90,20 @@ class DashboardsController < ApplicationController
     SQL
   end
 
+  def joins_sql_validated_where_owner
+    <<~SQL
+      INNER JOIN shifts ON shifts.id = exchanges.shift_owner_id
+      INNER JOIN users ON users.id = shifts.user_id
+    SQL
+  end
+
+  def joins_sql_validated_where_answer
+    <<~SQL
+      INNER JOIN shifts ON shifts.id = exchanges.shift_answer_id
+      INNER JOIN users ON users.id = shifts.user_id
+    SQL
+  end
+
   def joins_sql_myshifts_shifts_owner
     <<~SQL
       INNER JOIN users ON users.id = shifts.user_id
@@ -122,7 +138,6 @@ class DashboardsController < ApplicationController
   def where_sql_myshifts_shifts_owner
     <<~SQL
       users.id = :user_id AND
-      exchanges.shift_owner_id = shifts.id AND
       exchange_accepted_level_one IS NULL
     SQL
   end
