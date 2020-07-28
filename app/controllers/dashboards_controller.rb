@@ -29,12 +29,12 @@ class DashboardsController < ApplicationController
     # ECHANGES EN ATTENTE DE VALIDATION MANAGER
     @exchanges_pending_manager = Exchange.joins(joins_sql_myshifts).where(where_sql_myshifts_pending_manager, user_id: current_user.id)
 
+    # ========= MYSHIFT_V2 ===============
     # TOUS LES SHIFTS APPARTENANT AU CURRENT USER, DATE >= A TODAY ET accepted_level_one = NIL:
     my_shifts_base = @current_user.shifts.where(where_sql_myshifts)
-
-    # POUR CHAQUE SHIFT, LE STOCKER S IL N A PAS en shift_answer_id dans un exchange
     @shifts_and_answers = {}
 
+    # POUR CHAQUE SHIFT, LE STOCKER S IL N A PAS en shift_answer_id dans un exchange
     my_shifts_base.each do |shift|
       if shift.exchange_answers.empty?
         @shifts_and_answers["#{shift.id}"] = []
@@ -46,6 +46,7 @@ class DashboardsController < ApplicationController
       end
     end
 
+    # ========= MYSHIFT_V1 ===============
     # SHIFTS EN ATTENTE DE REPONSES OU AVEC REPONSE (SHIFT) A CHOISIR
     # @exchanges_pending_users = Exchange.joins(joins_sql_myshifts).where(where_sql_myshifts_pending_users, user_id: current_user.id)
     # @shifts_owner_pending_users = Shift.select("shifts.id").joins(joins_sql_myshifts_shifts_owner).where(where_sql_myshifts_shifts_owner, user_id: current_user.id).group("shifts.id").order("shifts.id")
@@ -121,6 +122,7 @@ class DashboardsController < ApplicationController
     SQL
   end
 
+  # ========= MYSHIFT_V1 ===============
   # def joins_sql_myshifts_shifts_owner
   #   <<~SQL
   #     INNER JOIN users ON users.id = shifts.user_id
@@ -151,6 +153,7 @@ class DashboardsController < ApplicationController
     SQL
   end
 
+  # ========= MYSHIFT_V1 ===============
   # def where_sql_myshifts_pending_users
   #   <<~SQL
   #     users.id = :user_id AND
@@ -159,6 +162,7 @@ class DashboardsController < ApplicationController
   #   SQL
   # end
 
+  # ========= MYSHIFT_V1 ===============
   # def where_sql_myshifts_shifts_owner
   #   <<~SQL
   #     users.id = :user_id AND
