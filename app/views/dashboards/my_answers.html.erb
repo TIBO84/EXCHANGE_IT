@@ -19,7 +19,7 @@
         <%# pour chacun de ces shift, je vais ensuite chercher quel est le shift du répondant qui a été accepté %>
         <%# pour ca, il faut que j'identifie quel est l'exchange correspondant qui a un booléen accepted_owner = true %>
         <%# je vais donc itérer sur tous les exchanges associés à ce shift %>
-            <%shift.exchange_answers.each do |exchange|%>
+            <%shift.exchange_owners.each do |exchange|%>
             <%# je teste si l'exchange en question a son accepted_owner = true  %>
               <%if exchange.accepted_owner == true %>
                 <% shift_of_current_user = User.find(exchange.shift_answer.user_id) == current_user %>

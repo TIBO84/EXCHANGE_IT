@@ -29,20 +29,37 @@ class DashboardsController < ApplicationController
     # ECHANGES EN ATTENTE DE VALIDATION MANAGER
     @exchanges_pending_manager = Exchange.joins(joins_sql_myshifts).where(where_sql_myshifts_pending_manager, user_id: current_user.id)
 
-    # SHIFTS EN ATTENTE DE REPONSES OU AVEC REPONSE (SHIFT) A CHOISIR
-    @exchanges_pending_users = Exchange.joins(joins_sql_myshifts).where(where_sql_myshifts_pending_users, user_id: current_user.id)
-    @shifts_owner_pending_users = Shift.select("shifts.id").joins(joins_sql_myshifts_shifts_owner).where(where_sql_myshifts_shifts_owner, user_id: current_user.id).group("shifts.id").order("shifts.id")
+    # TOUS LES SHIFTS APPARTENANT AU CURRENT USER, DATE >= A TODAY ET accepted_level_one = NIL:
+    my_shifts_base = @current_user.shifts.where(where_sql_myshifts)
 
+    # POUR CHAQUE SHIFT, LE STOCKER S IL N A PAS en shift_answer_id dans un exchange
     @shifts_and_answers = {}
-    @shifts_owner_pending_users.each do |shift|
-      @shifts_and_answers["#{shift.id}"] = []
-    end
 
-    @exchanges_pending_users.each do |exchange|
-      if @shifts_and_answers.key?("#{exchange.shift_owner_id}")
-        @shifts_and_answers["#{exchange.shift_owner_id}"] <<  { exchange.shift_answer_id => exchange.id } # pour integrer instance plutot que id : Shift.find(exchange.shift_answer_id)
+    my_shifts_base.each do |shift|
+      if shift.exchange_answers.empty?
+        @shifts_and_answers["#{shift.id}"] = []
+        if shift.exchange_owners.any?
+          shift.exchange_owners.each do |exchange|
+            @shifts_and_answers["#{exchange.shift_owner_id}"] << { exchange.shift_answer_id => exchange.id }
+          end
+        end
       end
     end
+
+    # SHIFTS EN ATTENTE DE REPONSES OU AVEC REPONSE (SHIFT) A CHOISIR
+    # @exchanges_pending_users = Exchange.joins(joins_sql_myshifts).where(where_sql_myshifts_pending_users, user_id: current_user.id)
+    # @shifts_owner_pending_users = Shift.select("shifts.id").joins(joins_sql_myshifts_shifts_owner).where(where_sql_myshifts_shifts_owner, user_id: current_user.id).group("shifts.id").order("shifts.id")
+
+    # @shifts_and_answers = {}
+    # @shifts_owner_pending_users.each do |shift|
+    #   @shifts_and_answers["#{shift.id}"] = []
+    # end
+
+    # @exchanges_pending_users.each do |exchange|
+    #   if @shifts_and_answers.key?("#{exchange.shift_owner_id}")
+    #     @shifts_and_answers["#{exchange.shift_owner_id}"] <<  { exchange.shift_answer_id => exchange.id } # pour integrer instance plutot que id : Shift.find(exchange.shift_answer_id)
+    #   end
+    # end
   end
 
   def my_answers
@@ -104,10 +121,17 @@ class DashboardsController < ApplicationController
     SQL
   end
 
-  def joins_sql_myshifts_shifts_owner
+  # def joins_sql_myshifts_shifts_owner
+  #   <<~SQL
+  #     INNER JOIN users ON users.id = shifts.user_id
+  #     LEFT JOIN exchanges ON (exchanges.shift_owner_id = shifts.id AND exchanges.accepted_owner IS NULL) OR exchanges.shift_owner_id = shifts.id
+  #   SQL
+  # end
+
+  def where_sql_myshifts
     <<~SQL
-      INNER JOIN users ON users.id = shifts.user_id
-      LEFT JOIN exchanges ON (exchanges.shift_owner_id = shifts.id AND exchanges.accepted_owner IS NULL) OR exchanges.shift_owner_id = shifts.id
+      shifts.date >= DATE( NOW() ) AND
+      shifts.exchange_accepted_level_one IS NULL
     SQL
   end
 
@@ -127,18 +151,18 @@ class DashboardsController < ApplicationController
     SQL
   end
 
-  def where_sql_myshifts_pending_users
-    <<~SQL
-      users.id = :user_id AND
-      accepted_owner IS NULL AND
-      accepted_manager IS NULL
-    SQL
-  end
+  # def where_sql_myshifts_pending_users
+  #   <<~SQL
+  #     users.id = :user_id AND
+  #     accepted_owner IS NULL AND
+  #     accepted_manager IS NULL
+  #   SQL
+  # end
 
-  def where_sql_myshifts_shifts_owner
-    <<~SQL
-      users.id = :user_id AND
-      exchange_accepted_level_one IS NULL
-    SQL
-  end
+  # def where_sql_myshifts_shifts_owner
+  #   <<~SQL
+  #     users.id = :user_id AND
+  #     exchange_accepted_level_one IS NULL
+  #   SQL
+  # end
 end
