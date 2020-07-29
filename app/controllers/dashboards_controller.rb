@@ -36,10 +36,10 @@ class DashboardsController < ApplicationController
 
     # POUR CHAQUE SHIFT, LE STOCKER S IL N A PAS en shift_answer_id dans un exchange
     my_shifts_base.each do |shift|
-      if shift.exchange_answers.empty?
+      if shift.exchange_owners.empty?
         @shifts_and_answers["#{shift.id}"] = []
-        if shift.exchange_owners.any?
-          shift.exchange_owners.each do |exchange|
+        if shift.exchange_answers.any?
+          shift.exchange_answers.each do |exchange|
             @shifts_and_answers["#{exchange.shift_owner_id}"] << { exchange.shift_answer_id => exchange.id }
           end
         end
