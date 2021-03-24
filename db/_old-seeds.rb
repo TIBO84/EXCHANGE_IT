@@ -42,8 +42,8 @@ puts ".... CREATE SHIFTS"
 shift1 = Shift.create!(
   date: Date.today,
   line: l1,
-  hour_start: Time.new(2020,9,15,7,5,0).strftime("%H:%M"),
-  hour_end: Time.new(2020,9,15,16,5,0).strftime("%H:%M"),
+  hour_start: Time.new(2021,9,15,7,5,0).strftime("%H:%M"),
+  hour_end: Time.new(2021,9,15,16,5,0).strftime("%H:%M"),
   working_hours: 6,
   working_minutes: 25,
   user: employee_1
